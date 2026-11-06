@@ -310,6 +310,10 @@
       return url ? '<li><a class="pagar-item" href="' + esc(url) + '" rel="noopener">Pagar ' + esc(p.nome) + (p.parcelas ? " " + comoPaga(p) : "") + " · " + brl(p.valor) + "</a></li>"
         : "<li>" + esc(p.nome) + " · " + brl(p.valor) + ": pagamento em configuração</li>";
     });
+    var todosComLink = t.pagos.length > 0 && t.pagos.every(function (p) { return !!linkDe(p); });
+    $("resultado-instrucao").textContent = todosComLink
+      ? "Toque em cada link para pagar. Depois, envie a mensagem abaixo pelo WhatsApp ou por e-mail para confirmarmos o seu pedido."
+      : "Envie a mensagem abaixo pelo WhatsApp ou por e-mail. Se algum item ainda estiver com o pagamento em configuração, a gente responde com o link de pagamento.";
     $("resultado-links").innerHTML = links.join("");
     $("resultado-links").hidden = !links.length;
     $("resultado").hidden = false; $("form-checkout").hidden = true;
@@ -331,10 +335,12 @@
     $("erro").hidden = true;
     var texto = mensagem(t, d);
     var pedido = {
-      tipo: t.pagos.length ? "compra" : "proposta", cliente: d, novidades: $("novidades").checked,
+      id: "PC-" + Date.now().toString(36).toUpperCase() + "-" + Math.random().toString(36).slice(2, 6).toUpperCase(),
+      tipo: t.pagos.length ? "compra" : "proposta", cliente: d, novidades: $("novidades").checked, avisos: $("avisos").checked,
       itens: t.pagos, plus: t.plus.map(function (p) { return p.id; }), propostas: cart.prop.slice(), hoje: t.hoje, forma: forma() || null,
       aceite: { contrato: true, fundador: t.fundador, em: new Date().toISOString() }, pagina: location.pathname
     };
+    texto += "\nNúmero do pedido: " + pedido.id;
 
     if (!t.pagos.length) {
       if (window.podecurtirEvento) window.podecurtirEvento("Lead");
@@ -365,6 +371,8 @@
         .catch(function () { manual("Pague cada item pelo link", texto, t); });
       return;
     }
+    /* Pedido com mais de um item: registra antes de mostrar os links, para a recuperação de pedido saber quem quase comprou. */
+    registrar(pedido);
     manual(t.pagos.every(function (p) { return linkDe(p); }) ? "Pague cada item pelo link" : "Pagamento em configuração", texto, t);
   });
 
