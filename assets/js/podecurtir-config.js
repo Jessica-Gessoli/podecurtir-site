@@ -28,12 +28,12 @@ window.PODECURTIR = {
     essencial: "https://www.asaas.com/000/c/w0wqpjqh5gh5op0m",
     padrao: "https://www.asaas.com/000/c/jcx1lg6s4dhb98m2",
     completa: "https://www.asaas.com/000/c/ldnzy8vagtnkbe96",
-    plus_gravacao: "",
-    plus_livro: "",
-    plus_protecao: "",
-    plus_mentoria: "",
-    plus_site_pix: "",
-    plus_site_cartao: ""
+    plus_gravacao: "https://www.asaas.com/000/c/3hce0zj5lhqvgmoj",
+    plus_livro: "https://www.asaas.com/000/c/llkzmhqmezcnople",
+    plus_protecao: "https://www.asaas.com/000/c/gwimu5et7i82l2pr",
+    plus_mentoria: "https://www.asaas.com/000/c/bleaqfjo9hhlmm9y",
+    plus_site_pix: "https://www.asaas.com/000/c/bzy6eqhwdy5pq3pn",
+    plus_site_cartao: "https://www.asaas.com/000/c/bl6t7cfoy5huw01o"
   },
   PRECO_AJUSTE: 500,
   VAGAS_500_RESTANTES: null,
