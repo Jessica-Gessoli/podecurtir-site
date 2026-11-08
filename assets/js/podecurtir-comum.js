@@ -24,7 +24,7 @@
       faixa: "Black Friday sem desconto falso: até 30/11, Perfil Arrumado, Marca Completa ou qualquer Gestão mensal ganham a Proteção das contas (R$ 400).",
       link: "#t-perfil", linkTexto: "Ver o que ganha o bônus",
       titulo: "Black Friday sem preço inflado.",
-      texto: "Aqui o preço é o mesmo do ano todo. Até 30/11, quem compra Perfil Arrumado, Marca Completa ou qualquer Gestão mensal ganha a Proteção das contas, feita por Jéssica Gessoli.",
+      texto: "Aqui o preço é o mesmo do ano todo. Até 30/11, quem compra Perfil Arrumado, Marca Completa ou qualquer Gestão mensal ganha a Proteção das contas, feita pela Zethic.",
       botao: "Ver o que ganha o bônus" },
     { id: "onda3", de: "2026-12-01", ate: "2026-12-23",
       faixa: "Garanta janeiro: compre agora e mande o briefing em janeiro. O prazo só começa com o briefing completo.",
@@ -262,13 +262,10 @@
       }
       if (!C.FORM_ENDPOINT) { mostrarManual(); return; }
       fetch(C.FORM_ENDPOINT, {
-        method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
+        method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ tipo: "desistencia", nome: nome, email: email, pedido: pedido, motivo: motivo, enviado_em: new Date().toISOString(), pagina: location.pathname })
       }).then(function (r) {
         if (!r.ok) throw new Error("status " + r.status);
-        return r.json();
-      }).then(function (j) {
-        if (!j || j.ok !== true) throw new Error("não confirmado");
         document.getElementById("desistencia-quando").textContent = quando;
         ok.hidden = false; f.hidden = true;
       }).catch(mostrarManual);

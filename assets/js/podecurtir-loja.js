@@ -11,7 +11,10 @@
    usa o CHECKOUT_ENDPOINT (n8n) se estiver preenchido; senão, mostra o link de cada item.
    Decisões de 06/11/2026 (protótipo aprovado pela Jéssica): escolha do tipo de Negócio no topo (doceria, salão,
    consultório ou outro), com sugestão de por onde começar; seção "Proteção e recuperação de conta" (07/11: sem a palavra segurança na Pode Curtir, regra de 28/10) com a Proteção das contas e a
-   Recuperação de conta (R$ 400 cada, Jéssica Gessoli, em parceria), que podem ser compradas sozinhas ("avulso");
+   Recuperação de conta (R$ 400 cada, em parceria), que podem ser compradas sozinhas ("avulso");
+   08/11/2026 (Jéssica): proteção e recuperação de conta passam para a Zethic (blindagem técnica de contas é da Zethic,
+   regra de 28/10) e aparecem numa faixa "Leve junto · opcional", com as cores da Zethic, depois do portfólio da Pode Curtir.
+   No site nunca se usa "venda casada" (CDC, art. 39, I): a faixa é opcional e não condiciona nenhuma compra.
    o preço depois das vagas de fundador aparece em cada item.
    Decisão de 08/11/2026 (Jéssica: "Vamos subir todos no site", com benchmark de mercado e de lucro): seção
    "Para especialistas, produtoras e empresas" (secao: "esp"), com Diagnóstico, Presença em vídeo, Acabamento de vídeo
@@ -62,7 +65,7 @@
     { id: "gravacao", marca: "pc", nome: "Sessão de fotos, ensaio e gravação de vídeo", plus: "plus_gravacao", desc: "Produto, ambiente ou retrato profissional; diária, evento ou sessão maior. O deslocamento entra na proposta." },
     { id: "livro", marca: "pc", nome: "Livro pronto", plus: "plus_livro", desc: "Revisão, capa, diagramação, publicação e divulgação." },
     { id: "produto_digital", marca: "pc", nome: "Produto digital e curso online", desc: "Roteiro, gravação e edição das aulas, capa e materiais do curso ou do produto. A plataforma (Hotmart ou outra) e as vendas ficam no nome do autor." },
-    { id: "protecao", marca: "jg", nome: "Proteção das contas da equipe inteira", plus: "plus_protecao", desc: "Mais de 3 contas ou a equipe toda. Feita por Jéssica Gessoli, em parceria. Sem senha." },
+    { id: "protecao", marca: "ze", nome: "Proteção das contas da equipe inteira", plus: "plus_protecao", desc: "Mais de 3 contas ou a equipe toda. Feita pela Zethic, em parceria. Sem senha." },
     { id: "mentoria", marca: "jg", nome: "Mentoria e consultoria em IA", plus: "plus_mentoria", desc: "Você aprende a fazer com IA, no seu projeto. Com Jéssica Gessoli." },
     { id: "tech", marca: "ze", nome: "Site, app, automação e bot de WhatsApp", plus: "plus_site", desc: "Feitos pela Zethic, em parceria. Atendimento e dados das redes num lugar só." },
     { id: "blog", marca: "ze", nome: "Blog que publica sozinho", desc: "Feito pela Zethic, em parceria: área de blog no site do seu Negócio, com textos programados que entram no ar sozinhos na data. Implantação a partir de R$ 1.500 (preço de fundador); a proposta confirma se o seu site é compatível." },
@@ -76,9 +79,9 @@
       desc: "10 fotos editadas, em Campinas/SP. Fora de Campinas, o deslocamento é combinado antes e cobrado à parte." },
     { id: "plus_livro", marca: "pc", nome: "Capa e diagramação do e-book", preco: 1500, avulso: true, secao: "conteudo", prazo: "Prazo combinado por escrito depois do briefing",
       desc: "Com o texto pronto, até 100 páginas: capa simples e diagramação do e-book. ISBN, ficha catalográfica e gráfica ficam com o autor." },
-    { id: "plus_protecao", marca: "jg", nome: "Proteção das contas", preco: 400, avulso: true, secao: "contas", prazo: "Data combinada depois do pagamento",
+    { id: "plus_protecao", marca: "ze", nome: "Proteção das contas", preco: 400, avulso: true, secao: "contas", prazo: "Data combinada depois do pagamento",
       desc: "1 hora a distância, até 3 contas do Negócio: verificação em duas etapas, e-mail e telefone de recuperação, revisão de acessos e acesso de parceiro, sem senha. Conta já invadida ou bloqueada: Recuperação de conta." },
-    { id: "plus_recuperacao", marca: "jg", nome: "Recuperação de conta", preco: 400, avulso: true, secao: "contas", prazo: "Data combinada depois do pagamento",
+    { id: "plus_recuperacao", marca: "ze", nome: "Recuperação de conta", preco: 400, avulso: true, secao: "contas", prazo: "Data combinada depois do pagamento",
       desc: "1 hora a distância, para conta invadida ou bloqueada, pelos canais oficiais da plataforma. A decisão de devolver a conta é da plataforma; por isso, não há garantia de recuperação." },
     { id: "plus_mentoria", marca: "jg", nome: "Mentoria em IA · 1 hora", preco: 400, avulso: true, secao: "conteudo", prazo: "Data combinada depois do pagamento",
       desc: "Por videochamada, nas ferramentas de IA que você já tem. Você aprende fazendo, no seu projeto." },
@@ -180,7 +183,7 @@
     function avulsos(secao) {
       return PLUS.filter(function (p) { return p.avulso && p.secao === secao; }).map(function (p) {
         var on = tem(cart.plus, p.id);
-        return '<article class="item"><h3>' + (secao === "conteudo" && p.marca !== "pc" ? '<span class="selo ' + p.marca + '">' + MARCA[p.marca] + "</span>" : "") + p.nome + '</h3><p class="preco num">' + brl(p.preco) + "</p><p>" + p.desc + "</p>" +
+        return '<article class="item"><h3>' + ((secao === "conteudo" || secao === "contas") && p.marca !== "pc" ? '<span class="selo ' + p.marca + '">' + MARCA[p.marca] + "</span>" : "") + p.nome + '</h3><p class="preco num">' + brl(p.preco) + "</p><p>" + p.desc + "</p>" +
           '<dl class="meta"><div><dt>Quando</dt><dd>' + p.prazo + '</dd></div><div><dt>Pagamento</dt><dd>Integral: ' + formas(p) + "</dd></div></dl>" +
           '<button class="por" type="button" data-plus="' + p.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr no pedido") + "</button></article>";
       }).join("");
@@ -238,7 +241,7 @@
     });
     PLUS.forEach(function (p) {
       if (!tem(cart.plus, p.id) || !(temPrincipal() || p.avulso) || (p.id === "plus_protecao" && bonusValido())) return;
-      out.push('<li><span><span class="selo ' + p.marca + '">' + MARCA[p.marca] + "</span>" + p.nome + '</span><span class="num">' + brl(p.preco) + "</span><small>" + (p.avulso && !temPrincipal() ? (p.secao === "contas" ? "Proteção e recuperação de conta" : "Livro e IA") : "Plus") + " · pagamento integral · " + formas(p) + "</small>" +
+      out.push('<li><span><span class="selo ' + p.marca + '">' + MARCA[p.marca] + "</span>" + p.nome + '</span><span class="num">' + brl(p.preco) + "</span><small>" + (p.avulso && !temPrincipal() ? (p.secao === "contas" ? "Leve junto · Zethic" : "Livro e IA") : "Plus") + " · pagamento integral · " + formas(p) + "</small>" +
         (comTirar ? '<button class="tirar" type="button" data-plus="' + p.id + '">Tirar</button>' : "") + "</li>");
     });
     PROPOSTAS.forEach(function (a) {
@@ -246,7 +249,7 @@
       out.push('<li><span><span class="selo ' + a.marca + '">' + MARCA[a.marca] + "</span>" + a.nome + "</span><span>proposta</span><small>Sem valor agora</small>" +
         (comTirar ? '<button class="tirar" type="button" data-prop="' + a.id + '">Tirar</button>' : "") + "</li>");
     });
-    if (bonusValido()) out.push('<li class="bonus"><span>Bônus Black Friday: Proteção das contas</span><span class="num">' + brl(0) + "</span><small>Incluída até 30/11 · feita por Jéssica Gessoli · data combinada depois do pagamento</small></li>");
+    if (bonusValido()) out.push('<li class="bonus"><span>Bônus Black Friday: Proteção das contas</span><span class="num">' + brl(0) + "</span><small>Incluída até 30/11 · feita pela Zethic · data combinada depois do pagamento</small></li>");
     return out.join("");
   }
 
@@ -417,7 +420,7 @@
   function mensagem(t, d) {
     var l = ["Olá! Quero contratar pela loja da Pode Curtir:"];
     t.pagos.forEach(function (p) {
-      l.push("- " + (p.marca ? (temPrincipal() ? "Plus: " : "Proteção e recuperação de conta: ") : "") + p.nome + (p.marca && p.marca !== "pc" ? ", " + COM[p.marca] : "") +
+      l.push("- " + (p.marca ? (temPrincipal() ? "Plus: " : (p.secao === "contas" ? "Leve junto (Zethic): " : "Livro e IA: ")) : "") + p.nome + (p.marca && p.marca !== "pc" ? ", " + COM[p.marca] : "") +
         " (" + brl(p.valor) + " hoje" + (p.parcelas ? ", " + comoPaga(p) : "") + ")");
     });
     PROPOSTAS.forEach(function (a) { if (tem(cart.prop, a.id)) l.push("- Proposta: " + a.nome + " (" + MARCA_NOME[a.marca] + ")"); });
@@ -430,10 +433,8 @@
 
   function registrar(dados) {
     if (!C.FORM_ENDPOINT) return Promise.resolve(false);
-    // text/plain evita a verificação prévia do navegador, que o Google Apps Script não atende.
-    // keepalive: o envio continua mesmo se a cliente tocar no link de pagamento antes de ele terminar.
-    return fetch(C.FORM_ENDPOINT, { method: "POST", keepalive: true, headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(dados) })
-      .then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { return !!(j && j.ok); }).catch(function () { return false; });
+    return fetch(C.FORM_ENDPOINT, { method: "POST", keepalive: true, headers: { "Content-Type": "application/json" }, body: JSON.stringify(dados) })
+      .then(function (r) { return r.ok; }).catch(function () { return false; });
   }
 
   function obrigado(tipo) {
@@ -480,8 +481,7 @@
       itens: t.pagos, plus: t.plus.map(function (p) { return p.id; }), propostas: cart.prop.slice(), hoje: t.hoje, forma: forma() || null,
       aceite: { contrato: true, fundador: t.fundador, em: new Date().toISOString() }, pagina: location.pathname,
       campanha: (window.podecurtirCampanha && window.podecurtirCampanha()) ? window.podecurtirCampanha().id : null,
-      bonus: bonusValido() ? ["plus_protecao"] : [],
-      links: t.pagos.filter(function (p) { return !!linkDe(p); }).map(function (p) { return { nome: p.nome, valor: p.valor, url: linkDe(p) }; })
+      bonus: bonusValido() ? ["plus_protecao"] : []
     };
     texto += "\nNúmero do pedido: " + pedido.id;
 
