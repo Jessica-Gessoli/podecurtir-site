@@ -49,7 +49,7 @@
        (instalável pelo navegador, sem loja de apps) são feitos pela Zethic, em parceria (regra de 28/10: tecnologia é da Zethic). */
     { id: "cardapio", secao: "rest", nome: "Cardápio Pronto", preco: 1500, prazo: "10 dias úteis", fundador: true,
       depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.400.",
-      desc: "Até 30 itens: textos dos pratos, categorias, preços e alérgenos que você informar. Cardápio no celular, que abre pelo QR code e pode ser instalado na tela como um app, com QR code para mesas e balcão, botão de pedido pelo WhatsApp sem taxa por pedido e destaque Cardápio no Instagram. Página e app feitos pela Zethic, em parceria." }
+      desc: "Até 30 itens: textos dos pratos, categorias, preços e alérgenos que você informar. Cardápio no celular, que abre pelo QR code e pode ser instalado na tela como um app, com QR code para mesas e balcão, botão de pedido pelo WhatsApp sem taxa por pedido e destaque Cardápio no Instagram. 12 meses no ar incluídos. Página e app feitos pela Zethic, em parceria." }
   ];
   var PLANOS = [
     { id: "essencial", nome: "Gestão Essencial", mensal: 1500, depois: "Preço de fundador. A partir do 4º cliente, R$ 2.400 por mês.", desc: "1 rede, 12 posts por mês e relatório mensal." },
@@ -64,7 +64,7 @@
     { id: "esp_portavozes", secao: "esp", nome: "Programa de porta-vozes · 2 porta-vozes", mensal: 5800, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 9.200 por mês.",
       desc: "Para empresas: posts e roteiros de vídeo para 2 líderes, com calendário e aprovação numa rotina só. Mais porta-vozes por proposta: 10% de desconto a partir do 3º e 15% a partir do 5º." },
     { id: "cardapio_mensal", secao: "rest", nome: "Cuidado do Cardápio", mensal: 290, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 460 por mês.",
-      desc: "Para quem já tem o Cardápio Pronto: até 10 trocas de preço ou de item por mês, 1 post do prato da semana e relatório dos pratos mais vistos. Nada entra no ar sem a sua aprovação." }
+      desc: "Para quem já tem o Cardápio Pronto: até 10 trocas por mês (1 troca = mudar um item: preço, nome, descrição, foto ou disponibilidade), 1 post do prato da semana e relatório dos pratos mais vistos. O cardápio fica no ar sem custo de hospedagem. Nada entra no ar sem a sua aprovação." }
   ];
   /* Planos de Gestão que entram na campanha de Black Friday (a Proteção das contas de bônus vale só para eles). */
   var GESTAO = ["essencial", "padrao", "completa"];
