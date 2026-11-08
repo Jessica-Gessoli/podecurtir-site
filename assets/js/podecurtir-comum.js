@@ -279,11 +279,12 @@
     var tipo = new URLSearchParams(location.search).get("tipo");
     var blocos = document.querySelectorAll("[data-tipo]");
     for (var i = 0; i < blocos.length; i++) blocos[i].hidden = blocos[i].getAttribute("data-tipo") !== (tipo === "proposta" ? "proposta" : "compra");
-    /* Compra (07/11/2026): só conta se a loja marcou a ida ao Asaas nas últimas 48 horas; conta uma vez e apaga. */
+    /* Compra (07/11/2026): só conta se a loja marcou a ida ao Asaas nos últimos 7 dias; conta uma vez e apaga.
+       08/11/2026: a janela era de 48 horas, menor que o prazo do boleto (2 dias úteis; um boleto de sexta vence na terça). */
     if (tipo === "proposta") return;
     var p = null;
     try { p = JSON.parse(ler("podecurtir-pagamento-v1") || "null"); localStorage.removeItem("podecurtir-pagamento-v1"); } catch (e) {}
-    if (p && typeof p.valor === "number" && p.valor > 0 && Date.now() - p.em < 48 * 3600 * 1000)
+    if (p && typeof p.valor === "number" && p.valor > 0 && Date.now() - p.em < 7 * 24 * 3600 * 1000)
       window.podecurtirEvento("Purchase", { value: p.valor, currency: "BRL" });
   }
 
