@@ -213,7 +213,7 @@
     var plus = PLUS.filter(function (p) { return tem(cart.plus, p.id) && (principal || p.avulso) && !(p.id === "plus_protecao" && bonusValido()); });
     plus.forEach(function (p) {
       hoje += p.preco;
-      pagos.push({ id: p.id, nome: p.nome, valor: p.preco, parcelas: p.parcelas || 0, em: p.em || "", marca: p.marca });
+      pagos.push({ id: p.id, nome: p.nome, valor: p.preco, parcelas: p.parcelas || 0, em: p.em || "", marca: p.marca, secao: p.secao || "" });
       if (p.fundador) fundador = true;
     });
     return { hoje: hoje, plano: plano, pagos: pagos, plus: plus, fundador: fundador, props: cart.prop.length,
