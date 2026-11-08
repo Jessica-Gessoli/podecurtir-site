@@ -1,15 +1,8 @@
 /* Pode Curtir — loja, confirmação, termos, privacidade e desistência. Carrega depois de podecurtir.css.
-   Mesma identidade: rosa, amarelo e tinta, Public Sans, visor de câmera. Claro e escuro pelo sistema. */
+   Mesma identidade: rosa, amarelo e tinta, Public Sans, visor de câmera. Sempre clara, nas cores da marca, mesmo com o celular no modo escuro (07/11/2026). */
 :root{
   --sobre-rosa:#FFFFFF; --aviso:#FFF6D6; --rosa-claro:#FFE3EB; --ok:#1F7A45; --ok-claro:#E3F3E9;
   --jg-fundo:#12352B; --jg-texto:#F3F5F2; --ze-fundo:#02041A; --ze-texto:#00E5FF;
-}
-@media (prefers-color-scheme:dark){
-  :root{
-    --branco:#15101E; --tinta:#F4F1F8; --lilas:#211A2C; --cinza:#BDB5CC; --linha:rgba(244,241,248,.16);
-    --rosa:#F0386B; --rosa-escuro:#FF8DAD; --rosa-claro:#3A1527; --aviso:#3A3114; --ok:#6FD39A; --ok-claro:#173826;
-    --jg-fundo:#24563F; --ze-fundo:#0B1030; --ze-texto:#5CEFFF;
-  }
 }
 [hidden]{display:none!important}
 .num{font-variant-numeric:tabular-nums}
@@ -31,6 +24,16 @@ button{font:inherit;color:inherit}
 .passos-compra{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;margin:1rem 0 0;padding:0;list-style:none;font-size:.92rem;font-weight:700;counter-reset:pc}
 .passos-compra li{display:flex;align-items:center;gap:.5rem;counter-increment:pc}
 .passos-compra li::before{content:counter(pc);width:1.5rem;height:1.5rem;border-radius:999px;background:var(--rosa);color:var(--sobre-rosa);display:inline-flex;align-items:center;justify-content:center;font-size:.78rem}
+
+/* Escolha do tipo de Negócio (06/11/2026) */
+.tipos{margin-top:1.4rem;display:flex;flex-direction:column;gap:.6rem}
+.tipos-opcoes{display:flex;flex-wrap:wrap;gap:.5rem}
+.sugestao{background:var(--rosa-claro);border-radius:.75rem;padding:.8rem 1rem;display:flex;flex-direction:column;gap:.6rem;max-width:48rem;font-size:.98rem}
+.sugestao p{margin:0;color:var(--tinta)}
+.sugestao .pedir{align-self:flex-start}
+.item.sugerido{box-shadow:inset 0 0 0 2px var(--rosa)}
+.item .marca-sugestao{align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.08em;border-radius:999px;padding:.15rem .55rem;background:var(--rosa);color:var(--sobre-rosa)}
+.proposta.sugerido strong{color:var(--rosa-escuro)}
 
 /* Catálogo e carrinho */
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 22rem;gap:1.75rem;align-items:start;padding-top:1rem;padding-bottom:3rem}
@@ -141,3 +144,22 @@ legend{font-size:1.25rem;font-weight:700;padding:0;margin-bottom:.75rem}
 .sem-js{background:var(--aviso);padding:1rem 0;margin:0}
 
 @media (prefers-reduced-motion:no-preference){.por,.pedir,.ir,.btn-pc{transition:background .15s,color .15s}}
+
+/* Página única (07/11/2026): a loja entra na página inicial; links entre as páginas nos dois sentidos. */
+.visor-titulo h2{margin:0;font-weight:700;font-size:clamp(1.9rem,5vw,3rem);line-height:1.05;letter-spacing:-.03em;max-width:18ch}
+.loja{scroll-margin-top:4.5rem}
+.seguir{padding-top:1.5rem;padding-bottom:2rem;border-top:1px solid var(--linha);margin-top:2rem}
+.seguir h2{font-size:1.05rem;margin:0 0 .6rem}
+.seguir ul{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;list-style:none;margin:0;padding:0}
+.seguir a{font-weight:700}
+.mapa{line-height:1.9}
+/* Página inicial no celular: o carrinho fica na mesma linha da marca; "Ver preços" vai para a barra fixa de baixo. */
+@media (max-width:40rem){.pc-inicio .top .wrap{flex-wrap:nowrap}.pc-inicio .top-nav{display:none}}
+
+/* Faixa da campanha do dia (07/11/2026, podecurtir-comum.js): aparece no topo de todas as páginas da Pode Curtir. */
+.campanha{background:var(--flash);color:var(--tinta)}
+.campanha .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1rem;padding-top:.7rem;padding-bottom:.7rem}
+.campanha p{margin:0;font-weight:700;line-height:1.35;max-width:60rem}
+.campanha a{font-weight:700;color:var(--tinta);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.campanha a:focus-visible{outline:3px solid var(--rosa);outline-offset:3px}
+#linhas .bonus span:first-child,#linhas-2 .bonus span:first-child{font-weight:700;color:var(--rosa)}

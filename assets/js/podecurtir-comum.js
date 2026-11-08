@@ -6,6 +6,93 @@
    ?interno=1 desliga a medição neste navegador; ?interno=0 religa. */
 (function () {
   var C = window.PODECURTIR || {};
+
+  /* Campanhas de 09/11/2026 ao Carnaval de 2027 (plano aprovado pela Jéssica em 07/11/2026; calendário em
+     https://claude.ai/artifact/J4pAsEiGbc83dXgGd4Tx9w). A campanha do dia é escolhida pela data de São Paulo e muda
+     sozinha: faixa no topo de todas as páginas da Pode Curtir e, na página inicial, título, texto e botão principal.
+     Fora das datas (antes de 09/11/2026 e depois de 25/01/2027), a página fica como está no HTML.
+     Os textos não citam número de vagas nem preço que dependa de vaga: continuam verdadeiros mesmo depois das vendas.
+     Prévia: ?campanha=onda1 (ou outro id) mostra uma campanha neste navegador, sem mudar nada para os outros. */
+  var CAMPANHAS = [
+    { id: "onda1", de: "2026-11-09", ate: "2026-11-20",
+      faixa: "Perfil pronto para o Natal: compre o Ajuste de Perfil até 20/11 e fique pronto antes de dezembro.",
+      link: "#t-perfil", linkTexto: "Ver o Ajuste de Perfil",
+      titulo: "Seu perfil pronto para as encomendas e a agenda de dezembro.",
+      texto: "Ajuste de Perfil com preço fechado: bio, destaques e posts fixados em 5 dias úteis depois do briefing. Compre até 20/11 e fique pronto antes do mês mais cheio do ano.",
+      botao: "Ver o Ajuste de Perfil" },
+    { id: "onda2", de: "2026-11-23", ate: "2026-11-30", bonus: true,
+      faixa: "Black Friday sem desconto falso: até 30/11, Perfil Arrumado, Marca Completa ou qualquer Gestão mensal ganham a Proteção das contas (R$ 400).",
+      link: "#t-perfil", linkTexto: "Ver o que ganha o bônus",
+      titulo: "Black Friday sem preço inflado.",
+      texto: "Aqui o preço é o mesmo do ano todo. Até 30/11, quem compra Perfil Arrumado, Marca Completa ou qualquer Gestão mensal ganha a Proteção das contas, feita por Jéssica Gessoli.",
+      botao: "Ver o que ganha o bônus" },
+    { id: "onda3", de: "2026-12-01", ate: "2026-12-23",
+      faixa: "Garanta janeiro: compre agora e mande o briefing em janeiro. O prazo só começa com o briefing completo.",
+      link: "#loja", linkTexto: "Ver preços",
+      titulo: "Dezembro é seu. Janeiro é nosso.",
+      texto: "Compre agora e mande o briefing em janeiro: o prazo de entrega só começa quando o briefing chega completo. Os inícios de janeiro são limitados.",
+      botao: "Garantir janeiro" },
+    { id: "pausa", de: "2026-12-24", ate: "2027-01-03",
+      faixa: "Boas festas! A loja continua aberta e os projetos de janeiro começam em 11/01.",
+      link: "#loja", linkTexto: "Ver preços",
+      titulo: "Comece 2027 com o perfil pronto.",
+      texto: "Compre agora e mande o briefing quando voltar das festas: os projetos de janeiro começam em 11/01.",
+      botao: "Ver preços e comprar" },
+    { id: "onda4", de: "2027-01-04", ate: "2027-01-15", negocio: "salao",
+      faixa: "O Carnaval cai em 09/02: quem posta os pacotes em janeiro enche a agenda. Gestão mensal começando até 15/01.",
+      link: "#t-planos", linkTexto: "Ver a Gestão mensal",
+      titulo: "Carnaval com agenda cheia.",
+      texto: "O Carnaval de 2027 cai em 9 de fevereiro. Com a Gestão mensal começando até 15/01, os posts dos seus pacotes de Carnaval vão ao ar a partir de 20/01.",
+      botao: "Ver a Gestão mensal" },
+    { id: "onda4b", de: "2027-01-16", ate: "2027-01-25", negocio: "salao",
+      faixa: "Ainda dá tempo para o Carnaval: Ajuste de Perfil até 25/01 e o seu perfil fica pronto antes da folia.",
+      link: "#t-perfil", linkTexto: "Ver o Ajuste de Perfil",
+      titulo: "Perfil pronto antes do Carnaval.",
+      texto: "Compre o Ajuste de Perfil até 25/01: bio, destaques e posts fixados prontos em 5 dias úteis depois do briefing, antes do Carnaval de 9 de fevereiro.",
+      botao: "Ver o Ajuste de Perfil" }
+  ];
+  function hojeSP() {
+    try { return new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); }
+    catch (e) { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  }
+  /* Função pura: a campanha de uma data AAAA-MM-DD, ou null. */
+  function campanhaPara(dia) {
+    for (var i = 0; i < CAMPANHAS.length; i++) if (dia >= CAMPANHAS[i].de && dia <= CAMPANHAS[i].ate) return CAMPANHAS[i];
+    return null;
+  }
+  var previa = null;
+  try { previa = new URLSearchParams(location.search).get("campanha"); } catch (e) {}
+  var campanha = (previa && CAMPANHAS.filter(function (c) { return c.id === previa; })[0]) || campanhaPara(hojeSP());
+  window.podecurtirCampanhaPara = campanhaPara;
+  window.podecurtirCampanha = function () { return campanha; };
+
+  function aplicarCampanha() {
+    if (!campanha) return;
+    var inicio = !!document.getElementById("vista-loja");
+    var topo = document.querySelector("header.top");
+    if (topo && !document.querySelector(".campanha")) {
+      var faixa = document.createElement("div");
+      faixa.className = "campanha";
+      faixa.setAttribute("role", "note");
+      /* Endereço da loja tirado de um link que já existe na página (review do PR #117): no site próprio da
+         Pode Curtir a loja fica em "/", e aqui em "/podecurtir". */
+      var lojaLink = document.querySelector('a[href$="#loja"]');
+      var base = lojaLink ? lojaLink.getAttribute("href").split("#")[0] : "/podecurtir";
+      var alvo = (inicio ? "" : base) + (campanha.negocio && !inicio ? "?negocio=" + campanha.negocio : "") + campanha.link;
+      faixa.innerHTML = '<div class="wrap"><p></p><a></a></div>';
+      faixa.querySelector("p").textContent = campanha.faixa;
+      var a = faixa.querySelector("a");
+      a.textContent = campanha.linkTexto; a.href = alvo; a.setAttribute("data-evento", "campanha_" + campanha.id);
+      topo.parentNode.insertBefore(faixa, topo.nextSibling);
+    }
+    if (inicio) {
+      var h1 = document.querySelector(".hero h1"), lede = document.querySelector(".hero .lede"), btn = document.querySelector(".hero .actions .btn.cheio");
+      if (h1) h1.textContent = campanha.titulo;
+      if (lede) lede.textContent = campanha.texto;
+      if (btn) { btn.textContent = campanha.botao; btn.setAttribute("href", campanha.link); btn.setAttribute("data-evento", "campanha_" + campanha.id); }
+    }
+  }
+
   var CHAVE = "podecurtir-consentimento-v1";
 
   function ler(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
@@ -63,8 +150,9 @@
   function carregarMedicao() { carregarPixel(); carregarGA(); }
 
   /* Eventos: nomes da Meta nos padrões dela; no GA4, os equivalentes recomendados ou o próprio nome. */
-  var META_PADRAO = { InitiateCheckout: 1, Lead: 1, Purchase: 1, ViewContent: 1, Contact: 1 };
-  var GA_NOMES = { InitiateCheckout: "begin_checkout", Lead: "generate_lead", Purchase: "purchase", ViewContent: "view_item", Contact: "contact" };
+  var META_PADRAO = { InitiateCheckout: 1, Lead: 1, Purchase: 1, ViewContent: 1, Contact: 1, AddToCart: 1 };
+  var GA_NOMES = { InitiateCheckout: "begin_checkout", Lead: "generate_lead", Purchase: "purchase", ViewContent: "view_item", Contact: "contact",
+    AddToCart: "add_to_cart", EscolheuTipo: "escolheu_tipo" };
   window.podecurtirEvento = function (nome, params) {
     if (pixelAtivo && typeof window.fbq === "function") window.fbq(META_PADRAO[nome] ? "track" : "trackCustom", nome, params || {});
     if (gaAtivo && typeof window.gtag === "function") window.gtag("event", GA_NOMES[nome] || nome, params || {});
@@ -191,8 +279,14 @@
     var tipo = new URLSearchParams(location.search).get("tipo");
     var blocos = document.querySelectorAll("[data-tipo]");
     for (var i = 0; i < blocos.length; i++) blocos[i].hidden = blocos[i].getAttribute("data-tipo") !== (tipo === "proposta" ? "proposta" : "compra");
+    /* Compra (07/11/2026): só conta se a loja marcou a ida ao Asaas nas últimas 48 horas; conta uma vez e apaga. */
+    if (tipo === "proposta") return;
+    var p = null;
+    try { p = JSON.parse(ler("podecurtir-pagamento-v1") || "null"); localStorage.removeItem("podecurtir-pagamento-v1"); } catch (e) {}
+    if (p && typeof p.valor === "number" && p.valor > 0 && Date.now() - p.em < 48 * 3600 * 1000)
+      window.podecurtirEvento("Purchase", { value: p.valor, currency: "BRL" });
   }
 
-  function iniciar() { identificacao(); consentimento(); desistencia(); obrigado(); }
+  function iniciar() { aplicarCampanha(); identificacao(); consentimento(); desistencia(); obrigado(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iniciar); else iniciar();
 })();
