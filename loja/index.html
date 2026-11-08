@@ -3,146 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Loja Pode Curtir | Perfil Pronto e gestão mensal</title>
-<meta name="description" content="Compre online o Perfil Pronto e a gestão mensal das redes da Pode Curtir, com preço, prazo e resumo do contrato antes de pagar. Outros serviços por proposta.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://connect.facebook.net https://www.googletagmanager.com; img-src 'self' https://www.facebook.com https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; style-src 'self'; connect-src 'self' https://jessicagessoli.app.n8n.cloud https://www.facebook.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'">
-<meta name="color-scheme" content="light dark">
-<link rel="canonical" href="https://podecurtir.zethic.net/loja/">
-<meta name="robots" content="index, follow">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Pode Curtir">
-<meta property="og:title" content="Loja Pode Curtir | Perfil Pronto e gestão mensal">
-<meta property="og:description" content="Escolha, pague e mande o briefing. Preço, prazo e resumo do contrato antes de pagar.">
-<meta property="og:url" content="https://podecurtir.zethic.net/loja/">
-<meta property="og:locale" content="pt_BR">
-<meta property="og:image" content="https://podecurtir.zethic.net/assets/img/og-podecurtir.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/assets/img/podecurtir-icone.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/public-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/podecurtir.css">
-<link rel="stylesheet" href="/assets/css/podecurtir-loja.css">
-<script src="/assets/js/podecurtir-config.js" defer></script>
-<script src="/assets/js/podecurtir-comum.js" defer></script>
-<script src="/assets/js/podecurtir-loja.js" defer></script>
+<title>Loja Pode Curtir</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://podecurtir.zethic.net/">
+<!-- 07/11/2026 (aprovado pela Jéssica): a loja passou para a página inicial da Pode Curtir. Este endereço só leva para lá,
+     com o mesmo trecho (#t-perfil, #t-planos...), para os links antigos, a bio e os posts continuarem funcionando. -->
+<meta http-equiv="refresh" content="0; url=https://podecurtir.zethic.net/#loja">
+<script src="/assets/js/podecurtir-redireciona.js"></script>
 </head>
 <body>
-<a class="skip" href="#conteudo">Ir para o conteúdo</a>
-<header class="top">
-  <div class="wrap">
-    <a class="mark" href="/">Pode Curtir</a>
-    <button class="carrinho-btn" id="ir-carrinho" type="button">Carrinho <span class="contador num" id="contador">0</span></button>
-  </div>
-</header>
-
-<main id="conteudo">
-  <noscript><p class="sem-js"><span class="wrap">A loja precisa de JavaScript ligado. Se preferir, peça pelo WhatsApp (19) 98331-0769 ou pelo e-mail podecurtir@zethic.net.</span></p></noscript>
-
-  <div id="vista-loja">
-    <div class="wrap loja-hero">
-      <span class="eyebrow">LOJA · PERFIL E REDES SOCIAIS</span>
-      <div class="visor-titulo"><h1>Escolha, pague e mande o briefing. A gente faz o resto.</h1></div>
-      <p>Os serviços com preço fechado você compra aqui mesmo. O que depende do tamanho do trabalho entra como pedido de proposta, no mesmo pedido.</p>
-      <ol class="passos-compra">
-        <li>Escolha</li>
-        <li>Pague no Pix, no boleto ou no cartão</li>
-        <li>Responda o briefing</li>
-        <li>Aprove e receba</li>
-      </ol>
-    </div>
-
-    <div class="wrap layout">
-      <div>
-        <section class="secao" aria-labelledby="t-perfil">
-          <div class="secao-cab"><h2 id="t-perfil">Perfil Pronto</h2><p>Preço de fundador: 3 vagas por serviço, em troca de depoimento.</p></div>
-          <div class="grade" id="grade-perfil"></div>
-        </section>
-        <section class="secao" aria-labelledby="t-planos">
-          <div class="secao-cab"><h2 id="t-planos">Gestão mensal</h2><p>Mínimo de 3 meses; depois, aviso de 30 dias para sair.</p></div>
-          <div class="grade" id="grade-planos"></div>
-        </section>
-        <section class="secao" aria-labelledby="t-propostas">
-          <div class="secao-cab"><h2 id="t-propostas">Pedir proposta</h2><p>Para trabalhos maiores ou sob medida. Sem pagamento agora; proposta por escrito em até 3 dias úteis.</p></div>
-          <div class="lista-propostas" id="lista-propostas"></div>
-        </section>
-      </div>
-
-      <aside class="carrinho" id="carrinho" aria-labelledby="t-carrinho">
-        <h2 id="t-carrinho">Seu pedido</h2>
-        <ul class="linhas" id="linhas"></ul>
-        <p class="vazio" id="vazio">Nada escolhido ainda.</p>
-        <p class="aviso-carrinho" id="aviso-carrinho" role="status" hidden></p>
-        <div class="totais" id="totais" hidden></div>
-        <button class="ir" id="continuar" type="button" disabled>Continuar</button>
-        <p class="dica">Você vê o resumo do contrato antes de pagar.</p>
-      </aside>
-    </div>
-  </div>
-
-  <div id="vista-checkout" hidden>
-    <div class="wrap checkout">
-      <div>
-        <button class="voltar" id="voltar" type="button">← Voltar à loja</button>
-        <form id="form-checkout" novalidate>
-          <fieldset>
-            <legend>1. Seus dados</legend>
-            <div class="dois">
-              <label class="campo" for="nome">Nome completo<input id="nome" name="nome" autocomplete="name" required></label>
-              <label class="campo" for="email">E-mail<input id="email" name="email" type="email" autocomplete="email" required></label>
-              <label class="campo" for="whats">WhatsApp, com DDD<input id="whats" name="whats" inputmode="tel" autocomplete="tel" required></label>
-            </div>
-          </fieldset>
-          <fieldset id="plus-campo" hidden>
-            <legend>Quer um plus no seu pedido?</legend>
-            <p class="dica">Marque o que quiser somar. Cada plus tem escopo e preço fechados e entra no mesmo pedido.</p>
-            <div class="plus-lista" id="plus-lista"></div>
-          </fieldset>
-          <fieldset>
-            <legend>2. Resumo do contrato</legend>
-            <div class="resumo" id="resumo"></div>
-            <label class="marcar" for="aceite"><input type="checkbox" id="aceite" required><span>Li o resumo do contrato e os <a href="/termos/">termos e condições</a> e aceito.</span></label>
-            <label class="marcar" for="fundador" id="fundador-campo"><input type="checkbox" id="fundador"><span>Aceito o preço de fundador: dou um depoimento com as minhas palavras e autorizo que o trabalho seja mostrado como exemplo.</span></label>
-            <label class="marcar" for="avisos"><input type="checkbox" id="avisos"><span>Pode me avisar sobre este pedido por e-mail e WhatsApp até o pagamento ser concluído. Opcional; são no máximo 3 avisos, e é só responder PARAR para não receber mais.</span></label>
-            <label class="marcar" for="novidades"><input type="checkbox" id="novidades"><span>Quero receber novidades da Pode Curtir por e-mail. Opcional; não muda o pedido.</span></label>
-          </fieldset>
-          <fieldset id="forma-campo" hidden>
-            <legend>3. Como você quer pagar</legend>
-            <label class="marcar" for="forma-pix"><input type="radio" id="forma-pix" name="forma" value="pix"><span>Pix ou boleto, à vista</span></label>
-            <label class="marcar" for="forma-cartao"><input type="radio" id="forma-cartao" name="forma" value="cartao"><span id="forma-cartao-txt">Cartão de crédito, sem juros</span></label>
-          </fieldset>
-          <p class="dica">O pagamento é feito na página segura do Asaas, por Pix, boleto ou cartão. Os dados do cartão não passam por este site.</p>
-          <p class="erro" id="erro" role="alert" hidden></p>
-          <button class="ir" id="pagar" type="submit">Continuar</button>
-        </form>
-
-        <div class="resultado" id="resultado" aria-live="polite" hidden>
-          <h2 id="resultado-titulo">Envie o seu pedido</h2>
-          <p id="resultado-instrucao">Envie a mensagem abaixo pelo WhatsApp ou por e-mail. Se algum item ainda estiver com o pagamento em configuração, a gente responde com o link de pagamento.</p>
-          <ul id="resultado-links" hidden></ul>
-          <label class="campo" for="resultado-texto">Mensagem do pedido<textarea id="resultado-texto" readonly></textarea></label>
-          <div class="acoes">
-            <button class="btn-linha" type="button" data-copiar="resultado-texto">Copiar mensagem</button>
-            <a class="btn-pc" id="resultado-whats" href="https://wa.me/5519983310769" rel="noopener">Enviar pelo WhatsApp</a>
-          </div>
-          <p>E-mail: <span class="selecionavel">podecurtir@zethic.net</span> · WhatsApp: <span class="selecionavel">(19) 98331-0769</span></p>
-        </div>
-      </div>
-
-      <aside class="carrinho" aria-labelledby="t-carrinho-2">
-        <h2 id="t-carrinho-2">Seu pedido</h2>
-        <ul class="linhas" id="linhas-2"></ul>
-        <div class="totais" id="totais-2"></div>
-      </aside>
-    </div>
-  </div>
-  <a id="link-obrigado" href="/loja/obrigado/" hidden>Confirmação do pedido</a>
-</main>
-
-<footer class="ident">
-  <div class="wrap">
-    <p><strong>Pode Curtir</strong> · R. Teófilo Braga, 489, Sala 05, Jardim Nossa Sra. Auxiliadora, Campinas/SP, CEP 13075-390 · <a href="mailto:podecurtir@zethic.net">podecurtir@zethic.net</a> · WhatsApp (19) 98331-0769</p>
-    <p data-cnpj hidden>CNPJ <span></span></p>
-    <p>Respondemos por e-mail em até 5 dias. <a href="/termos/">Termos e condições</a> · <a href="/privacidade/" data-link-privacidade>Privacidade e cookies</a> · <a href="/desistencia/">Desistir de uma compra</a> <button class="linkbtn" type="button" data-preferencias-cookies hidden>Preferências de cookies</button></p>
-  </div>
-</footer>
+<p>A loja da Pode Curtir agora fica na página inicial. <a href="/#loja">Ir para a loja</a></p>
 </body>
 </html>

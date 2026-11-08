@@ -1,4 +1,4 @@
-/* Pode Curtir — loja com carrinho (/podecurtir/loja). Valores de 03/11/2026, aprovados pela Jéssica.
+/* Pode Curtir — loja com carrinho (na página inicial /podecurtir desde 07/11/2026; /podecurtir/loja leva para lá). Valores de 03/11/2026, aprovados pela Jéssica.
    Decisões de 04/11/2026: no site o pagamento é integral (entrada e saldo só na venda presencial); o parcelamento
    fica só no cartão, com um link para Pix ou boleto à vista e outro para cartão; a Gestão Completa é vendida aqui,
    com assinatura. O WhatsApp fica para orçamento.
@@ -8,7 +8,15 @@
    (R$ 3.000, preço de fundador, até 3x no cartão). Os feitos em parceria aparecem em linha separada, com o nome de
    quem faz; o contato continua sendo a Pode Curtir. Trabalhos maiores seguem como pedido de proposta.
    Pagamento pelo link do Asaas de cada item (ASAAS_LINKS em podecurtir-config.js). Com vários itens pagos,
-   usa o CHECKOUT_ENDPOINT (n8n) se estiver preenchido; senão, mostra o link de cada item. */
+   usa o CHECKOUT_ENDPOINT (n8n) se estiver preenchido; senão, mostra o link de cada item.
+   Decisões de 06/11/2026 (protótipo aprovado pela Jéssica): escolha do tipo de Negócio no topo (doceria, salão,
+   consultório ou outro), com sugestão de por onde começar; seção "Proteção e recuperação de conta" (07/11: sem a palavra segurança na Pode Curtir, regra de 28/10) com a Proteção das contas e a
+   Recuperação de conta (R$ 400 cada, Jéssica Gessoli, em parceria), que podem ser compradas sozinhas ("avulso");
+   o preço depois das vagas de fundador aparece em cada item.
+   Decisão de 08/11/2026 (Jéssica: "Vamos subir todos no site", com benchmark de mercado e de lucro): seção
+   "Para especialistas, produtoras e empresas" (secao: "esp"), com Diagnóstico, Presença em vídeo, Acabamento de vídeo
+   e 4 planos mensais; Blog que publica sozinho (com a Zethic) e Licença do método entram como pedido de proposta,
+   com o valor de referência na descrição. A Gestão de marca de especialista tem 1 vaga de fundador. */
 (function () {
   var C = window.PODECURTIR || {};
   var LINKS = C.ASAAS_LINKS || {};
@@ -20,36 +28,96 @@
     { id: "ajuste", nome: "Ajuste de Perfil", preco: PRECO_AJUSTE, prazo: "5 dias úteis", fundador: PRECO_AJUSTE === 500,
       desc: "Bio, nome, foto, link e botão de WhatsApp, destaques com capa, 3 posts fixados e checagem básica de segurança da conta." },
     { id: "arrumado", nome: "Perfil Arrumado", preco: 2000, parcelas: 3, em: "no", prazo: "15 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 3.200.",
       desc: "Tudo do Ajuste de Perfil, mais análise de quem você segue, curadoria da grade, revisão das legendas e dos acessos e plano de 30 dias." },
     { id: "marca", nome: "Marca Completa", preco: 7500, parcelas: 6, em: "na", prazo: "30 dias úteis", fundador: true,
-      desc: "Tudo do Perfil Arrumado, mais paleta, tipografia, símbolo e assinatura, modelos de capa, post e story e manual curto de uso." }
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 12.000.",
+      desc: "Tudo do Perfil Arrumado, mais paleta, tipografia, símbolo e assinatura, modelos de capa, post e story e manual curto de uso." },
+    { id: "diag_esp", secao: "esp", nome: "Diagnóstico de marca de especialista", preco: 1500, prazo: "10 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.400. Se você contratar a Gestão de marca de especialista em até 30 dias, o valor vira crédito na 1ª mensalidade.",
+      desc: "Leitura dos seus canais, do que você já publica e de quem já trabalha com você (produtora, mentora, editor), posicionamento em uma frase e plano de 30 dias." },
+    { id: "video_presenca", secao: "esp", nome: "Presença em vídeo · treino individual", preco: 1500, prazo: "2 encontros em até 15 dias", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.400.",
+      desc: "2 encontros de 2 horas, online ou em Campinas/SP: roteiro falado, teleprompter, postura, voz e ritmo, com gravação de teste e devolutiva por escrito. Para render mais em cada gravação." },
+    { id: "acabamento", secao: "esp", nome: "Acabamento de vídeo · 4 vídeos", preco: 600, prazo: "5 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 960 (R$ 240 por vídeo).",
+      desc: "Para quem já tem o vídeo editado: capa, gancho nos 3 primeiros segundos e legendas para cada rede. R$ 150 por vídeo." }
   ];
   var PLANOS = [
-    { id: "essencial", nome: "Gestão Essencial", mensal: 1500, desc: "1 rede, 12 posts por mês e relatório mensal." },
-    { id: "padrao", nome: "Gestão Padrão", mensal: 2800, desc: "2 redes, 16 posts e 4 Reels por mês, com relatório." },
-    { id: "completa", nome: "Gestão Completa", mensal: 4500, desc: "3 redes, 20 posts e 8 Reels por mês." }
+    { id: "essencial", nome: "Gestão Essencial", mensal: 1500, depois: "Preço de fundador. A partir do 4º cliente, R$ 2.400 por mês.", desc: "1 rede, 12 posts por mês e relatório mensal." },
+    { id: "padrao", nome: "Gestão Padrão", mensal: 2800, depois: "Preço de fundador. A partir do 4º cliente, R$ 4.480 por mês.", desc: "2 redes, 16 posts e 4 Reels por mês, com relatório." },
+    { id: "completa", nome: "Gestão Completa", mensal: 4500, depois: "Preço de fundador. A partir do 4º cliente, R$ 7.200 por mês.", desc: "3 redes, 20 posts e 8 Reels por mês." },
+    { id: "esp_marca", secao: "esp", nome: "Gestão de marca de especialista", mensal: 7650, depois: "Preço de fundador para 1 cliente. Depois, R$ 12.240 por mês.",
+      desc: "A sua marca de ponta a ponta: estratégia, roteiros, coordenação da produtora e da mentora que você já tem, acabamento, publicação, newsletter e relatório. Você grava, confere os fatos e aprova." },
+    { id: "esp_produtora", secao: "esp", nome: "Coordenação da sua produtora", mensal: 3150, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 5.040 por mês.",
+      desc: "Para quem já tem produtora ou editor e não quer coordenar: padrão de edição, calendário de gravação, prazos, revisões e aceite das entregas. Até 21 horas por mês." },
+    { id: "esp_news", secao: "esp", nome: "Newsletter pronta · 2 edições por mês", mensal: 1200, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 1.920 por mês.",
+      desc: "Pauta, texto com fontes, capa e texto pronto para publicar no LinkedIn. Com blog no site, a edição também entra lá." },
+    { id: "esp_portavozes", secao: "esp", nome: "Programa de porta-vozes · 2 porta-vozes", mensal: 5800, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 9.200 por mês.",
+      desc: "Para empresas: posts e roteiros de vídeo para 2 líderes, com calendário e aprovação numa rotina só. Mais porta-vozes por proposta: 10% de desconto a partir do 3º e 15% a partir do 5º." }
   ];
+  /* Planos de Gestão que entram na campanha de Black Friday (a Proteção das contas de bônus vale só para eles). */
+  var GESTAO = ["essencial", "padrao", "completa"];
   var PROPOSTAS = [
-    { id: "gravacao", marca: "pc", nome: "Gravação de foto e vídeo", plus: "plus_gravacao", desc: "Diária, evento ou sessão maior. O deslocamento entra na proposta." },
+    { id: "gravacao", marca: "pc", nome: "Sessão de fotos, ensaio e gravação de vídeo", plus: "plus_gravacao", desc: "Produto, ambiente ou retrato profissional; diária, evento ou sessão maior. O deslocamento entra na proposta." },
     { id: "livro", marca: "pc", nome: "Livro pronto", plus: "plus_livro", desc: "Revisão, capa, diagramação, publicação e divulgação." },
-    { id: "protecao", marca: "jg", nome: "Proteção completa das contas", plus: "plus_protecao", desc: "Feita por Jéssica Gessoli, em parceria. Sem senha." },
+    { id: "produto_digital", marca: "pc", nome: "Produto digital e curso online", desc: "Roteiro, gravação e edição das aulas, capa e materiais do curso ou do produto. A plataforma (Hotmart ou outra) e as vendas ficam no nome do autor." },
+    { id: "protecao", marca: "jg", nome: "Proteção das contas da equipe inteira", plus: "plus_protecao", desc: "Mais de 3 contas ou a equipe toda. Feita por Jéssica Gessoli, em parceria. Sem senha." },
     { id: "mentoria", marca: "jg", nome: "Mentoria e consultoria em IA", plus: "plus_mentoria", desc: "Você aprende a fazer com IA, no seu projeto. Com Jéssica Gessoli." },
-    { id: "tech", marca: "ze", nome: "Site, app, automação e bot de WhatsApp", plus: "plus_site", desc: "Feitos pela Zethic, em parceria. Atendimento e dados das redes num lugar só." }
+    { id: "tech", marca: "ze", nome: "Site, app, automação e bot de WhatsApp", plus: "plus_site", desc: "Feitos pela Zethic, em parceria. Atendimento e dados das redes num lugar só." },
+    { id: "blog", marca: "ze", nome: "Blog que publica sozinho", desc: "Feito pela Zethic, em parceria: área de blog no site do seu Negócio, com textos programados que entram no ar sozinhos na data. Implantação a partir de R$ 1.500 (preço de fundador); a proposta confirma se o seu site é compatível." },
+    { id: "licenca", marca: "pc", nome: "Licença do método de produção", desc: "Para produtoras e agências: o fluxo de produção da Pode Curtir, com treino de 8 horas da equipe, modelos e listas de conferência. A partir de R$ 2.400 por ano (preço de fundador); renovação anual de R$ 1.200." }
   ];
-  /* Plus do fechamento do pedido: escopo fechado e preço próprio. Só entram com um serviço pago no pedido. */
+  /* Plus do fechamento do pedido: escopo fechado e preço próprio. Só entram com um serviço pago no pedido,
+     menos os marcados "avulso", que também se compram sozinhos: proteção e recuperação de conta (06/11/2026, seção "contas")
+     e, desde 07/11/2026, capa e diagramação do e-book e mentoria em IA de 1 hora (seção "conteudo"). */
   var PLUS = [
     { id: "plus_gravacao", marca: "pc", nome: "Sessão de fotos de 1 hora", preco: 500, prazo: "Edição pronta em até 14 dias depois da sessão",
       desc: "10 fotos editadas, em Campinas/SP. Fora de Campinas, o deslocamento é combinado antes e cobrado à parte." },
-    { id: "plus_livro", marca: "pc", nome: "Capa e diagramação do e-book", preco: 1500, prazo: "Prazo combinado por escrito depois do briefing",
+    { id: "plus_livro", marca: "pc", nome: "Capa e diagramação do e-book", preco: 1500, avulso: true, secao: "conteudo", prazo: "Prazo combinado por escrito depois do briefing",
       desc: "Com o texto pronto, até 100 páginas: capa simples e diagramação do e-book. ISBN, ficha catalográfica e gráfica ficam com o autor." },
-    { id: "plus_protecao", marca: "jg", nome: "Proteção das contas", preco: 400, prazo: "Data combinada depois do pagamento",
-      desc: "1 hora a distância, até 3 contas do Negócio: verificação em duas etapas, e-mail e telefone de recuperação, revisão de acessos e acesso de parceiro, sem senha. Recuperar conta invadida fica fora e é cobrado por hora." },
-    { id: "plus_mentoria", marca: "jg", nome: "Mentoria em IA · 1 hora", preco: 400, prazo: "Data combinada depois do pagamento",
+    { id: "plus_protecao", marca: "jg", nome: "Proteção das contas", preco: 400, avulso: true, secao: "contas", prazo: "Data combinada depois do pagamento",
+      desc: "1 hora a distância, até 3 contas do Negócio: verificação em duas etapas, e-mail e telefone de recuperação, revisão de acessos e acesso de parceiro, sem senha. Conta já invadida ou bloqueada: Recuperação de conta." },
+    { id: "plus_recuperacao", marca: "jg", nome: "Recuperação de conta", preco: 400, avulso: true, secao: "contas", prazo: "Data combinada depois do pagamento",
+      desc: "1 hora a distância, para conta invadida ou bloqueada, pelos canais oficiais da plataforma. A decisão de devolver a conta é da plataforma; por isso, não há garantia de recuperação." },
+    { id: "plus_mentoria", marca: "jg", nome: "Mentoria em IA · 1 hora", preco: 400, avulso: true, secao: "conteudo", prazo: "Data combinada depois do pagamento",
       desc: "Por videochamada, nas ferramentas de IA que você já tem. Você aprende fazendo, no seu projeto." },
     { id: "plus_site", marca: "ze", nome: "Site Essencial", preco: 3000, parcelas: 3, em: "no", fundador: true, prazo: "Prazo combinado por escrito depois do briefing",
       desc: "Site de uma página com apresentação e serviços, botão de WhatsApp, formulário, mapa e cadastro no Google. Domínio e hospedagem ficam no nome do seu Negócio, à parte. Preço de fundador para os 3 primeiros clientes." }
   ];
   function plusDe(id) { return PLUS.filter(function (p) { return p.id === id; })[0]; }
+  /* Tipo de Negócio (06/11/2026): sugestão de por onde começar, a partir das personas de clientes (hipótese até as entrevistas). */
+  var TIPOS = [
+    { id: "doceria", nome: "Doceria ou confeitaria", proj: ["ajuste"], plano: null, plus: ["plus_gravacao"], prop: [],
+      txt: "Comece pelo <strong>Ajuste de Perfil</strong>: bio que diz o que você vende, cardápio nos destaques e botão de WhatsApp para encomendar. Se as fotos do celular não mostram o capricho dos doces, some a <strong>sessão de fotos de 1 hora</strong> no fechamento do pedido." },
+    { id: "salao", nome: "Salão ou estúdio de beleza", proj: [], plano: "padrao", plus: [], prop: [], alt: ["arrumado"],
+      txt: "A <strong>Gestão Padrão</strong> tem 4 Reels por mês para mostrar o seu trabalho sem você parar de atender. Prefere sem mensalidade? O <strong>Perfil Arrumado</strong> é um projeto com começo, meio e fim." },
+    { id: "consultorio", nome: "Consultório de saúde", proj: ["arrumado"], plano: null, plus: [], prop: ["gravacao"],
+      txt: "O <strong>Perfil Arrumado</strong> organiza o seu perfil com discrição, e o <strong>ensaio de fotos</strong> sai por proposta. Antes do primeiro post, você confirma a regra de publicidade do seu conselho profissional. Nada de foto, relato ou dado de paciente." },
+    { id: "especialista", nome: "Especialista, consultor ou palestrante", proj: ["diag_esp"], plano: null, plus: [], prop: [],
+      txt: "Comece pelo <strong>Diagnóstico de marca de especialista</strong>: o que você já tem, quem já trabalha com você e o plano de 30 dias. Se você já paga produtora e mentora e não quer mais coordenar todo mundo, a <strong>Gestão de marca de especialista</strong> cuida de tudo." },
+    { id: "outro", nome: "Outro Negócio", proj: [], plano: null, plus: [], prop: [],
+      txt: "Veja os três níveis do Perfil Pronto logo abaixo. Se o seu caso for diferente, peça proposta, sem compromisso." }
+  ];
+  var tipo = null;
+  function tipoAtual() { return TIPOS.filter(function (t) { return t.id === tipo; })[0] || null; }
+  function sugerido(tipoItem, id) {
+    var t = tipoAtual(); if (!t) return false;
+    if (tipoItem === "plano") return t.plano === id;
+    if (tipoItem === "proj") return tem(t.proj, id) || tem(t.alt || [], id);
+    return tem(t[tipoItem] || [], id);
+  }
+  function tipos() {
+    $("tipos-opcoes").innerHTML = TIPOS.map(function (t) {
+      return '<button class="pedir" type="button" data-tipo="' + t.id + '" aria-pressed="' + (tipo === t.id) + '">' + t.nome + "</button>";
+    }).join("");
+    var t = tipoAtual();
+    $("sugestao").hidden = !t;
+    if (t) {
+      var algo = t.proj.length || t.plano || t.plus.length || t.prop.length;
+      $("sugestao").innerHTML = "<p>" + t.txt + "</p>" + (algo ? '<button class="pedir" type="button" id="usar-sugestao">Pôr a sugestão no pedido</button>' : "");
+    }
+  }
   var MARCA = { pc: "PODE CURTIR", jg: "JÉSSICA GESSOLI", ze: "ZETHIC" };
   var MARCA_NOME = { pc: "Pode Curtir", jg: "Jéssica Gessoli", ze: "Zethic" };
   var COM = { jg: "com Jéssica Gessoli", ze: "com a Zethic" };
@@ -64,6 +132,13 @@
     }
   } catch (e) {}
   function salvar() { try { sessionStorage.setItem(CHAVE, JSON.stringify(cart)); } catch (e) {} }
+  /* Medição (07/11/2026, benchmark de publicidade aprovado pela Jéssica): tipo de Negócio escolhido, item posto no
+     pedido e, ao seguir para o Asaas, o valor guardado para a página de confirmação registrar a compra (Purchase). */
+  function medir(nome, params) { if (window.podecurtirEvento) window.podecurtirEvento(nome, params); }
+  var PAGAMENTO = "podecurtir-pagamento-v1";
+  function marcarPagamento(valor) {
+    try { localStorage.setItem(PAGAMENTO, JSON.stringify({ valor: valor, em: Date.now() })); } catch (e) {}
+  }
   var aviso = "";
   var resumoAceito = null;
 
@@ -85,23 +160,39 @@
   }
 
   function catalogo() {
-    $("grade-perfil").innerHTML = PROJ.map(function (p) {
-      var on = tem(cart.proj, p.id);
-      return '<article class="item"><h3>' + p.nome + '</h3><p class="preco num">' + brl(p.preco) + "</p><p>" + p.desc + "</p>" +
-        (p.id === "ajuste" ? '<p class="vagas">' + textoVagas() + "</p>" : "") +
+    var marcaSug = '<span class="marca-sugestao">PARA O SEU NEGÓCIO</span>';
+    function cardProj(p) {
+      var on = tem(cart.proj, p.id), sug = sugerido("proj", p.id);
+      return '<article class="item' + (sug ? " sugerido" : "") + '">' + (sug ? marcaSug : "") + "<h3>" + p.nome + '</h3><p class="preco num">' + brl(p.preco) + "</p><p>" + p.desc + "</p>" +
+        (p.id === "ajuste" ? '<p class="vagas">' + textoVagas() + "</p>" : (p.depois ? '<p class="vagas">' + p.depois + "</p>" : "")) +
         '<dl class="meta"><div><dt>Prazo</dt><dd>' + p.prazo + ', a partir do briefing completo</dd></div><div><dt>Pagamento</dt><dd>Integral: ' + formas(p) + "</dd></div></dl>" +
         '<button class="por" type="button" data-proj="' + p.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr no pedido") + "</button></article>";
-    }).join("");
-    $("grade-planos").innerHTML = PLANOS.map(function (p) {
-      var on = cart.plano === p.id;
-      return '<article class="item"><h3>' + p.nome + '</h3><p class="preco num">' + brl(p.mensal) + ' <small>por mês</small></p><p>' + p.desc + "</p>" +
+    }
+    function cardPlano(p) {
+      var on = cart.plano === p.id, sug = sugerido("plano", p.id);
+      return '<article class="item' + (sug ? " sugerido" : "") + '">' + (sug ? marcaSug : "") + "<h3>" + p.nome + '</h3><p class="preco num">' + brl(p.mensal) + ' <small>por mês</small></p><p>' + p.desc + "</p>" +
+        (p.depois ? '<p class="vagas">' + p.depois + "</p>" : "") +
         '<dl class="meta"><div><dt>Mínimo</dt><dd>3 meses = ' + brl(p.mensal * 3) + '</dd></div><div><dt>Pagamento</dt><dd>1ª mensalidade hoje; depois, todo mês</dd></div></dl>' +
         '<button class="por" type="button" data-plano="' + p.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr no pedido") + "</button></article>";
-    }).join("");
+    }
+    function daSecao(lista, secao) { return lista.filter(function (p) { return (p.secao || "") === secao; }); }
+    $("grade-perfil").innerHTML = daSecao(PROJ, "").map(cardProj).join("");
+    function avulsos(secao) {
+      return PLUS.filter(function (p) { return p.avulso && p.secao === secao; }).map(function (p) {
+        var on = tem(cart.plus, p.id);
+        return '<article class="item"><h3>' + (secao === "conteudo" && p.marca !== "pc" ? '<span class="selo ' + p.marca + '">' + MARCA[p.marca] + "</span>" : "") + p.nome + '</h3><p class="preco num">' + brl(p.preco) + "</p><p>" + p.desc + "</p>" +
+          '<dl class="meta"><div><dt>Quando</dt><dd>' + p.prazo + '</dd></div><div><dt>Pagamento</dt><dd>Integral: ' + formas(p) + "</dd></div></dl>" +
+          '<button class="por" type="button" data-plus="' + p.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr no pedido") + "</button></article>";
+      }).join("");
+    }
+    $("grade-contas").innerHTML = avulsos("contas");
+    $("grade-conteudo").innerHTML = avulsos("conteudo");
+    $("grade-planos").innerHTML = daSecao(PLANOS, "").map(cardPlano).join("");
+    $("grade-esp").innerHTML = daSecao(PROJ, "esp").map(cardProj).join("") + daSecao(PLANOS, "esp").map(cardPlano).join("");
     $("lista-propostas").innerHTML = PROPOSTAS.map(function (a) {
       var on = tem(cart.prop, a.id);
       var x = a.plus ? plusDe(a.plus) : null;
-      return '<div class="proposta"><div><span class="selo ' + a.marca + '">' + MARCA[a.marca] + "</span><strong>" + a.nome + "</strong><p>" + a.desc + "</p>" +
+      return '<div class="proposta' + (sugerido("prop", a.id) ? " sugerido" : "") + '"><div><span class="selo ' + a.marca + '">' + MARCA[a.marca] + "</span><strong>" + a.nome + "</strong><p>" + a.desc + "</p>" +
         (x ? '<p class="plus-dica">Ou como plus, no fechamento de um pedido: ' + x.nome + " por " + brl(x.preco) + ".</p>" : "") + "</div>" +
         '<button class="pedir" type="button" data-prop="' + a.id + '" aria-pressed="' + on + '">' + (on ? "Pedido · tirar" : "Pedir proposta") + "</button></div>";
     }).join("");
@@ -113,8 +204,10 @@
        No Ajuste de Perfil, só a R$ 500; a R$ 750 ou R$ 1.200 não se pede depoimento nem autorização. */
     PROJ.forEach(function (p) { if (tem(cart.proj, p.id)) { hoje += p.preco; pagos.push({ id: p.id, nome: p.nome, valor: p.preco, parcelas: p.parcelas || 0, em: p.em || "" }); if (p.fundador) fundador = true; } });
     PLANOS.forEach(function (p) { if (cart.plano === p.id) { plano = p; hoje += p.mensal; pagos.push({ id: p.id, nome: p.nome, valor: p.mensal }); fundador = true; } });
-    /* Plus só com um serviço pago no pedido. */
-    var plus = pagos.length ? PLUS.filter(function (p) { return tem(cart.plus, p.id); }) : [];
+    /* Plus só com um serviço pago no pedido; os "avulso" (contas, e-book e mentoria em IA) também sozinhos. */
+    var principal = pagos.length > 0;
+    /* Com o bônus da Black Friday, a Proteção das contas sai da cobrança (review do PR #117). */
+    var plus = PLUS.filter(function (p) { return tem(cart.plus, p.id) && (principal || p.avulso) && !(p.id === "plus_protecao" && bonusValido()); });
     plus.forEach(function (p) {
       hoje += p.preco;
       pagos.push({ id: p.id, nome: p.nome, valor: p.preco, parcelas: p.parcelas || 0, em: p.em || "", marca: p.marca });
@@ -125,6 +218,12 @@
   }
   function temPrincipal() { return cart.proj.length > 0 || !!cart.plano; }
 
+  /* Campanha de Black Friday (23 a 30/11/2026, em podecurtir-comum.js): Perfil Arrumado, Marca Completa ou qualquer
+     Gestão mensal no pedido ganham a Proteção das contas. Aparece no pedido e na mensagem, para o bônus ser cumprido. */
+  function bonusValido() {
+    var c = window.podecurtirCampanha && window.podecurtirCampanha();
+    return !!(c && c.bonus && (tem(cart.proj, "arrumado") || tem(cart.proj, "marca") || tem(GESTAO, cart.plano)));
+  }
   function linhas(comTirar) {
     var out = [];
     PROJ.forEach(function (p) {
@@ -137,9 +236,9 @@
       out.push("<li><span>" + p.nome + '</span><span class="num">' + brl(p.mensal) + "</span><small>1ª mensalidade · mínimo de 3 meses = " + brl(p.mensal * 3) + "</small>" +
         (comTirar ? '<button class="tirar" type="button" data-plano="' + p.id + '">Tirar</button>' : "") + "</li>");
     });
-    if (temPrincipal()) PLUS.forEach(function (p) {
-      if (!tem(cart.plus, p.id)) return;
-      out.push('<li><span><span class="selo ' + p.marca + '">' + MARCA[p.marca] + "</span>" + p.nome + '</span><span class="num">' + brl(p.preco) + "</span><small>Plus · pagamento integral · " + formas(p) + "</small>" +
+    PLUS.forEach(function (p) {
+      if (!tem(cart.plus, p.id) || !(temPrincipal() || p.avulso) || (p.id === "plus_protecao" && bonusValido())) return;
+      out.push('<li><span><span class="selo ' + p.marca + '">' + MARCA[p.marca] + "</span>" + p.nome + '</span><span class="num">' + brl(p.preco) + "</span><small>" + (p.avulso && !temPrincipal() ? (p.secao === "contas" ? "Proteção e recuperação de conta" : "Livro e IA") : "Plus") + " · pagamento integral · " + formas(p) + "</small>" +
         (comTirar ? '<button class="tirar" type="button" data-plus="' + p.id + '">Tirar</button>' : "") + "</li>");
     });
     PROPOSTAS.forEach(function (a) {
@@ -147,6 +246,7 @@
       out.push('<li><span><span class="selo ' + a.marca + '">' + MARCA[a.marca] + "</span>" + a.nome + "</span><span>proposta</span><small>Sem valor agora</small>" +
         (comTirar ? '<button class="tirar" type="button" data-prop="' + a.id + '">Tirar</button>' : "") + "</li>");
     });
+    if (bonusValido()) out.push('<li class="bonus"><span>Bônus Black Friday: Proteção das contas</span><span class="num">' + brl(0) + "</span><small>Incluída até 30/11 · feita por Jéssica Gessoli · data combinada depois do pagamento</small></li>");
     return out.join("");
   }
 
@@ -170,12 +270,32 @@
     $("aviso-carrinho").hidden = !aviso; $("aviso-carrinho").textContent = aviso;
   }
 
-  function tudo() { catalogo(); carrinho(); salvar(); }
+  function tudo() { tipos(); catalogo(); carrinho(); salvar(); }
+
+  document.addEventListener("click", function (e) {
+    if ($("vista-loja").hidden || !e.target.closest) return;
+    var tb = e.target.closest("[data-tipo]");
+    if (tb) {
+      tipo = tipo === tb.dataset.tipo ? null : tb.dataset.tipo;
+      if (tipo) medir("EscolheuTipo", { tipo: tipo });
+      tudo(); return;
+    }
+    if (e.target.closest("#usar-sugestao")) {
+      var t = tipoAtual();
+      cart = { proj: t.proj.slice(), plano: t.plano, prop: t.prop.slice(), plus: t.plus.slice() };
+      aviso = "Sugestão para " + t.nome.toLowerCase() + " no pedido. Você pode trocar à vontade.";
+      medir("AddToCart", { content_name: "sugestao_" + t.id });
+      tudo();
+    }
+  });
 
   document.addEventListener("click", function (e) {
     var b = e.target.closest && e.target.closest("[data-proj],[data-plano],[data-prop],button[data-plus]");
     if (!b || $("vista-loja").hidden) return;
     aviso = "";
+    var item = b.dataset.plus || b.dataset.proj || b.dataset.plano || b.dataset.prop;
+    var lista = b.dataset.plus ? cart.plus : b.dataset.proj ? cart.proj : b.dataset.prop ? cart.prop : null;
+    if (lista ? !tem(lista, item) : cart.plano !== item) medir("AddToCart", { content_name: item });
     if (b.dataset.plus) alterna(cart.plus, b.dataset.plus);
     if (b.dataset.proj) alterna(cart.proj, b.dataset.proj);
     if (b.dataset.plano) {
@@ -268,25 +388,43 @@
     var id = e.target && e.target.dataset && e.target.dataset.plus;
     if (!id) return;
     var i = cart.plus.indexOf(id);
-    if (e.target.checked && i < 0) cart.plus.push(id);
+    if (e.target.checked && i < 0) { cart.plus.push(id); medir("AddToCart", { content_name: id }); }
     if (!e.target.checked && i >= 0) cart.plus.splice(i, 1);
     salvar();
+    catalogo();
     carrinho();
     montarCheckout();
     var alvo = $(id); if (alvo) alvo.focus();
   });
   $("voltar").addEventListener("click", function () { mostrar("loja"); });
 
+  /* Página única (07/11/2026, review do PR #106): no fechamento, um link para um trecho da página (#loja, #como,
+     #duvidas, no cabeçalho ou no rodapé) volta à loja antes de rolar, porque esses trechos ficam dentro da vista da loja. */
+  function irPara(hash) {
+    var alvo = hash && hash.length > 1 ? document.getElementById(hash.slice(1)) : null;
+    if (!alvo || !$("vista-loja").contains(alvo) || !$("vista-loja").hidden) return false;
+    mostrar("loja");
+    alvo.scrollIntoView();
+    return true;
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("a[href*='#']") : null;
+    if (!a || a.origin !== location.origin || a.pathname !== location.pathname) return;
+    if (irPara(a.hash)) { e.preventDefault(); if (location.hash !== a.hash) history.pushState(null, "", a.hash); }
+  });
+  window.addEventListener("hashchange", function () { irPara(location.hash); });
+
   function mensagem(t, d) {
     var l = ["Olá! Quero contratar pela loja da Pode Curtir:"];
     t.pagos.forEach(function (p) {
-      l.push("- " + (p.marca ? "Plus: " : "") + p.nome + (p.marca && p.marca !== "pc" ? ", " + COM[p.marca] : "") +
+      l.push("- " + (p.marca ? (temPrincipal() ? "Plus: " : "Proteção e recuperação de conta: ") : "") + p.nome + (p.marca && p.marca !== "pc" ? ", " + COM[p.marca] : "") +
         " (" + brl(p.valor) + " hoje" + (p.parcelas ? ", " + comoPaga(p) : "") + ")");
     });
     PROPOSTAS.forEach(function (a) { if (tem(cart.prop, a.id)) l.push("- Proposta: " + a.nome + " (" + MARCA_NOME[a.marca] + ")"); });
     l.push("Nome: " + d.nome, "E-mail: " + d.email, "WhatsApp: " + d.whats);
     l.push("Li e aceito o resumo do contrato em " + window.podecurtirAgora() + ".");
     if (t.fundador) l.push("Aceito o preço de fundador: depoimento com as minhas palavras e autorização para mostrar o trabalho.");
+    if (bonusValido()) l.push("Bônus Black Friday: Proteção das contas incluída, sem custo (campanha até 30/11).");
     return l.join("\n");
   }
 
@@ -307,7 +445,7 @@
     $("resultado-whats").href = window.podecurtirWhats(texto);
     var links = t.pagos.map(function (p) {
       var url = linkDe(p);
-      return url ? '<li><a class="pagar-item" href="' + esc(url) + '" rel="noopener">Pagar ' + esc(p.nome) + (p.parcelas ? " " + comoPaga(p) : "") + " · " + brl(p.valor) + "</a></li>"
+      return url ? '<li><a class="pagar-item" href="' + esc(url) + '" data-valor="' + p.valor + '" rel="noopener">Pagar ' + esc(p.nome) + (p.parcelas ? " " + comoPaga(p) : "") + " · " + brl(p.valor) + "</a></li>"
         : "<li>" + esc(p.nome) + " · " + brl(p.valor) + ": pagamento em configuração</li>";
     });
     var todosComLink = t.pagos.length > 0 && t.pagos.every(function (p) { return !!linkDe(p); });
@@ -338,7 +476,9 @@
       id: "PC-" + Date.now().toString(36).toUpperCase() + "-" + Math.random().toString(36).slice(2, 6).toUpperCase(),
       tipo: t.pagos.length ? "compra" : "proposta", cliente: d, novidades: $("novidades").checked, avisos: $("avisos").checked,
       itens: t.pagos, plus: t.plus.map(function (p) { return p.id; }), propostas: cart.prop.slice(), hoje: t.hoje, forma: forma() || null,
-      aceite: { contrato: true, fundador: t.fundador, em: new Date().toISOString() }, pagina: location.pathname
+      aceite: { contrato: true, fundador: t.fundador, em: new Date().toISOString() }, pagina: location.pathname,
+      campanha: (window.podecurtirCampanha && window.podecurtirCampanha()) ? window.podecurtirCampanha().id : null,
+      bonus: bonusValido() ? ["plus_protecao"] : []
     };
     texto += "\nNúmero do pedido: " + pedido.id;
 
@@ -356,7 +496,7 @@
         /* Sem registro (FORM_ENDPOINT vazio ou fora do ar), as propostas e o aceite iriam se perder no redirecionamento:
            mostra a mensagem pronta junto com o link de pagamento. */
         registrar(pedido).then(function (ok) {
-          if (ok) location.href = url;
+          if (ok) { marcarPagamento(t.hoje); location.href = url; }
           else manual("Falta um passo: envie o pedido e pague pelo link", texto, t);
         });
         return;
@@ -367,13 +507,27 @@
     if (C.CHECKOUT_ENDPOINT) {
       fetch(C.CHECKOUT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(pedido) })
         .then(function (r) { if (!r.ok) throw new Error("status " + r.status); return r.json(); })
-        .then(function (j) { if (j && /^https:\/\//.test(j.url)) location.href = j.url; else throw new Error("sem url"); })
+        .then(function (j) { if (j && /^https:\/\//.test(j.url)) { marcarPagamento(t.hoje); location.href = j.url; } else throw new Error("sem url"); })
         .catch(function () { manual("Pague cada item pelo link", texto, t); });
       return;
     }
     /* Pedido com mais de um item: registra antes de mostrar os links, para a recuperação de pedido saber quem quase comprou. */
     registrar(pedido);
     manual(t.pagos.every(function (p) { return linkDe(p); }) ? "Pague cada item pelo link" : "Pagamento em configuração", texto, t);
+  });
+
+  /* Link por persona: ?negocio=doceria (ou salao, consultorio, outro) abre a loja com o tipo já escolhido. */
+  var doLink = new URLSearchParams(location.search).get("negocio");
+  if (doLink && TIPOS.some(function (x) { return x.id === doLink; })) {
+    tipo = doLink;
+    /* Depois do load: a medição só liga quando as partes comuns terminam de iniciar (aceite de cookies). */
+    window.addEventListener("load", function () { medir("EscolheuTipo", { tipo: doLink, origem: "link" }); });
+  }
+
+  document.addEventListener("click", function (e) {
+    /* Cada link do Asaas paga um item só: guarda o valor daquele item (review do PR #111). */
+    var a = e.target.closest && e.target.closest("a.pagar-item");
+    if (a) marcarPagamento(Number(a.getAttribute("data-valor")) || 0);
   });
 
   tudo();

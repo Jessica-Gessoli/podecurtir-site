@@ -135,6 +135,12 @@ footer.ident p{margin:.3rem 0}
 .oferta p{margin:0 0 1.2rem}
 .oferta .btn{margin-top:auto;text-align:center}
 .oferta:hover{border-color:var(--rosa)}
+/* Por onde começar (06/11/2026): etapa da esteira, escada de preço e recuperação de conta. */
+.oferta .etapa{margin:0 0 .5rem;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--rosa)}
+.oferta .escada{font-size:.88rem;color:var(--cinza);margin:-.6rem 0 1.2rem}
+.urgente{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 2rem;margin:2rem 0 0;padding:1.3rem 1.4rem;border-radius:1.1rem;background:var(--lilas);border-left:6px solid var(--rosa)}
+.urgente h3{margin:0 0 .3rem;font-size:1.15rem;font-weight:700}
+.urgente p{margin:0;max-width:60ch}
 
 .garantias{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem 2.5rem;margin:1.5rem 0 0;padding:0;list-style:none}
 .garantias li{border-top:4px solid var(--rosa);padding-top:.9rem}

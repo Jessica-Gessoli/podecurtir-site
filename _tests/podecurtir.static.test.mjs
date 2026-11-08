@@ -8,7 +8,8 @@ const h = ler("index.html");
 // Trazidos do zethic-site (_tests/podecurtir-trabalhos.static.test.mjs) quando a página ganhou endereço próprio (21/10/2026).
 test("título direto, sem vídeos de demonstração", () => {
   assert.doesNotMatch(h, /class="reel"|class="trabalhos"|<video/);
-  assert.match(h, /<h1>Produtora de foto, vídeo e redes sociais\.<\/h1>/);
+  // 07/11/2026: a página inicial é a loja; o título passou a ser a promessa do Perfil Pronto (igual ao zethic-site).
+  assert.match(h, /<h1>Seu perfil pronto para vender, com preço fechado\.<\/h1>/);
   assert.doesNotMatch(h, /Você curte, a gente registra/);
 });
 
@@ -24,9 +25,9 @@ test("categoria clara, frente de redes sociais e preço da loja", () => {
   assert.match(h, /<title>Pode Curtir \| Produtora de foto, vídeo e redes sociais<\/title>/);
   assert.match(h, /<li id="redes">[\s\S]*Perfil Pronto[\s\S]*Gestão mensal/);
   assert.doesNotMatch(h, /Conta protegida|[Ss]eguran[çc]a|senha/);
-  // 04/11/2026: a página inicial mostra preço (site = preço pronto) e leva à loja do próprio endereço.
-  assert.match(h, /id="precos"/);
-  assert.match(h, /href="\/loja\/#t-perfil"/);
+  // 07/11/2026: a loja fica na própria página inicial (#loja); /loja/ leva para lá com o mesmo trecho.
+  assert.match(h, /id="loja"/);
+  assert.match(h, /<a class="btn cheio" href="#loja"[^>]*>Ver preços e comprar<\/a>/);
 });
 
 test("endereço próprio: canônico e domínio", () => {
