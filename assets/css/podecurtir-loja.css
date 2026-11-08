@@ -163,3 +163,22 @@ legend{font-size:1.25rem;font-weight:700;padding:0;margin-bottom:.75rem}
 .campanha a{font-weight:700;color:var(--tinta);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 .campanha a:focus-visible{outline:3px solid var(--rosa);outline-offset:3px}
 #linhas .bonus span:first-child,#linhas-2 .bonus span:first-child{font-weight:700;color:var(--rosa)}
+
+/* 08/11/2026: faixa "Leve junto · opcional" da Zethic (proteção e recuperação de conta), separada do portfólio da
+   Pode Curtir e com as cores da Zethic (azul-marinho #02041A, ciano #00E5FF, gelo #A7B2D1). Contraste: branco e
+   ciano sobre o azul-marinho passam de 13:1; o gelo, de 9:1. */
+.leve-junto{background:#02041A;color:#FFFFFF;border-radius:1.1rem;padding:1.5rem 1.25rem 1.25rem;margin:2.5rem 0;border:1px solid rgba(0,229,255,.45);box-shadow:0 0 0 4px rgba(0,229,255,.08)}
+.leve-junto .secao-cab{display:block;margin-top:0}
+.leve-junto .secao-cab h2{color:#FFFFFF;margin:.35rem 0 .4rem}
+.leve-junto .secao-cab p{color:#A7B2D1}
+.leve-junto .leve-rotulo{color:#00E5FF;font-weight:700;letter-spacing:.04em;font-size:.82rem;text-transform:uppercase}
+.leve-junto .leve-rotulo .selo.ze{background:#00E5FF;color:#02041A}
+.leve-junto .item{background:rgba(167,178,209,.08);border:1px solid rgba(167,178,209,.22);color:#FFFFFF}
+.leve-junto .item h3,.leve-junto .item .preco{color:#FFFFFF}
+.leve-junto .item p,.leve-junto .item dt{color:#A7B2D1}
+.leve-junto .item dd{color:#FFFFFF}
+.leve-junto .item .selo.ze{background:#00E5FF;color:#02041A}
+.leve-junto .item .meta{border-top-color:rgba(167,178,209,.22)}
+.leve-junto .por{background:#00E5FF;color:#02041A}
+.leve-junto .por[aria-pressed="true"]{background:#FFFFFF;color:#02041A;box-shadow:inset 0 0 0 2px #00E5FF}
+.leve-junto .por:focus-visible{outline:3px solid #FFFFFF;outline-offset:2px}
