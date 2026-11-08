@@ -14,6 +14,8 @@
      diag_esp (R$ 1.500), video_presenca (R$ 1.500) e acabamento (R$ 600), cobrança avulsa com limite de 3 vendas;
      assinaturas mensais esp_marca (R$ 7.650/mês, limite de 1 venda: 1 vaga de fundador), esp_produtora (R$ 3.150/mês),
      esp_news (R$ 1.200/mês) e esp_portavozes (R$ 5.800/mês), com limite de 3 vendas.
+     Seção "Para restaurantes, lanchonetes e bares" (08/11/2026): cardapio (Cardápio Pronto, R$ 1.500, avulsa, limite de 3 vendas)
+     e cardapio_mensal (Cuidado do Cardápio, R$ 290/mês, assinatura mensal, limite de 3 vendas). Vazios até os links do Asaas existirem.
    PRECO_AJUSTE: preço atual do Ajuste de Perfil (500 do 1º ao 3º cliente, 750 do 4º ao 6º, 1200 a partir do 7º).
      Ao trocar o preço, troque também ASAAS_LINKS.ajuste pelo link do novo valor.
    VAGAS_500_RESTANTES: número de vagas que ainda restam a R$ 500 (0 a 3). null = não mostra contador.
@@ -47,7 +49,9 @@ window.PODECURTIR = {
     esp_marca: "https://www.asaas.com/000/c/s5gmbgdpjsl81kz5",
     esp_produtora: "https://www.asaas.com/000/c/u9z9xmhpvrih1djw",
     esp_news: "https://www.asaas.com/000/c/bwl1vrxgogd4gjf0",
-    esp_portavozes: "https://www.asaas.com/000/c/5p56v1dqcbo9c7ru"
+    esp_portavozes: "https://www.asaas.com/000/c/5p56v1dqcbo9c7ru",
+    cardapio: "",
+    cardapio_mensal: ""
   },
   PRECO_AJUSTE: 500,
   VAGAS_500_RESTANTES: null,
