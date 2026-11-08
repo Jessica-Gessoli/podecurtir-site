@@ -8,7 +8,8 @@
      Plus do fechamento do pedido (04/11/2026, Ficha v1.17): plus_gravacao (R$ 500), plus_livro (R$ 1.500),
      plus_mentoria (R$ 400, Jéssica Gessoli), plus_protecao (R$ 400, Zethic desde 08/11/2026) e o Site Essencial da Zethic (R$ 3.000), com dois links:
      plus_site_pix e plus_site_cartao (até 3x). Os links do Site Essencial aceitam 3 vendas (vagas de fundador).
-     plus_recuperacao (06/11/2026): Recuperação de conta, R$ 400, Zethic desde 08/11/2026. Vazio até o link do Asaas existir.
+     plus_recuperacao (06/11/2026): Recuperação de conta, R$ 400, Zethic desde 08/11/2026. Link criado pela Jéssica em 08/11/2026
+     ("Zethic · Recuperação de conta"): cobrança avulsa, sem limite, boleto com 2 dias úteis.
      Seção "Para especialistas, produtoras e empresas" (08/11/2026), links criados pela Jéssica em 08/11/2026:
      diag_esp (R$ 1.500), video_presenca (R$ 1.500) e acabamento (R$ 600), cobrança avulsa com limite de 3 vendas;
      assinaturas mensais esp_marca (R$ 7.650/mês, limite de 1 venda: 1 vaga de fundador), esp_produtora (R$ 3.150/mês),
@@ -37,7 +38,7 @@ window.PODECURTIR = {
     plus_livro: "https://www.asaas.com/000/c/llkzmhqmezcnople",
     plus_protecao: "https://www.asaas.com/000/c/gwimu5et7i82l2pr",
     plus_mentoria: "https://www.asaas.com/000/c/bleaqfjo9hhlmm9y",
-    plus_recuperacao: "",
+    plus_recuperacao: "https://www.asaas.com/000/c/o5x0l3fdrjw9eynw",
     plus_site_pix: "https://www.asaas.com/000/c/bzy6eqhwdy5pq3pn",
     plus_site_cartao: "https://www.asaas.com/000/c/bl6t7cfoy5huw01o",
     diag_esp: "https://www.asaas.com/000/c/yyzfzbh9qvvdxo0b",
