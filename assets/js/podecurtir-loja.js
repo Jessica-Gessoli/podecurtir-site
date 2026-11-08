@@ -29,7 +29,7 @@
 
   var PROJ = [
     { id: "ajuste", nome: "Ajuste de Perfil", preco: PRECO_AJUSTE, prazo: "5 dias úteis", fundador: PRECO_AJUSTE === 500,
-      desc: "Bio, nome, foto, link e botão de WhatsApp, destaques com capa, 3 posts fixados e checagem básica de segurança da conta." },
+      desc: "Bio, nome, foto, link e botão de WhatsApp, destaques com capa, 3 posts fixados e revisão básica dos acessos da conta." },
     { id: "arrumado", nome: "Perfil Arrumado", preco: 2000, parcelas: 3, em: "no", prazo: "15 dias úteis", fundador: true,
       depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 3.200.",
       desc: "Tudo do Ajuste de Perfil, mais análise de quem você segue, curadoria da grade, revisão das legendas e dos acessos e plano de 30 dias." },
@@ -88,6 +88,28 @@
     { id: "plus_site", marca: "ze", nome: "Site Essencial", preco: 3000, parcelas: 3, em: "no", fundador: true, prazo: "Prazo combinado por escrito depois do briefing",
       desc: "Site de uma página com apresentação e serviços, botão de WhatsApp, formulário, mapa e cadastro no Google. Domínio e hospedagem ficam no nome do seu Negócio, à parte. Preço de fundador para os 3 primeiros clientes." }
   ];
+  /* Benefício de cada item (08/11/2026, revisão de publicidade pedida pela Jéssica): uma linha "para quê", antes da
+     descrição. Diz a finalidade, nunca promete resultado (CDC, art. 37; nenhum serviço garante seguidores ou vendas). */
+  var PARA = {
+    ajuste: "Para quem chega ao seu perfil entender o que você vende e chamar no WhatsApp.",
+    arrumado: "Para o perfil mostrar o tamanho do seu Negócio, sem você precisar aprender a fazer.",
+    marca: "Para o seu Negócio ter a mesma cara em tudo e ser reconhecido de longe.",
+    diag_esp: "Para saber o que ajustar antes de investir em mais conteúdo.",
+    video_presenca: "Para gravar com naturalidade e perder menos tempo em cada gravação.",
+    acabamento: "Para o vídeo que você já tem prender a atenção nos primeiros segundos.",
+    essencial: "Para a sua rede ficar ativa todo mês sem você parar de atender.",
+    padrao: "Para mostrar o seu trabalho em vídeo toda semana.",
+    completa: "Para estar em 3 redes sem montar uma equipe.",
+    esp_marca: "Para a sua marca andar sem você coordenar ninguém.",
+    esp_produtora: "Para a sua produtora entregar no seu padrão, sem você cobrar prazo.",
+    esp_news: "Para o seu nome aparecer para quem já segue você, duas vezes por mês.",
+    esp_portavozes: "Para os líderes da empresa aparecerem com frequência, sem travar a agenda.",
+    plus_livro: "Para o seu texto virar um e-book pronto para vender ou presentear.",
+    plus_mentoria: "Para você fazer com IA, no seu projeto, com alguém do lado.",
+    plus_protecao: "Para as contas do Negócio ficarem mais difíceis de invadir.",
+    plus_recuperacao: "Para tentar reaver a conta pelos canais oficiais, com quem conhece o caminho."
+  };
+  function beneficio(p) { return PARA[p.id] ? '<p class="beneficio">' + PARA[p.id] + "</p>" : ""; }
   function plusDe(id) { return PLUS.filter(function (p) { return p.id === id; })[0]; }
   /* Tipo de Negócio (06/11/2026): sugestão de por onde começar, a partir das personas de clientes (hipótese até as entrevistas). */
   var TIPOS = [
@@ -166,26 +188,26 @@
     var marcaSug = '<span class="marca-sugestao">PARA O SEU NEGÓCIO</span>';
     function cardProj(p) {
       var on = tem(cart.proj, p.id), sug = sugerido("proj", p.id);
-      return '<article class="item' + (sug ? " sugerido" : "") + '">' + (sug ? marcaSug : "") + "<h3>" + p.nome + '</h3><p class="preco num">' + brl(p.preco) + "</p><p>" + p.desc + "</p>" +
+      return '<article class="item' + (sug ? " sugerido" : "") + '">' + (sug ? marcaSug : "") + "<h3>" + p.nome + '</h3><p class="preco num">' + brl(p.preco) + "</p>" + beneficio(p) + "<p>" + p.desc + "</p>" +
         (p.id === "ajuste" ? '<p class="vagas">' + textoVagas() + "</p>" : (p.depois ? '<p class="vagas">' + p.depois + "</p>" : "")) +
         '<dl class="meta"><div><dt>Prazo</dt><dd>' + p.prazo + ', a partir do briefing completo</dd></div><div><dt>Pagamento</dt><dd>Integral: ' + formas(p) + "</dd></div></dl>" +
-        '<button class="por" type="button" data-proj="' + p.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr no pedido") + "</button></article>";
+        '<button class="por" type="button" data-proj="' + p.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr no meu pedido") + "</button></article>";
     }
     function cardPlano(p) {
       var on = cart.plano === p.id, sug = sugerido("plano", p.id);
-      return '<article class="item' + (sug ? " sugerido" : "") + '">' + (sug ? marcaSug : "") + "<h3>" + p.nome + '</h3><p class="preco num">' + brl(p.mensal) + ' <small>por mês</small></p><p>' + p.desc + "</p>" +
+      return '<article class="item' + (sug ? " sugerido" : "") + '">' + (sug ? marcaSug : "") + "<h3>" + p.nome + '</h3><p class="preco num">' + brl(p.mensal) + ' <small>por mês</small></p>' + beneficio(p) + "<p>" + p.desc + "</p>" +
         (p.depois ? '<p class="vagas">' + p.depois + "</p>" : "") +
         '<dl class="meta"><div><dt>Mínimo</dt><dd>3 meses = ' + brl(p.mensal * 3) + '</dd></div><div><dt>Pagamento</dt><dd>1ª mensalidade hoje; depois, todo mês</dd></div></dl>' +
-        '<button class="por" type="button" data-plano="' + p.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr no pedido") + "</button></article>";
+        '<button class="por" type="button" data-plano="' + p.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr no meu pedido") + "</button></article>";
     }
     function daSecao(lista, secao) { return lista.filter(function (p) { return (p.secao || "") === secao; }); }
     $("grade-perfil").innerHTML = daSecao(PROJ, "").map(cardProj).join("");
     function avulsos(secao) {
       return PLUS.filter(function (p) { return p.avulso && p.secao === secao; }).map(function (p) {
         var on = tem(cart.plus, p.id);
-        return '<article class="item"><h3>' + ((secao === "conteudo" || secao === "contas") && p.marca !== "pc" ? '<span class="selo ' + p.marca + '">' + MARCA[p.marca] + "</span>" : "") + p.nome + '</h3><p class="preco num">' + brl(p.preco) + "</p><p>" + p.desc + "</p>" +
+        return '<article class="item"><h3>' + ((secao === "conteudo" || secao === "contas") && p.marca !== "pc" ? '<span class="selo ' + p.marca + '">' + MARCA[p.marca] + "</span>" : "") + p.nome + '</h3><p class="preco num">' + brl(p.preco) + "</p>" + beneficio(p) + "<p>" + p.desc + "</p>" +
           '<dl class="meta"><div><dt>Quando</dt><dd>' + p.prazo + '</dd></div><div><dt>Pagamento</dt><dd>Integral: ' + formas(p) + "</dd></div></dl>" +
-          '<button class="por" type="button" data-plus="' + p.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr no pedido") + "</button></article>";
+          '<button class="por" type="button" data-plus="' + p.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr no meu pedido") + "</button></article>";
       }).join("");
     }
     $("grade-contas").innerHTML = avulsos("contas");
@@ -197,7 +219,7 @@
       var x = a.plus ? plusDe(a.plus) : null;
       return '<div class="proposta' + (sugerido("prop", a.id) ? " sugerido" : "") + '"><div><span class="selo ' + a.marca + '">' + MARCA[a.marca] + "</span><strong>" + a.nome + "</strong><p>" + a.desc + "</p>" +
         (x ? '<p class="plus-dica">Ou como plus, no fechamento de um pedido: ' + x.nome + " por " + brl(x.preco) + ".</p>" : "") + "</div>" +
-        '<button class="pedir" type="button" data-prop="' + a.id + '" aria-pressed="' + on + '">' + (on ? "Pedido · tirar" : "Pedir proposta") + "</button></div>";
+        '<button class="pedir" type="button" data-prop="' + a.id + '" aria-pressed="' + on + '">' + (on ? "Pedido · tirar" : "Quero uma proposta") + "</button></div>";
     }).join("");
   }
 
