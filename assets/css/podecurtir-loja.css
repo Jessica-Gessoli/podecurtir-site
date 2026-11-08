@@ -47,6 +47,7 @@ button{font:inherit;color:inherit}
 .item h3{margin:0;font-size:1.2rem}
 .item p{margin:0;color:var(--cinza);font-size:.95rem}
 .item .preco{color:var(--tinta);font-size:1.6rem;font-weight:700;letter-spacing:-.02em}
+.item .beneficio{color:var(--tinta);font-weight:700;font-size:.98rem;line-height:1.35}
 .item .preco small{font-size:.9rem;color:var(--cinza);letter-spacing:0}
 .item .vagas{font-size:.82rem;font-weight:700;color:var(--rosa-escuro);background:var(--rosa-claro);border-radius:.5rem;padding:.4rem .6rem}
 .meta{margin:0;display:flex;flex-direction:column;gap:.25rem;font-size:.88rem;border-top:1px solid var(--linha);padding-top:.6rem}
@@ -176,6 +177,7 @@ legend{font-size:1.25rem;font-weight:700;padding:0;margin-bottom:.75rem}
 .leve-junto .item{background:rgba(167,178,209,.08);border:1px solid rgba(167,178,209,.22);color:#FFFFFF}
 .leve-junto .item h3,.leve-junto .item .preco{color:#FFFFFF}
 .leve-junto .item p,.leve-junto .item dt{color:#A7B2D1}
+.leve-junto .item .beneficio{color:#FFFFFF}
 .leve-junto .item dd{color:#FFFFFF}
 .leve-junto .item .selo.ze{background:#00E5FF;color:#02041A}
 .leve-junto .item .meta{border-top-color:rgba(167,178,209,.22)}
