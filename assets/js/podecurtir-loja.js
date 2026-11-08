@@ -431,7 +431,8 @@
   function registrar(dados) {
     if (!C.FORM_ENDPOINT) return Promise.resolve(false);
     // text/plain evita a verificação prévia do navegador, que o Google Apps Script não atende.
-    return fetch(C.FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(dados) })
+    // keepalive: o envio continua mesmo se a cliente tocar no link de pagamento antes de ele terminar.
+    return fetch(C.FORM_ENDPOINT, { method: "POST", keepalive: true, headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(dados) })
       .then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { return !!(j && j.ok); }).catch(function () { return false; });
   }
 
