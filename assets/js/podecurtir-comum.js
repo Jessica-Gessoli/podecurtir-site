@@ -262,10 +262,13 @@
       }
       if (!C.FORM_ENDPOINT) { mostrarManual(); return; }
       fetch(C.FORM_ENDPOINT, {
-        method: "POST", headers: { "Content-Type": "application/json" },
+        method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({ tipo: "desistencia", nome: nome, email: email, pedido: pedido, motivo: motivo, enviado_em: new Date().toISOString(), pagina: location.pathname })
       }).then(function (r) {
         if (!r.ok) throw new Error("status " + r.status);
+        return r.json();
+      }).then(function (j) {
+        if (!j || j.ok !== true) throw new Error("não confirmado");
         document.getElementById("desistencia-quando").textContent = quando;
         ok.hidden = false; f.hidden = true;
       }).catch(mostrarManual);

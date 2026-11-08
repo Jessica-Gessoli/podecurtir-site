@@ -430,8 +430,10 @@
 
   function registrar(dados) {
     if (!C.FORM_ENDPOINT) return Promise.resolve(false);
-    return fetch(C.FORM_ENDPOINT, { method: "POST", keepalive: true, headers: { "Content-Type": "application/json" }, body: JSON.stringify(dados) })
-      .then(function (r) { return r.ok; }).catch(function () { return false; });
+    // text/plain evita a verificação prévia do navegador, que o Google Apps Script não atende.
+    // keepalive: o envio continua mesmo se a cliente tocar no link de pagamento antes de ele terminar.
+    return fetch(C.FORM_ENDPOINT, { method: "POST", keepalive: true, headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(dados) })
+      .then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { return !!(j && j.ok); }).catch(function () { return false; });
   }
 
   function obrigado(tipo) {
@@ -478,7 +480,8 @@
       itens: t.pagos, plus: t.plus.map(function (p) { return p.id; }), propostas: cart.prop.slice(), hoje: t.hoje, forma: forma() || null,
       aceite: { contrato: true, fundador: t.fundador, em: new Date().toISOString() }, pagina: location.pathname,
       campanha: (window.podecurtirCampanha && window.podecurtirCampanha()) ? window.podecurtirCampanha().id : null,
-      bonus: bonusValido() ? ["plus_protecao"] : []
+      bonus: bonusValido() ? ["plus_protecao"] : [],
+      links: t.pagos.filter(function (p) { return !!linkDe(p); }).map(function (p) { return { nome: p.nome, valor: p.valor, url: linkDe(p) }; })
     };
     texto += "\nNúmero do pedido: " + pedido.id;
 
