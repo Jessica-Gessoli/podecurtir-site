@@ -132,6 +132,8 @@
       txt: "Comece pelo <strong>Diagnóstico de marca de especialista</strong>: o que você já tem, quem já trabalha com você e o plano de 30 dias. Se você já paga produtora e mentora e não quer mais coordenar todo mundo, a <strong>Gestão de marca de especialista</strong> cuida de tudo." },
     { id: "restaurante", nome: "Restaurante, lanchonete ou bar", proj: ["cardapio"], plano: null, plus: ["plus_gravacao"], prop: [],
       txt: "Comece pelo <strong>Cardápio Pronto</strong>: cardápio no celular, QR code nas mesas e pedido pelo WhatsApp, sem taxa por pedido. Se as fotos dos pratos não mostram o capricho da cozinha, some a <strong>sessão de fotos de 1 hora</strong> no fechamento do pedido. Depois, o <strong>Cuidado do Cardápio</strong> mantém preços e pratos em dia." },
+    { id: "cozinha_delivery", nome: "Cozinha de delivery (em casa)", proj: ["cardapio"], plano: null, plus: ["plus_gravacao"], prop: [],
+      txt: "Sem salão e sem balcão? O <strong>Cardápio Pronto</strong> vira o seu link de pedidos: fica na bio do Instagram e na mensagem de saudação do WhatsApp, e o cliente escolhe, vê o total e manda o pedido montado, sem taxa por pedido. O exemplo de delivery está na seção para restaurantes, logo abaixo. Depois, o <strong>Cuidado do Cardápio</strong> mantém preços e pratos em dia." },
     { id: "outro", nome: "Outro Negócio", proj: [], plano: null, plus: [], prop: [],
       txt: "Veja os três níveis do Perfil Pronto logo abaixo. Se o seu caso for diferente, peça proposta, sem compromisso." }
   ];
