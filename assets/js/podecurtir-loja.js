@@ -49,7 +49,7 @@
        (instalável pelo navegador, sem loja de apps) são feitos pela Zethic, em parceria (regra de 28/10: tecnologia é da Zethic). */
     { id: "cardapio", secao: "rest", nome: "Cardápio Pronto", preco: 1500, prazo: "10 dias úteis", fundador: true,
       depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.400.",
-      desc: "Até 30 itens: textos dos pratos, categorias, preços e alérgenos que você informar. Cardápio no celular, que abre pelo QR code e pode ser instalado na tela como um app, com QR code para mesas e balcão, botão de pedido pelo WhatsApp sem taxa por pedido e destaque Cardápio no Instagram. 12 meses no ar incluídos. Página e app feitos pela Zethic, em parceria." }
+      desc: "Até 30 itens: textos dos pratos, categorias, preços e alérgenos que você informar. Cardápio no celular, que abre pelo QR code e pode ser instalado na tela como um app, com QR code para mesas e balcão, cardápio impresso para a entrada (PDF pronto para a gráfica, com os mesmos preços), botão de pedido pelo WhatsApp sem taxa por pedido e link no Instagram e no Perfil da Empresa no Google. 12 meses no ar incluídos. Página e app feitos pela Zethic, em parceria." }
   ];
   var PLANOS = [
     { id: "essencial", nome: "Gestão Essencial", mensal: 1500, depois: "Preço de fundador. A partir do 4º cliente, R$ 2.400 por mês.", desc: "1 rede, 12 posts por mês e relatório mensal." },

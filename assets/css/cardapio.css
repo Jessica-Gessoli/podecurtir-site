@@ -1,0 +1,67 @@
+/* Cardápio Pronto (Pode Curtir; página e app pela Zethic, em parceria) — 08/11/2026.
+   As cores de cada restaurante ficam em tema.css (--cor e --fundo), gerado pela planilha. */
+@font-face{font-family:"PS";font-weight:400;font-display:swap;src:url(/assets/fonts/public-sans-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"PS";font-weight:700;font-display:swap;src:url(/assets/fonts/public-sans-latin-700-normal.woff2) format("woff2")}
+:root{--cor:#B23A1E;--fundo:#FFF8F1;--tinta:#241A14;--cinza:#6B5E55;--linha:#EADFD4;--branco:#FFFFFF}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:56px}
+body{margin:0;background:var(--fundo);color:var(--tinta);font:16px/1.45 "PS",system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:84px}
+h1,h2,h3,p,ul{margin:0}
+ul{list-style:none;padding:0}
+a{color:var(--cor)}
+.aviso{background:#FFF1B8;color:#5A4300;font-size:.82rem;text-align:center;padding:.45rem 1rem}
+.topo{max-width:720px;margin:0 auto;padding:1.4rem 1rem .6rem}
+.topo h1{font-size:1.9rem;line-height:1.1;color:var(--cor)}
+.topo p{color:var(--cinza);margin-top:.3rem}
+.topo .info{font-size:.88rem}
+.cats{position:sticky;top:0;z-index:5;display:flex;gap:.4rem;overflow-x:auto;padding:.6rem 1rem;background:var(--fundo);border-bottom:1px solid var(--linha);max-width:720px;margin:0 auto;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cats a{flex:none;text-decoration:none;color:var(--tinta);font-weight:700;font-size:.9rem;border:1.5px solid var(--linha);border-radius:999px;padding:.35rem .8rem;background:var(--branco)}
+main{max-width:720px;margin:0 auto;padding:0 1rem}
+section{padding-top:1.2rem}
+section h2{font-size:1.25rem;margin-bottom:.5rem}
+.item{display:flex;gap:.8rem;justify-content:space-between;background:var(--branco);border:1px solid var(--linha);border-radius:.8rem;padding:.8rem .9rem;margin-bottom:.55rem}
+.item.destaque{border-color:var(--cor)}
+.item.fora{opacity:.6}
+.item h3{font-size:1rem}
+.item .txt p{color:var(--cinza);font-size:.9rem;margin-top:.2rem}
+.item .alergenos{font-size:.78rem!important}
+.selo{display:inline-block;vertical-align:2px;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--cor);color:var(--branco);border-radius:999px;padding:.08rem .45rem;margin-left:.3rem}
+.lado{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:.5rem;flex:none}
+.preco{font-weight:700;white-space:nowrap}
+.qtd{display:flex;align-items:center;gap:.35rem}
+.qtd button{width:2.2rem;height:2.2rem;border-radius:999px;border:0;font-size:1.25rem;font-weight:700;cursor:pointer;background:var(--cor);color:var(--branco);line-height:1}
+.qtd .menos{background:var(--branco);color:var(--cor);box-shadow:inset 0 0 0 2px var(--cor)}
+.qtd .n{min-width:1.2rem;text-align:center;font-weight:700}
+.indisp{font-size:.78rem;color:var(--cinza)}
+.nota{font-size:.8rem;color:var(--cinza);margin:1rem 0}
+.barra{position:fixed;left:0;right:0;bottom:0;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--fundo) 30%)}
+.barra button{display:block;width:100%;max-width:720px;margin:0 auto;border:0;border-radius:.8rem;padding:.95rem;font:700 1rem "PS",sans-serif;background:var(--cor);color:var(--branco);cursor:pointer}
+.painel{position:fixed;inset:0;z-index:10;background:rgba(36,26,20,.55);display:flex;align-items:flex-end;justify-content:center}
+.painel[hidden],.barra[hidden],[hidden]{display:none!important}
+.caixa{background:var(--branco);width:100%;max-width:720px;max-height:92vh;overflow:auto;border-radius:1rem 1rem 0 0;padding:1.1rem 1rem calc(1rem + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:.7rem}
+.caixa h2{font-size:1.2rem}
+#linhas li{display:flex;justify-content:space-between;gap:.6rem;border-bottom:1px solid var(--linha);padding:.4rem 0;font-size:.95rem}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:1.05rem}
+.caixa label{display:flex;flex-direction:column;gap:.25rem;font-size:.88rem;font-weight:700}
+.caixa input:not([type=radio]),.caixa textarea{font:inherit;font-weight:400;border:1.5px solid var(--linha);border-radius:.5rem;padding:.55rem .6rem}
+.caixa fieldset{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.4rem 1rem}
+.caixa legend{font-size:.88rem;font-weight:700;margin-bottom:.3rem}
+.caixa .op{flex-direction:row;align-items:center;font-weight:400}
+.enviar{display:block;text-align:center;text-decoration:none;border-radius:.8rem;padding:.95rem;font-weight:700;background:#1F7A45;color:var(--branco)}
+.fechar{border:0;background:none;color:var(--cor);font:700 .95rem "PS",sans-serif;cursor:pointer;padding:.4rem}
+.rodape{max-width:720px;margin:0 auto;padding:0 1rem 1rem;font-size:.75rem;color:var(--cinza)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--cor);outline-offset:2px}
+/* Cardápio impresso da entrada */
+body.impresso{padding:0;background:#fff}
+.impresso .topo{max-width:none;padding:0 0 .8rem;border-bottom:3px solid var(--cor);margin-bottom:.8rem}
+.impresso .colunas{columns:2;column-gap:1.6rem}
+.impresso section{break-inside:avoid;padding-top:.3rem;margin-bottom:.7rem}
+.impresso section h2{font-size:1.05rem;color:var(--cor);border-bottom:1px solid var(--linha);padding-bottom:.2rem}
+.impresso li{display:flex;justify-content:space-between;gap:.8rem;padding:.3rem 0;font-size:.82rem;break-inside:avoid}
+.impresso li span{display:block;color:var(--cinza);font-size:.74rem}
+.impresso .p{white-space:nowrap}
+.qr-bloco{display:flex;gap:1rem;align-items:center;border-top:1px solid var(--linha);padding-top:.8rem;margin-top:.4rem;font-size:.76rem;color:var(--cinza);break-inside:avoid}
+@page{size:A4;margin:14mm}
+@media print{.aviso{background:none;border:1px solid #999}}
+@media screen{body.impresso{max-width:820px;margin:0 auto;padding:1rem}}
