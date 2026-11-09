@@ -44,7 +44,12 @@
       desc: "2 encontros de 2 horas, online ou em Campinas/SP: roteiro falado, teleprompter, postura, voz e ritmo, com gravação de teste e devolutiva por escrito. Para render mais em cada gravação." },
     { id: "acabamento", secao: "esp", nome: "Acabamento de vídeo · 4 vídeos", preco: 600, prazo: "5 dias úteis", fundador: true,
       depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 960 (R$ 240 por vídeo).",
-      desc: "Para quem já tem o vídeo editado: capa, gancho nos 3 primeiros segundos e legendas para cada rede. R$ 150 por vídeo." }
+      desc: "Para quem já tem o vídeo editado: capa, gancho nos 3 primeiros segundos e legendas para cada rede. R$ 150 por vídeo." },
+    /* 08/11/2026 (Jéssica aprovou): cardápio de restaurante. A Pode Curtir vende e cuida do conteúdo; a página e o app
+       (instalável pelo navegador, sem loja de apps) são feitos pela Zethic, em parceria (regra de 28/10: tecnologia é da Zethic). */
+    { id: "cardapio", secao: "rest", nome: "Cardápio Pronto", preco: 1500, prazo: "10 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.400.",
+      desc: "Até 30 itens: textos dos pratos, categorias, preços e alérgenos que você informar. Cardápio no celular, que abre pelo QR code e pode ser instalado na tela como um app, com QR code para mesas e balcão, cardápio impresso para a entrada (PDF pronto para a gráfica, com os mesmos preços), botão de pedido pelo WhatsApp sem taxa por pedido e link no Instagram e no Perfil da Empresa no Google. 12 meses no ar incluídos. Página e app feitos pela Zethic, em parceria." }
   ];
   var PLANOS = [
     { id: "essencial", nome: "Gestão Essencial", mensal: 1500, depois: "Preço de fundador. A partir do 4º cliente, R$ 2.400 por mês.", desc: "1 rede, 12 posts por mês e relatório mensal." },
@@ -57,7 +62,9 @@
     { id: "esp_news", secao: "esp", nome: "Newsletter pronta · 2 edições por mês", mensal: 1200, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 1.920 por mês.",
       desc: "Pauta, texto com fontes, capa e texto pronto para publicar no LinkedIn. Com blog no site, a edição também entra lá." },
     { id: "esp_portavozes", secao: "esp", nome: "Programa de porta-vozes · 2 porta-vozes", mensal: 5800, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 9.200 por mês.",
-      desc: "Para empresas: posts e roteiros de vídeo para 2 líderes, com calendário e aprovação numa rotina só. Mais porta-vozes por proposta: 10% de desconto a partir do 3º e 15% a partir do 5º." }
+      desc: "Para empresas: posts e roteiros de vídeo para 2 líderes, com calendário e aprovação numa rotina só. Mais porta-vozes por proposta: 10% de desconto a partir do 3º e 15% a partir do 5º." },
+    { id: "cardapio_mensal", secao: "rest", nome: "Cuidado do Cardápio", mensal: 290, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 460 por mês.",
+      desc: "Para quem já tem o Cardápio Pronto: até 10 trocas por mês (1 troca = mudar um item: preço, nome, descrição, foto ou disponibilidade), 1 post do prato da semana e relatório dos pratos mais vistos. O cardápio fica no ar sem custo de hospedagem. Nada entra no ar sem a sua aprovação." }
   ];
   /* Planos de Gestão que entram na campanha de Black Friday (a Proteção das contas de bônus vale só para eles). */
   var GESTAO = ["essencial", "padrao", "completa"];
@@ -104,6 +111,8 @@
     esp_produtora: "Para a sua produtora entregar no seu padrão, sem você cobrar prazo.",
     esp_news: "Para o seu nome aparecer para quem já segue você, duas vezes por mês.",
     esp_portavozes: "Para os líderes da empresa aparecerem com frequência, sem travar a agenda.",
+    cardapio: "Para o cliente ver o cardápio no celular e pedir pelo WhatsApp, sem taxa por pedido.",
+    cardapio_mensal: "Para preço novo e prato novo entrarem no ar sem você mexer no cardápio.",
     plus_livro: "Para o seu texto virar um e-book pronto para vender ou presentear.",
     plus_mentoria: "Para você fazer com IA, no seu projeto, com alguém do lado.",
     plus_protecao: "Para as contas do Negócio ficarem mais difíceis de invadir.",
@@ -121,6 +130,10 @@
       txt: "O <strong>Perfil Arrumado</strong> organiza o seu perfil com discrição, e o <strong>ensaio de fotos</strong> sai por proposta. Antes do primeiro post, você confirma a regra de publicidade do seu conselho profissional. Nada de foto, relato ou dado de paciente." },
     { id: "especialista", nome: "Especialista, consultor ou palestrante", proj: ["diag_esp"], plano: null, plus: [], prop: [],
       txt: "Comece pelo <strong>Diagnóstico de marca de especialista</strong>: o que você já tem, quem já trabalha com você e o plano de 30 dias. Se você já paga produtora e mentora e não quer mais coordenar todo mundo, a <strong>Gestão de marca de especialista</strong> cuida de tudo." },
+    { id: "restaurante", nome: "Restaurante, lanchonete ou bar", proj: ["cardapio"], plano: null, plus: ["plus_gravacao"], prop: [],
+      txt: "Comece pelo <strong>Cardápio Pronto</strong>: cardápio no celular, QR code nas mesas e pedido pelo WhatsApp, sem taxa por pedido. Se as fotos dos pratos não mostram o capricho da cozinha, some a <strong>sessão de fotos de 1 hora</strong> no fechamento do pedido. Depois, o <strong>Cuidado do Cardápio</strong> mantém preços e pratos em dia." },
+    { id: "cozinha_delivery", nome: "Cozinha de delivery (em casa)", proj: ["cardapio"], plano: null, plus: ["plus_gravacao"], prop: [],
+      txt: "Sem salão e sem balcão? O <strong>Cardápio Pronto</strong> vira o seu link de pedidos: fica na bio do Instagram e na mensagem de saudação do WhatsApp, e o cliente escolhe, vê o total e manda o pedido montado, sem taxa por pedido. O exemplo de delivery está na seção para restaurantes, logo abaixo. Depois, o <strong>Cuidado do Cardápio</strong> mantém preços e pratos em dia." },
     { id: "outro", nome: "Outro Negócio", proj: [], plano: null, plus: [], prop: [],
       txt: "Veja os três níveis do Perfil Pronto logo abaixo. Se o seu caso for diferente, peça proposta, sem compromisso." }
   ];
@@ -213,6 +226,7 @@
     $("grade-contas").innerHTML = avulsos("contas");
     $("grade-conteudo").innerHTML = avulsos("conteudo");
     $("grade-planos").innerHTML = daSecao(PLANOS, "").map(cardPlano).join("");
+    $("grade-rest").innerHTML = daSecao(PROJ, "rest").map(cardProj).join("") + daSecao(PLANOS, "rest").map(cardPlano).join("");
     $("grade-esp").innerHTML = daSecao(PROJ, "esp").map(cardProj).join("") + daSecao(PLANOS, "esp").map(cardPlano).join("");
     $("lista-propostas").innerHTML = PROPOSTAS.map(function (a) {
       var on = tem(cart.prop, a.id);
