@@ -36,6 +36,10 @@
     { id: "marca", nome: "Marca Completa", preco: 7500, parcelas: 6, em: "na", prazo: "30 dias úteis", fundador: true,
       depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 12.000.",
       desc: "Tudo do Perfil Arrumado, mais paleta, tipografia, símbolo e assinatura, modelos de capa, post e story e manual curto de uso." },
+    /* 09/11/2026 (D4 aprovada pela Jéssica): portfólio da empresa, preço de fundador para os 3 primeiros clientes. */
+    { id: "portfolio", nome: "Portfólio da empresa", preco: 1200, prazo: "10 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 1.900.",
+      desc: "Apresentação da empresa em PDF de 10 a 12 páginas, com texto real: quem é, o que faz, para quem, como trabalha e como contratar. Clientes, números e depoimentos entram só se você enviar, com autorização. Fotos novas: some a sessão de fotos de 1 hora no fechamento do pedido." },
     { id: "diag_esp", secao: "esp", nome: "Diagnóstico de marca de especialista", preco: 1500, prazo: "10 dias úteis", fundador: true,
       depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.400. Se você contratar a Gestão de marca de especialista em até 30 dias, o valor vira crédito na 1ª mensalidade.",
       desc: "Leitura dos seus canais, do que você já publica e de quem já trabalha com você (produtora, mentora, editor), posicionamento em uma frase e plano de 30 dias." },
@@ -71,7 +75,7 @@
   var PROPOSTAS = [
     { id: "gravacao", marca: "pc", nome: "Sessão de fotos, ensaio e gravação de vídeo", plus: "plus_gravacao", desc: "Produto, ambiente ou retrato profissional; diária, evento ou sessão maior. O deslocamento entra na proposta." },
     { id: "livro", marca: "pc", nome: "Livro pronto", plus: "plus_livro", desc: "Revisão, capa, diagramação, publicação e divulgação." },
-    { id: "produto_digital", marca: "pc", nome: "Produto digital e curso online", desc: "Roteiro, gravação e edição das aulas, capa e materiais do curso ou do produto. A plataforma (Hotmart ou outra) e as vendas ficam no nome do autor." },
+    { id: "produto_digital", marca: "pc", nome: "Produto digital e curso online", desc: "Roteiro, gravação e edição das aulas, capa e materiais do curso ou do produto. A plataforma (Hotmart ou outra) e as vendas ficam no nome do autor; a área de cursos pode ser montada pela Zethic, em parceria." },
     { id: "protecao", marca: "ze", nome: "Proteção das contas da equipe inteira", plus: "plus_protecao", desc: "Mais de 3 contas ou a equipe toda. Feita pela Zethic, em parceria. Sem senha." },
     { id: "mentoria", marca: "jg", nome: "Mentoria e consultoria em IA", plus: "plus_mentoria", desc: "Você aprende a fazer com IA, no seu projeto. Com Jéssica Gessoli." },
     { id: "tech", marca: "ze", nome: "Site, app, automação e bot de WhatsApp", plus: "plus_site", desc: "Feitos pela Zethic, em parceria. Atendimento e dados das redes num lugar só." },
@@ -101,6 +105,7 @@
     ajuste: "Para quem chega ao seu perfil entender o que você vende e chamar no WhatsApp.",
     arrumado: "Para o perfil mostrar o tamanho do seu Negócio, sem você precisar aprender a fazer.",
     marca: "Para o seu Negócio ter a mesma cara em tudo e ser reconhecido de longe.",
+    portfolio: "Para mandar uma apresentação pronta depois da primeira conversa com um cliente.",
     diag_esp: "Para saber o que ajustar antes de investir em mais conteúdo.",
     video_presenca: "Para gravar com naturalidade e perder menos tempo em cada gravação.",
     acabamento: "Para o vídeo que você já tem prender a atenção nos primeiros segundos.",
