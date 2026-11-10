@@ -18,7 +18,7 @@
    o preço depois das vagas de fundador aparece em cada item.
    Decisão de 08/11/2026 (Jéssica: "Vamos subir todos no site", com benchmark de mercado e de lucro): seção
    "Para especialistas, produtoras e empresas" (secao: "esp"), com Diagnóstico, Presença em vídeo, Acabamento de vídeo
-   e 4 planos mensais; Blog que publica sozinho (com a Zethic) e Licença do método entram como pedido de proposta,
+   e 4 planos mensais (10/11/2026: mais o Vídeo de conversa); Blog que publica sozinho (com a Zethic) e Licença do método entram como pedido de proposta,
    com o valor de referência na descrição. A Gestão de marca de especialista tem 1 vaga de fundador. */
 (function () {
   var C = window.PODECURTIR || {};
@@ -49,6 +49,12 @@
     { id: "acabamento", secao: "esp", nome: "Acabamento de vídeo · 4 vídeos", preco: 600, prazo: "5 dias úteis", fundador: true,
       depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 960 (R$ 240 por vídeo).",
       desc: "Para quem já tem o vídeo editado: capa, gancho nos 3 primeiros segundos e legendas para cada rede. R$ 150 por vídeo." },
+    /* 10/11/2026 (Jéssica aprovou a descoberta "Edição de vídeo com IA"): conversa, entrevista, live ou áudios viram Reel.
+       Preço de mercado para edição de material bruto: R$ 300 a R$ 700 por vídeo. Edição com apoio de IA, informada ao
+       cliente (Política de Edição, 05/11/2026), sem mudar o que foi dito. Autorização de quem aparece: termos, seção 9. */
+    { id: "conversa", secao: "esp", nome: "Vídeo de conversa · 1 Reel", preco: 450, prazo: "5 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 700.",
+      desc: "Para conversa, entrevista, live ou áudios de WhatsApp: escolhemos os trechos, colocamos legendas, capa e a foto de quem fala, limpamos o som e entregamos 2 versões, uma curta para o Instagram e uma completa para o LinkedIn. Até 15 minutos de material bruto. Edição com apoio de IA, sem mudar o que foi dito. Você garante a autorização de todos que aparecem ou falam." },
     /* 08/11/2026 (Jéssica aprovou): cardápio de restaurante. A Pode Curtir vende e cuida do conteúdo; a página e o app
        (instalável pelo navegador, sem loja de apps) são feitos pela Zethic, em parceria (regra de 28/10: tecnologia é da Zethic). */
     { id: "cardapio", secao: "rest", nome: "Cardápio Pronto", preco: 1500, prazo: "10 dias úteis", fundador: true,
@@ -56,7 +62,9 @@
       desc: "Até 30 itens: textos dos pratos, categorias, preços e alérgenos que você informar. Cardápio no celular, que abre pelo QR code e pode ser instalado na tela como um app, com QR code para mesas e balcão, cardápio impresso para a entrada (PDF pronto para a gráfica, com os mesmos preços), botão de pedido pelo WhatsApp sem taxa por pedido e link no Instagram e no Perfil da Empresa no Google. 12 meses no ar incluídos. Página e app feitos pela Zethic, em parceria." },
     /* 10/11/2026 (Jéssica): itens com link no Asaas criados em 09/11/2026. Tradução junto do cardápio; catálogo para
        quem vende produto ou serviço (doceria, salão, loja), no mesmo modelo do cardápio, com a Zethic em parceria. */
-    { id: "traducao", secao: "rest", nome: "Tradução do cardápio · inglês e espanhol", preco: 300, prazo: "10 dias úteis", fundador: true,
+    /* 10/11/2026 (Jéssica, por benchmark): 30 itens nos dois idiomas dão cerca de 1.500 palavras, menos de um dia de
+       tradução no ritmo profissional (2.000 a 3.000 palavras por dia) mais a revisão por outra pessoa: 5 dias úteis. */
+    { id: "traducao", secao: "rest", nome: "Tradução do cardápio · inglês e espanhol", preco: 300, prazo: "5 dias úteis", fundador: true,
       depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 480.",
       desc: "Para quem tem ou leva junto o Cardápio Pronto: o cardápio também em inglês e espanhol, com nomes, descrições e categorias dos pratos (até 30 itens), para atender turistas sem traduzir na hora." },
     { id: "catalogo", secao: "cat", nome: "Catálogo Pronto", preco: 1500, prazo: "10 dias úteis", fundador: true,
@@ -78,7 +86,7 @@
     { id: "cardapio_mensal", secao: "rest", nome: "Cuidado do Cardápio", mensal: 290, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 460 por mês.",
       desc: "Para quem já tem o Cardápio Pronto: até 10 trocas por mês (1 troca = mudar um item: preço, nome, descrição, foto ou disponibilidade), 1 post do prato da semana e relatório dos pratos mais vistos. O cardápio fica no ar sem custo de hospedagem. Nada entra no ar sem a sua aprovação." },
     { id: "catalogo_mensal", secao: "cat", nome: "Cuidado do Catálogo", mensal: 290, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 460 por mês.",
-      desc: "Para quem já tem o Catálogo Pronto: até 10 trocas por mês (1 troca = mudar um item: preço, nome, descrição, foto ou disponibilidade), 1 post do produto da semana e relatório dos produtos mais vistos. Nada entra no ar sem a sua aprovação." }
+      desc: "Para quem já tem o Catálogo Pronto: até 10 trocas por mês (1 troca = mudar um item: preço, nome, descrição, foto ou disponibilidade), 1 post do produto da semana e relatório dos produtos mais vistos. O catálogo fica no ar sem custo de hospedagem. Nada entra no ar sem a sua aprovação." }
   ];
   /* Planos de Gestão que entram na campanha de Black Friday (a Proteção das contas de bônus vale só para eles). */
   var GESTAO = ["essencial", "padrao", "completa"];
@@ -87,7 +95,7 @@
     { id: "livro", marca: "pc", nome: "Livro pronto", plus: "plus_livro", desc: "Revisão, capa, diagramação, publicação e divulgação." },
     { id: "produto_digital", marca: "pc", nome: "Produto digital e curso online", desc: "Roteiro, gravação e edição das aulas, capa e materiais do curso ou do produto. A plataforma (Hotmart ou outra) e as vendas ficam no nome do autor; a área de cursos pode ser montada pela Zethic, em parceria." },
     { id: "protecao", marca: "ze", nome: "Proteção das contas da equipe inteira", plus: "plus_protecao", desc: "Mais de 3 contas ou a equipe toda. Feita pela Zethic, em parceria. Sem senha." },
-    { id: "mentoria", marca: "jg", nome: "Mentoria e consultoria em IA", plus: "plus_mentoria", desc: "Você aprende a fazer com IA, no seu projeto. Com Jéssica Gessoli." },
+    { id: "mentoria", marca: "jg", nome: "Mentoria e consultoria em IA", plus: "plus_mentoria", desc: "Você aprende a fazer com IA, no seu projeto, como montar o seu fluxo de edição de vídeo. Com Jéssica Gessoli." },
     { id: "tech", marca: "ze", nome: "Site, app, automação e bot de WhatsApp", plus: "plus_site", desc: "Feitos pela Zethic, em parceria. Atendimento e dados das redes num lugar só." },
     { id: "blog", marca: "ze", nome: "Blog que publica sozinho", desc: "Feito pela Zethic, em parceria: área de blog no site do seu Negócio, com textos programados que entram no ar sozinhos na data. Implantação a partir de R$ 1.500 (preço de fundador); a proposta confirma se o seu site é compatível." },
     { id: "licenca", marca: "pc", nome: "Licença do método de produção", desc: "Para produtoras e agências: o fluxo de produção da Pode Curtir, com treino de 8 horas da equipe, modelos e listas de conferência. A partir de R$ 2.400 por ano (preço de fundador); renovação anual de R$ 1.200." }
@@ -105,7 +113,7 @@
     { id: "plus_recuperacao", marca: "ze", nome: "Recuperação de conta", preco: 400, avulso: true, secao: "contas", prazo: "Data combinada depois do pagamento",
       desc: "1 hora a distância, para conta invadida ou bloqueada, pelos canais oficiais da plataforma. A decisão de devolver a conta é da plataforma; por isso, não há garantia de recuperação." },
     { id: "plus_mentoria", marca: "jg", nome: "Mentoria em IA · 1 hora", preco: 400, avulso: true, secao: "conteudo", prazo: "Data combinada depois do pagamento",
-      desc: "Por videochamada, nas ferramentas de IA que você já tem. Você aprende fazendo, no seu projeto." },
+      desc: "Por videochamada, nas ferramentas de IA que você já tem. Você aprende fazendo, no seu projeto. Exemplo: montar o seu fluxo de edição de vídeo com IA." },
     { id: "plus_site", marca: "ze", nome: "Site Essencial", preco: 3000, parcelas: 3, em: "no", fundador: true, prazo: "Prazo combinado por escrito depois do briefing",
       desc: "Site de uma página com apresentação e serviços, botão de WhatsApp, formulário, mapa e cadastro no Google. Domínio e hospedagem ficam no nome do seu Negócio, à parte. Preço de fundador para os 3 primeiros clientes." }
   ];
@@ -119,6 +127,7 @@
     diag_esp: "Para saber o que ajustar antes de investir em mais conteúdo.",
     video_presenca: "Para gravar com naturalidade e perder menos tempo em cada gravação.",
     acabamento: "Para o vídeo que você já tem prender a atenção nos primeiros segundos.",
+    conversa: "Para uma boa conversa virar vídeo para as redes, sem você editar.",
     essencial: "Para a sua rede ficar ativa todo mês sem você parar de atender.",
     padrao: "Para mostrar o seu trabalho em vídeo toda semana.",
     completa: "Para estar em 3 redes sem montar uma equipe.",
