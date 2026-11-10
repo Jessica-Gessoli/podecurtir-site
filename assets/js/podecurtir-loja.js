@@ -473,6 +473,12 @@
      #duvidas, no cabeçalho ou no rodapé) volta à loja antes de rolar, porque esses trechos ficam dentro da vista da loja. */
   function irPara(hash) {
     var alvo = hash && hash.length > 1 ? document.getElementById(hash.slice(1)) : null;
+    /* Link para uma seção escondida pelo foco do tipo de Negócio (ex.: #t-contas): mostra a loja inteira e rola até ela. */
+    var escondida = alvo && alvo.closest ? alvo.closest("section.secao[hidden]") : null;
+    if (escondida && $("vista-loja").contains(escondida)) {
+      verTudo = true; focar();
+      if (!$("vista-loja").hidden) { alvo.scrollIntoView(); return true; }
+    }
     if (!alvo || !$("vista-loja").contains(alvo) || !$("vista-loja").hidden) return false;
     mostrar("loja");
     alvo.scrollIntoView();
