@@ -20,6 +20,8 @@
      Links de cardapio, cardapio_mensal e portfolio criados pela Jéssica em 09/11/2026 ("Pergunte ao cliente": Pix, boleto ou cartão à vista).
      10/11/2026: traducao (Tradução do cardápio, R$ 300), catalogo (Catálogo Pronto, R$ 1.500) e catalogo_mensal
      (Cuidado do Catálogo, R$ 290/mês) entram na loja com os links criados pela Jéssica em 09/11/2026.
+     10/11/2026: conversa (Vídeo de conversa · 1 Reel, R$ 450, avulsa, limite de 3 vendas: vagas de fundador).
+       Vazio até a Jéssica criar o link no Asaas ("pagamento em configuração").
    PRECO_AJUSTE: preço atual do Ajuste de Perfil (500 do 1º ao 3º cliente, 750 do 4º ao 6º, 1200 a partir do 7º).
      Ao trocar o preço, troque também ASAAS_LINKS.ajuste pelo link do novo valor.
    VAGAS_500_RESTANTES: número de vagas que ainda restam a R$ 500 (0 a 3). null = não mostra contador.
@@ -59,7 +61,8 @@ window.PODECURTIR = {
     portfolio: "https://www.asaas.com/000/c/e4x0doisfcrifhv3",
     traducao: "https://www.asaas.com/000/c/3ekakcujuy6c6i5z",
     catalogo: "https://www.asaas.com/000/c/fe4h3vg1sbr7v9z7",
-    catalogo_mensal: "https://www.asaas.com/000/c/4ewi5pnx43l09jko"
+    catalogo_mensal: "https://www.asaas.com/000/c/4ewi5pnx43l09jko",
+    conversa: ""
   },
   PRECO_AJUSTE: 500,
   VAGAS_500_RESTANTES: null,
