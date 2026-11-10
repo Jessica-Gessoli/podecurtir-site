@@ -4,7 +4,7 @@
    com assinatura. O WhatsApp fica para orçamento.
    Decisão de 04/11/2026 (Ficha v1.17): "plus" no fechamento do pedido. Com um serviço pago no pedido, o cliente pode
    marcar plus de escopo fechado: sessão de fotos de 1 hora (R$ 500), capa e diagramação do e-book (R$ 1.500),
-   proteção das contas e mentoria em IA de 1 hora com Jéssica Gessoli (R$ 400 cada) e Site Essencial da Zethic
+   proteção das contas (R$ 400) e mentoria em IA de 1 hora com Jéssica Gessoli (R$ 300 desde 10/11/2026; antes R$ 400) e Site Essencial da Zethic
    (R$ 3.000, preço de fundador, até 3x no cartão). Os feitos em parceria aparecem em linha separada, com o nome de
    quem faz; o contato continua sendo a Pode Curtir. Trabalhos maiores seguem como pedido de proposta.
    Pagamento pelo link do Asaas de cada item (ASAAS_LINKS em podecurtir-config.js). Com vários itens pagos,
@@ -59,7 +59,7 @@
        (instalável pelo navegador, sem loja de apps) são feitos pela Zethic, em parceria (regra de 28/10: tecnologia é da Zethic). */
     { id: "cardapio", secao: "rest", nome: "Cardápio Pronto", preco: 1500, prazo: "10 dias úteis", fundador: true,
       depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.400.",
-      desc: "Até 30 itens: textos dos pratos, categorias, preços e alérgenos que você informar. Cardápio no celular, que abre pelo QR code e pode ser instalado na tela como um app, com QR code para mesas e balcão, cardápio impresso para a entrada (PDF pronto para a gráfica, com os mesmos preços), botão de pedido pelo WhatsApp sem taxa por pedido e link no Instagram e no Perfil da Empresa no Google. 12 meses no ar incluídos. Página e app feitos pela Zethic, em parceria." },
+      desc: "Você não monta nada: a Pode Curtir escreve, organiza e publica o cardápio. Até 30 itens: textos dos pratos, categorias, preços e alérgenos que você informar. Cardápio no celular, que abre pelo QR code e pode ser instalado na tela como um app, com QR code para mesas e balcão, cardápio impresso para a entrada (PDF pronto para a gráfica, com os mesmos preços), botão de pedido pelo WhatsApp sem taxa por pedido e link no Instagram e no Perfil da Empresa no Google. 12 meses no ar incluídos. Página e app feitos pela Zethic, em parceria." },
     /* 10/11/2026 (Jéssica): itens com link no Asaas criados em 09/11/2026. Tradução junto do cardápio; catálogo para
        quem vende produto ou serviço (doceria, salão, loja), no mesmo modelo do cardápio, com a Zethic em parceria. */
     /* 10/11/2026 (Jéssica, por benchmark): 30 itens nos dois idiomas dão cerca de 1.500 palavras, menos de um dia de
@@ -112,7 +112,7 @@
       desc: "1 hora a distância, até 3 contas do Negócio: verificação em duas etapas, e-mail e telefone de recuperação, revisão de acessos e acesso de parceiro, sem senha. Conta já invadida ou bloqueada: Recuperação de conta." },
     { id: "plus_recuperacao", marca: "ze", nome: "Recuperação de conta", preco: 400, avulso: true, secao: "contas", prazo: "Data combinada depois do pagamento",
       desc: "1 hora a distância, para conta invadida ou bloqueada, pelos canais oficiais da plataforma. A decisão de devolver a conta é da plataforma; por isso, não há garantia de recuperação." },
-    { id: "plus_mentoria", marca: "jg", nome: "Mentoria em IA · 1 hora", preco: 400, avulso: true, secao: "conteudo", prazo: "Data combinada depois do pagamento",
+    { id: "plus_mentoria", marca: "jg", nome: "Mentoria em IA · 1 hora", preco: 300, avulso: true, secao: "conteudo", prazo: "Data combinada depois do pagamento",
       desc: "Por videochamada, nas ferramentas de IA que você já tem. Você aprende fazendo, no seu projeto. Exemplo: montar o seu fluxo de edição de vídeo com IA." },
     { id: "plus_site", marca: "ze", nome: "Site Essencial", preco: 3000, parcelas: 3, em: "no", fundador: true, prazo: "Prazo combinado por escrito depois do briefing",
       desc: "Site de uma página com apresentação e serviços, botão de WhatsApp, formulário, mapa e cadastro no Google. Domínio e hospedagem ficam no nome do seu Negócio, à parte. Preço de fundador para os 3 primeiros clientes." }
