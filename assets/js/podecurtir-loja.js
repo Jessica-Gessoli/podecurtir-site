@@ -53,7 +53,15 @@
        (instalável pelo navegador, sem loja de apps) são feitos pela Zethic, em parceria (regra de 28/10: tecnologia é da Zethic). */
     { id: "cardapio", secao: "rest", nome: "Cardápio Pronto", preco: 1500, prazo: "10 dias úteis", fundador: true,
       depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.400.",
-      desc: "Até 30 itens: textos dos pratos, categorias, preços e alérgenos que você informar. Cardápio no celular, que abre pelo QR code e pode ser instalado na tela como um app, com QR code para mesas e balcão, cardápio impresso para a entrada (PDF pronto para a gráfica, com os mesmos preços), botão de pedido pelo WhatsApp sem taxa por pedido e link no Instagram e no Perfil da Empresa no Google. 12 meses no ar incluídos. Página e app feitos pela Zethic, em parceria." }
+      desc: "Até 30 itens: textos dos pratos, categorias, preços e alérgenos que você informar. Cardápio no celular, que abre pelo QR code e pode ser instalado na tela como um app, com QR code para mesas e balcão, cardápio impresso para a entrada (PDF pronto para a gráfica, com os mesmos preços), botão de pedido pelo WhatsApp sem taxa por pedido e link no Instagram e no Perfil da Empresa no Google. 12 meses no ar incluídos. Página e app feitos pela Zethic, em parceria." },
+    /* 10/11/2026 (Jéssica): itens com link no Asaas criados em 09/11/2026. Tradução junto do cardápio; catálogo para
+       quem vende produto ou serviço (doceria, salão, loja), no mesmo modelo do cardápio, com a Zethic em parceria. */
+    { id: "traducao", secao: "rest", nome: "Tradução do cardápio · inglês e espanhol", preco: 300, prazo: "10 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 480.",
+      desc: "Para quem tem ou leva junto o Cardápio Pronto: o cardápio também em inglês e espanhol, com nomes, descrições e categorias dos pratos (até 30 itens), para atender turistas sem traduzir na hora." },
+    { id: "catalogo", secao: "cat", nome: "Catálogo Pronto", preco: 1500, prazo: "10 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.400.",
+      desc: "Até 30 itens com nome, descrição, preço e foto que você enviar. Catálogo no celular, que abre pelo QR code e pelo link na bio, com botão de pedido pelo WhatsApp sem taxa por pedido e link no Instagram e no Perfil da Empresa no Google. 12 meses no ar incluídos. Página e app feitos pela Zethic, em parceria." }
   ];
   var PLANOS = [
     { id: "essencial", nome: "Gestão Essencial", mensal: 1500, depois: "Preço de fundador. A partir do 4º cliente, R$ 2.400 por mês.", desc: "1 rede, 12 posts por mês e relatório mensal." },
@@ -68,7 +76,9 @@
     { id: "esp_portavozes", secao: "esp", nome: "Programa de porta-vozes · 2 porta-vozes", mensal: 5800, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 9.200 por mês.",
       desc: "Para empresas: posts e roteiros de vídeo para 2 líderes, com calendário e aprovação numa rotina só. Mais porta-vozes por proposta: 10% de desconto a partir do 3º e 15% a partir do 5º." },
     { id: "cardapio_mensal", secao: "rest", nome: "Cuidado do Cardápio", mensal: 290, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 460 por mês.",
-      desc: "Para quem já tem o Cardápio Pronto: até 10 trocas por mês (1 troca = mudar um item: preço, nome, descrição, foto ou disponibilidade), 1 post do prato da semana e relatório dos pratos mais vistos. O cardápio fica no ar sem custo de hospedagem. Nada entra no ar sem a sua aprovação." }
+      desc: "Para quem já tem o Cardápio Pronto: até 10 trocas por mês (1 troca = mudar um item: preço, nome, descrição, foto ou disponibilidade), 1 post do prato da semana e relatório dos pratos mais vistos. O cardápio fica no ar sem custo de hospedagem. Nada entra no ar sem a sua aprovação." },
+    { id: "catalogo_mensal", secao: "cat", nome: "Cuidado do Catálogo", mensal: 290, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 460 por mês.",
+      desc: "Para quem já tem o Catálogo Pronto: até 10 trocas por mês (1 troca = mudar um item: preço, nome, descrição, foto ou disponibilidade), 1 post do produto da semana e relatório dos produtos mais vistos. Nada entra no ar sem a sua aprovação." }
   ];
   /* Planos de Gestão que entram na campanha de Black Friday (a Proteção das contas de bônus vale só para eles). */
   var GESTAO = ["essencial", "padrao", "completa"];
@@ -118,6 +128,9 @@
     esp_portavozes: "Para os líderes da empresa aparecerem com frequência, sem travar a agenda.",
     cardapio: "Para o cliente ver o cardápio no celular e pedir pelo WhatsApp, sem taxa por pedido.",
     cardapio_mensal: "Para preço novo e prato novo entrarem no ar sem você mexer no cardápio.",
+    traducao: "Para o turista entender o cardápio e pedir sem ajuda.",
+    catalogo: "Para o cliente ver o que você vende no celular e pedir pelo WhatsApp, sem taxa por pedido.",
+    catalogo_mensal: "Para preço novo e produto novo entrarem no ar sem você mexer no catálogo.",
     plus_livro: "Para o seu texto virar um e-book pronto para vender ou presentear.",
     plus_mentoria: "Para você fazer com IA, no seu projeto, com alguém do lado.",
     plus_protecao: "Para as contas do Negócio ficarem mais difíceis de invadir.",
@@ -128,17 +141,17 @@
   /* Tipo de Negócio (06/11/2026): sugestão de por onde começar, a partir das personas de clientes (hipótese até as entrevistas). */
   var TIPOS = [
     { id: "doceria", nome: "Doceria ou confeitaria", proj: ["ajuste"], plano: null, plus: ["plus_gravacao"], prop: [],
-      txt: "Comece pelo <strong>Ajuste de Perfil</strong>: bio que diz o que você vende, cardápio nos destaques e botão de WhatsApp para encomendar. Se as fotos do celular não mostram o capricho dos doces, some a <strong>sessão de fotos de 1 hora</strong> no fechamento do pedido." },
+      txt: "Comece pelo <strong>Ajuste de Perfil</strong>: bio que diz o que você vende, cardápio nos destaques e botão de WhatsApp para encomendar. Se as fotos do celular não mostram o capricho dos doces, some a <strong>sessão de fotos de 1 hora</strong> no fechamento do pedido.", foco: ["t-perfil", "t-cat", "t-planos", "t-contas", "t-propostas"] },
     { id: "salao", nome: "Salão ou estúdio de beleza", proj: [], plano: "padrao", plus: [], prop: [], alt: ["arrumado"],
-      txt: "A <strong>Gestão Padrão</strong> tem 4 Reels por mês para mostrar o seu trabalho sem você parar de atender. Prefere sem mensalidade? O <strong>Perfil Arrumado</strong> é um projeto com começo, meio e fim." },
+      txt: "A <strong>Gestão Padrão</strong> tem 4 Reels por mês para mostrar o seu trabalho sem você parar de atender. Prefere sem mensalidade? O <strong>Perfil Arrumado</strong> é um projeto com começo, meio e fim.", foco: ["t-perfil", "t-cat", "t-planos", "t-contas", "t-propostas"] },
     { id: "consultorio", nome: "Consultório de saúde", proj: ["arrumado"], plano: null, plus: [], prop: ["gravacao"],
-      txt: "O <strong>Perfil Arrumado</strong> organiza o seu perfil com discrição, e o <strong>ensaio de fotos</strong> sai por proposta. Antes do primeiro post, você confirma a regra de publicidade do seu conselho profissional. Nada de foto, relato ou dado de paciente." },
+      txt: "O <strong>Perfil Arrumado</strong> organiza o seu perfil com discrição, e o <strong>ensaio de fotos</strong> sai por proposta. Antes do primeiro post, você confirma a regra de publicidade do seu conselho profissional. Nada de foto, relato ou dado de paciente.", foco: ["t-perfil", "t-planos", "t-contas", "t-propostas"] },
     { id: "especialista", nome: "Especialista, consultor ou palestrante", proj: ["diag_esp"], plano: null, plus: [], prop: [],
-      txt: "Comece pelo <strong>Diagnóstico de marca de especialista</strong>: o que você já tem, quem já trabalha com você e o plano de 30 dias. Se você já paga produtora e mentora e não quer mais coordenar todo mundo, a <strong>Gestão de marca de especialista</strong> cuida de tudo." },
+      txt: "Comece pelo <strong>Diagnóstico de marca de especialista</strong>: o que você já tem, quem já trabalha com você e o plano de 30 dias. Se você já paga produtora e mentora e não quer mais coordenar todo mundo, a <strong>Gestão de marca de especialista</strong> cuida de tudo.", foco: ["t-esp", "t-perfil", "t-conteudo", "t-propostas"] },
     { id: "restaurante", nome: "Restaurante, lanchonete ou bar", proj: ["cardapio"], plano: null, plus: ["plus_gravacao"], prop: [],
-      txt: "Comece pelo <strong>Cardápio Pronto</strong>: cardápio no celular, QR code nas mesas e pedido pelo WhatsApp, sem taxa por pedido. Se as fotos dos pratos não mostram o capricho da cozinha, some a <strong>sessão de fotos de 1 hora</strong> no fechamento do pedido. Depois, o <strong>Cuidado do Cardápio</strong> mantém preços e pratos em dia." },
+      txt: "Comece pelo <strong>Cardápio Pronto</strong>: cardápio no celular, QR code nas mesas e pedido pelo WhatsApp, sem taxa por pedido. Se as fotos dos pratos não mostram o capricho da cozinha, some a <strong>sessão de fotos de 1 hora</strong> no fechamento do pedido. Depois, o <strong>Cuidado do Cardápio</strong> mantém preços e pratos em dia.", foco: ["t-rest", "t-perfil", "t-contas", "t-propostas"] },
     { id: "cozinha_delivery", nome: "Cozinha de delivery (em casa)", proj: ["cardapio"], plano: null, plus: ["plus_gravacao"], prop: [],
-      txt: "Sem salão e sem balcão? O <strong>Cardápio Pronto</strong> vira o seu link de pedidos: fica na bio do Instagram e na mensagem de saudação do WhatsApp, e o cliente escolhe, vê o total e manda o pedido montado, sem taxa por pedido. O exemplo de delivery está na seção para restaurantes, logo abaixo. Depois, o <strong>Cuidado do Cardápio</strong> mantém preços e pratos em dia." },
+      txt: "Sem salão e sem balcão? O <strong>Cardápio Pronto</strong> vira o seu link de pedidos: fica na bio do Instagram e na mensagem de saudação do WhatsApp, e o cliente escolhe, vê o total e manda o pedido montado, sem taxa por pedido. O exemplo de delivery está na seção para restaurantes, logo abaixo. Depois, o <strong>Cuidado do Cardápio</strong> mantém preços e pratos em dia.", foco: ["t-rest", "t-perfil", "t-contas", "t-propostas"] },
     { id: "outro", nome: "Outro Negócio", proj: [], plano: null, plus: [], prop: [],
       txt: "Veja os três níveis do Perfil Pronto logo abaixo. Se o seu caso for diferente, peça proposta, sem compromisso." }
   ];
@@ -150,7 +163,18 @@
     if (tipoItem === "proj") return tem(t.proj, id) || tem(t.alt || [], id);
     return tem(t[tipoItem] || [], id);
   }
+  /* 10/11/2026 (Jéssica): escolher o tipo de Negócio mostra só as seções que servem para ele (foco), com um botão
+     para ver tudo. "Outro Negócio" e quem não escolhe veem a loja inteira. */
+  var verTudo = false;
+  function focar() {
+    var t = tipoAtual(), foco = t && t.foco && !verTudo ? t.foco : null;
+    Array.prototype.forEach.call(document.querySelectorAll(".layout section.secao[aria-labelledby]"), function (sec) {
+      sec.hidden = !!foco && foco.indexOf(sec.getAttribute("aria-labelledby")) < 0;
+    });
+    $("foco").hidden = !foco;
+  }
   function tipos() {
+    focar();
     $("tipos-opcoes").innerHTML = TIPOS.map(function (t) {
       return '<button class="pedir" type="button" data-tipo="' + t.id + '" aria-pressed="' + (tipo === t.id) + '">' + t.nome + "</button>";
     }).join("");
@@ -233,6 +257,7 @@
     $("grade-planos").innerHTML = daSecao(PLANOS, "").map(cardPlano).join("");
     $("grade-rest").innerHTML = daSecao(PROJ, "rest").map(cardProj).join("") + daSecao(PLANOS, "rest").map(cardPlano).join("");
     $("grade-esp").innerHTML = daSecao(PROJ, "esp").map(cardProj).join("") + daSecao(PLANOS, "esp").map(cardPlano).join("");
+    $("grade-cat").innerHTML = daSecao(PROJ, "cat").map(cardProj).join("") + daSecao(PLANOS, "cat").map(cardPlano).join("");
     $("lista-propostas").innerHTML = PROPOSTAS.map(function (a) {
       var on = tem(cart.prop, a.id);
       var x = a.plus ? plusDe(a.plus) : null;
@@ -321,9 +346,11 @@
     var tb = e.target.closest("[data-tipo]");
     if (tb) {
       tipo = tipo === tb.dataset.tipo ? null : tb.dataset.tipo;
+      verTudo = false;
       if (tipo) medir("EscolheuTipo", { tipo: tipo });
       tudo(); return;
     }
+    if (e.target.closest("#ver-tudo")) { verTudo = true; medir("VerTudo", { tipo: tipo || "" }); focar(); return; }
     if (e.target.closest("#usar-sugestao")) {
       var t = tipoAtual();
       cart = { proj: t.proj.slice(), plano: t.plano, prop: t.prop.slice(), plus: t.plus.slice() };
@@ -446,6 +473,12 @@
      #duvidas, no cabeçalho ou no rodapé) volta à loja antes de rolar, porque esses trechos ficam dentro da vista da loja. */
   function irPara(hash) {
     var alvo = hash && hash.length > 1 ? document.getElementById(hash.slice(1)) : null;
+    /* Link para uma seção escondida pelo foco do tipo de Negócio (ex.: #t-contas): mostra a loja inteira e rola até ela. */
+    var escondida = alvo && alvo.closest ? alvo.closest("section.secao[hidden]") : null;
+    if (escondida && $("vista-loja").contains(escondida)) {
+      verTudo = true; focar();
+      if (!$("vista-loja").hidden) { alvo.scrollIntoView(); return true; }
+    }
     if (!alvo || !$("vista-loja").contains(alvo) || !$("vista-loja").hidden) return false;
     mostrar("loja");
     alvo.scrollIntoView();

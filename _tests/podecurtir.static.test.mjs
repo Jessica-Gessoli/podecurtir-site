@@ -22,12 +22,12 @@ test("visor da Pode Curtir, sem endosso da Zethic", () => {
 
 test("categoria clara, frente de redes sociais e preço da loja", () => {
   // 25/10/2026: o mercado é o Brasil inteiro, sem "em Campinas" no título. 28/10/2026: sem segurança na Pode Curtir.
-  assert.match(h, /<title>Pode Curtir \| Produtora de foto, vídeo e redes sociais<\/title>/);
+  assert.match(h, /<title>Pode Curtir \| Perfil, redes sociais, foto e vídeo com preço fechado<\/title>/);
   assert.match(h, /<li id="redes">[\s\S]*Perfil Pronto[\s\S]*Gestão mensal/);
   assert.doesNotMatch(h, /Conta protegida|[Ss]eguran[çc]a|senha/);
   // 07/11/2026: a loja fica na própria página inicial (#loja); /loja/ leva para lá com o mesmo trecho.
   assert.match(h, /id="loja"/);
-  assert.match(h, /<a class="btn cheio" href="#loja"[^>]*>Ver preços e comprar<\/a>/);
+  assert.match(h, /<a class="btn cheio" href="#loja"[^>]*>Escolher pelo meu Negócio<\/a>/);
 });
 
 test("endereço próprio: canônico e domínio", () => {

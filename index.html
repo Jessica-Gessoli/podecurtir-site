@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pode Curtir | Produtora de foto, vídeo e redes sociais</title>
+<title>Pode Curtir | Perfil, redes sociais, foto e vídeo com preço fechado</title>
 <meta name="description" content="Perfil pronto para vender e gestão das suas redes com preço fechado: escolha, pague online por Pix, boleto ou cartão e responda o briefing. Foto e vídeo sob proposta.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://connect.facebook.net https://www.googletagmanager.com; img-src 'self' https://www.facebook.com https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; style-src 'self'; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://www.facebook.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'">
 <meta name="color-scheme" content="light">
@@ -11,7 +11,7 @@
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pode Curtir">
-<meta property="og:title" content="Pode Curtir | Produtora de foto, vídeo e redes sociais">
+<meta property="og:title" content="Pode Curtir | Perfil, redes sociais, foto e vídeo com preço fechado">
 <meta property="og:description" content="Perfil pronto e gestão das suas redes com preço fechado, compra online. Foto e vídeo sob proposta.">
 <meta property="og:url" content="https://podecurtir.zethic.net/">
 <meta property="og:locale" content="pt_BR">
@@ -72,9 +72,9 @@
       <div class="visor">
         <p class="rec">Gravando</p>
         <h1>Seu perfil pronto para vender, com preço fechado.</h1>
-        <p class="lede">Para docerias, salões, consultórios e especialistas em todo o Brasil. Você escolhe, paga online e responde o briefing; a gente arruma o perfil e cuida das redes, e nada vai ao ar sem o seu ok. Foto e vídeo sob proposta.</p>
+        <p class="lede">Para docerias, salões, consultórios, restaurantes e especialistas em todo o Brasil. Diga qual é o seu Negócio e veja só o que serve para ele. Você escolhe, paga online e responde o briefing; nada vai ao ar sem o seu ok. Foto e vídeo sob proposta.</p>
         <div class="actions">
-          <a class="btn cheio" href="#loja" data-evento="ver_precos">Ver preços e comprar</a>
+          <a class="btn cheio" href="#loja" data-evento="ver_precos">Escolher pelo meu Negócio</a>
           <a class="btn contorno" href="https://zethic.net/fale?utm_source=podecurtir" data-evento="whatsapp">Conversar no WhatsApp</a>
         </div>
         <ul class="selos" aria-label="Garantias">
@@ -102,6 +102,7 @@
         <strong id="t-tipo">Qual é o seu Negócio? A gente mostra por onde começar.</strong>
         <div class="tipos-opcoes" id="tipos-opcoes"></div>
         <div class="sugestao" id="sugestao" hidden></div>
+        <p class="foco" id="foco" hidden>Mostrando o que serve para o seu Negócio. <button class="pedir" type="button" id="ver-tudo">Ver todos os serviços</button></p>
       </div>
     </div>
 
@@ -118,6 +119,10 @@
         <section class="secao" aria-labelledby="t-rest">
           <div class="secao-cab"><h2 id="t-rest">Para restaurantes, lanchonetes e bares</h2><p>Cardápio no celular, QR code nas mesas e pedido pelo WhatsApp, sem taxa por pedido. Também para cozinhas de delivery, sem salão: o cardápio vira o link de pedidos no WhatsApp e no Instagram. A página e o app são feitos pela Zethic, em parceria; o seu contato continua sendo a Pode Curtir. <a href="/cardapio/exemplo/" data-evento="ver_cardapio_exemplo">Veja um cardápio de exemplo</a> ou <a href="/cardapio/exemplo-delivery/" data-evento="ver_cardapio_exemplo_delivery">um de delivery</a>.</p></div>
           <div class="grade" id="grade-rest"></div>
+        </section>
+        <section class="secao" aria-labelledby="t-cat">
+          <div class="secao-cab"><h2 id="t-cat">Catálogo no celular, para lojas, docerias e salões</h2><p>O que você vende no celular, com QR code e pedido pelo WhatsApp, sem taxa por pedido. Mesmo modelo do cardápio: a página e o app são feitos pela Zethic, em parceria; o seu contato continua sendo a Pode Curtir.</p></div>
+          <div class="grade" id="grade-cat"></div>
         </section>
         <section class="secao" aria-labelledby="t-esp">
           <div class="secao-cab"><h2 id="t-esp">Para especialistas, produtoras e empresas</h2><p>Para quem já tem conhecimento, oferta e fornecedores e quer parar de coordenar cada etapa. Planos mensais com mínimo de 3 meses. Preço de fundador em troca de depoimento.</p></div>
