@@ -185,6 +185,22 @@ legend{font-size:1.25rem;font-weight:700;padding:0;margin-bottom:.75rem}
 .leve-junto .por{background:#00E5FF;color:#02041A}
 .leve-junto .por[aria-pressed="true"]{background:#FFFFFF;color:#02041A;box-shadow:inset 0 0 0 2px #00E5FF}
 .leve-junto .por:focus-visible{outline:3px solid #FFFFFF;outline-offset:2px}
+/* Propostas dentro das faixas de parceria (10/11/2026) */
+.leve-junto .leve-sub{margin:1.5rem 0 .4rem;font-weight:700;color:#FFFFFF}
+.leve-junto .lista-propostas{border-top-color:rgba(167,178,209,.22)}
+.leve-junto .proposta{border-bottom-color:rgba(167,178,209,.22)}
+.leve-junto .proposta strong{color:#FFFFFF}
+.leve-junto .proposta p{color:#A7B2D1}
+.leve-junto .proposta .plus-dica{color:#00E5FF}
+.leve-junto .pedir{border-color:#00E5FF;color:#00E5FF}
+.leve-junto .pedir[aria-pressed="true"]{background:#00E5FF;color:#02041A}
+.leve-junto .proposta .selo.ze{background:#00E5FF;color:#02041A}
+.leve-junto.jg .lista-propostas,.leve-junto.jg .proposta{border-color:rgba(201,216,207,.25)}
+.leve-junto.jg .proposta p{color:#C9D8CF}
+.leve-junto.jg .proposta .plus-dica{color:#D9B76E}
+.leve-junto.jg .pedir{border-color:#D9B76E;color:#D9B76E}
+.leve-junto.jg .pedir[aria-pressed="true"]{background:#D9B76E;color:#12352B}
+.leve-junto.jg .proposta .selo.jg{background:#D9B76E;color:#12352B}
 /* Bloco em parceria com a Jéssica Gessoli (10/11/2026): mesmo formato do bloco Zethic, com as cores da marca dela (verde-garrafa e latão) */
 .leve-junto.jg{background:#12352B;border-color:rgba(217,183,110,.55);box-shadow:0 0 0 4px rgba(217,183,110,.10)}
 .leve-junto.jg .secao-cab p{color:#C9D8CF}

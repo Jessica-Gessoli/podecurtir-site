@@ -90,15 +90,17 @@
   ];
   /* Planos de Gestão que entram na campanha de Black Friday (a Proteção das contas de bônus vale só para eles). */
   var GESTAO = ["essencial", "padrao", "completa"];
+  /* Pedir proposta (10/11/2026, Jéssica): agrupado por marca, na mesma ordem das faixas acima —
+     primeiro a Pode Curtir, depois o que é com a Jéssica Gessoli, por fim o que é com a Zethic. */
   var PROPOSTAS = [
     { id: "gravacao", marca: "pc", nome: "Sessão de fotos, ensaio e gravação de vídeo", plus: "plus_gravacao", desc: "Produto, ambiente ou retrato profissional; diária, evento ou sessão maior. O deslocamento entra na proposta." },
     { id: "livro", marca: "pc", nome: "Livro pronto", plus: "plus_livro", desc: "Revisão, capa, diagramação, publicação e divulgação." },
     { id: "produto_digital", marca: "pc", nome: "Produto digital e curso online", desc: "Roteiro, gravação e edição das aulas, capa e materiais do curso ou do produto. A plataforma (Hotmart ou outra) e as vendas ficam no nome do autor; a área de cursos pode ser montada pela Zethic, em parceria." },
-    { id: "protecao", marca: "ze", nome: "Proteção das contas da equipe inteira", plus: "plus_protecao", desc: "Mais de 3 contas ou a equipe toda. Feita pela Zethic, em parceria. Sem senha." },
+    { id: "licenca", marca: "pc", nome: "Licença do método de produção", desc: "Para produtoras e agências: o fluxo de produção da Pode Curtir, com treino de 8 horas da equipe, modelos e listas de conferência. A partir de R$ 2.400 por ano (preço de fundador); renovação anual de R$ 1.200." },
     { id: "mentoria", marca: "jg", nome: "Mentoria e consultoria em IA", plus: "plus_mentoria", desc: "Para mais de uma sessão ou para a equipe: você aprende a fazer com IA, no seu projeto. Com Jéssica Gessoli." },
+    { id: "protecao", marca: "ze", nome: "Proteção das contas da equipe inteira", plus: "plus_protecao", desc: "Mais de 3 contas ou a equipe toda. Feita pela Zethic, em parceria. Sem senha." },
     { id: "tech", marca: "ze", nome: "Site, app, automação e bot de WhatsApp", plus: "plus_site", desc: "Feitos pela Zethic, em parceria. Atendimento e dados das redes num lugar só." },
-    { id: "blog", marca: "ze", nome: "Blog que publica sozinho", desc: "Feito pela Zethic, em parceria: área de blog no site do seu Negócio, com textos programados que entram no ar sozinhos na data. Implantação a partir de R$ 1.500 (preço de fundador); a proposta confirma se o seu site é compatível." },
-    { id: "licenca", marca: "pc", nome: "Licença do método de produção", desc: "Para produtoras e agências: o fluxo de produção da Pode Curtir, com treino de 8 horas da equipe, modelos e listas de conferência. A partir de R$ 2.400 por ano (preço de fundador); renovação anual de R$ 1.200." }
+    { id: "blog", marca: "ze", nome: "Blog que publica sozinho", desc: "Feito pela Zethic, em parceria: área de blog no site do seu Negócio, com textos programados que entram no ar sozinhos na data. Implantação a partir de R$ 1.500 (preço de fundador); a proposta confirma se o seu site é compatível." }
   ];
   /* Plus do fechamento do pedido: escopo fechado e preço próprio. Só entram com um serviço pago no pedido,
      menos os marcados "avulso", que também se compram sozinhos: proteção e recuperação de conta (06/11/2026, seção "contas")
@@ -269,9 +271,19 @@
     $("grade-rest").innerHTML = daSecao(PROJ, "rest").map(cardProj).join("") + daSecao(PLANOS, "rest").map(cardPlano).join("");
     $("grade-esp").innerHTML = daSecao(PROJ, "esp").map(cardProj).join("") + daSecao(PLANOS, "esp").map(cardPlano).join("");
     $("grade-cat").innerHTML = daSecao(PROJ, "cat").map(cardProj).join("") + daSecao(PLANOS, "cat").map(cardPlano).join("");
-    $("lista-propostas").innerHTML = PROPOSTAS.map(function (a) {
+    /* 10/11/2026 (Jéssica): as propostas da Jéssica Gessoli e da Zethic saem do "Pedir proposta" e ficam dentro da faixa
+       de cada marca; no "Pedir proposta" ficam só as da Pode Curtir. */
+    $("lista-propostas").innerHTML = propostasDa("pc");
+    $("propostas-jg").innerHTML = propostasDa("jg");
+    $("propostas-ze").innerHTML = propostasDa("ze");
+  }
+
+  function propostasDa(marca) {
+    return PROPOSTAS.filter(function (a) { return a.marca === marca; }).map(function (a) {
       var on = tem(cart.prop, a.id);
       var x = a.plus ? plusDe(a.plus) : null;
+      /* Dentro da faixa da marca, o plus avulso já aparece logo acima, à venda: a dica não se repete. */
+      if (x && x.avulso && marca !== "pc") x = null;
       return '<div class="proposta' + (sugerido("prop", a.id) ? " sugerido" : "") + '"><div><span class="selo ' + a.marca + '">' + MARCA[a.marca] + "</span><strong>" + a.nome + "</strong><p>" + a.desc + "</p>" +
         (x ? '<p class="plus-dica">Ou como plus, no fechamento de um pedido: ' + x.nome + " por " + brl(x.preco) + ".</p>" : "") + "</div>" +
         '<button class="pedir" type="button" data-prop="' + a.id + '" aria-pressed="' + on + '">' + (on ? "Pedido · tirar" : "Quero uma proposta") + "</button></div>";
