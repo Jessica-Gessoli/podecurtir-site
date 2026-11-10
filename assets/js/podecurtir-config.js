@@ -16,7 +16,10 @@
      esp_news (R$ 1.200/mês) e esp_portavozes (R$ 5.800/mês), com limite de 3 vendas.
      Seção "Para restaurantes, lanchonetes e bares" (08/11/2026): cardapio (Cardápio Pronto, R$ 1.500, avulsa, limite de 3 vendas)
      e cardapio_mensal (Cuidado do Cardápio, R$ 290/mês, assinatura mensal, limite de 3 vendas). Vazios até os links do Asaas existirem.
-     portfolio (09/11/2026): Portfólio da empresa, R$ 1.200, avulsa, limite de 3 vendas (vagas de fundador). Vazio até o link existir.
+     portfolio (09/11/2026): Portfólio da empresa, R$ 1.200, avulsa, limite de 3 vendas (vagas de fundador).
+     Links de cardapio, cardapio_mensal e portfolio criados pela Jéssica em 09/11/2026 ("Pergunte ao cliente": Pix, boleto ou cartão à vista).
+     Também criados em 09/11/2026, para itens que ainda não estão na loja: traducao (R$ 300) https://www.asaas.com/000/c/3ekakcujuy6c6i5z,
+     catalogo (R$ 1.500) https://www.asaas.com/000/c/fe4h3vg1sbr7v9z7 e catalogo_mensal (R$ 290/mês) https://www.asaas.com/000/c/4ewi5pnx43l09jko.
    PRECO_AJUSTE: preço atual do Ajuste de Perfil (500 do 1º ao 3º cliente, 750 do 4º ao 6º, 1200 a partir do 7º).
      Ao trocar o preço, troque também ASAAS_LINKS.ajuste pelo link do novo valor.
    VAGAS_500_RESTANTES: número de vagas que ainda restam a R$ 500 (0 a 3). null = não mostra contador.
@@ -51,9 +54,9 @@ window.PODECURTIR = {
     esp_produtora: "https://www.asaas.com/000/c/u9z9xmhpvrih1djw",
     esp_news: "https://www.asaas.com/000/c/bwl1vrxgogd4gjf0",
     esp_portavozes: "https://www.asaas.com/000/c/5p56v1dqcbo9c7ru",
-    cardapio: "",
-    cardapio_mensal: "",
-    portfolio: ""
+    cardapio: "https://www.asaas.com/000/c/28hpw39ejqiye702",
+    cardapio_mensal: "https://www.asaas.com/000/c/u88t39zwkmx4mk18",
+    portfolio: "https://www.asaas.com/000/c/e4x0doisfcrifhv3"
   },
   PRECO_AJUSTE: 500,
   VAGAS_500_RESTANTES: null,
