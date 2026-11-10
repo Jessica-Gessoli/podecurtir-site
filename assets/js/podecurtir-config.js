@@ -6,7 +6,7 @@
      _pix (Pix ou boleto, à vista) e _cartao (só cartão, em até 3x e 6x sem juros). O parcelamento fica só no cartão.
      O link do Ajuste de Perfil a R$ 500 aceita 3 vendas (as vagas de fundador); depois ele fecha sozinho.
      Plus do fechamento do pedido (04/11/2026, Ficha v1.17): plus_gravacao (R$ 500), plus_livro (R$ 1.500),
-     plus_mentoria (R$ 400, Jéssica Gessoli), plus_protecao (R$ 400, Zethic desde 08/11/2026) e o Site Essencial da Zethic (R$ 3.000), com dois links:
+     plus_mentoria (R$ 300 desde 10/11/2026, Jéssica Gessoli), plus_protecao (R$ 400, Zethic desde 08/11/2026) e o Site Essencial da Zethic (R$ 3.000), com dois links:
      plus_site_pix e plus_site_cartao (até 3x). Os links do Site Essencial aceitam 3 vendas (vagas de fundador).
      plus_recuperacao (06/11/2026): Recuperação de conta, R$ 400, Zethic desde 08/11/2026. Link criado pela Jéssica em 08/11/2026
      ("Zethic · Recuperação de conta"): cobrança avulsa, sem limite, boleto com 2 dias úteis.
