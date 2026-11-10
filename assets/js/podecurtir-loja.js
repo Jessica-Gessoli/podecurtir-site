@@ -95,14 +95,15 @@
     { id: "livro", marca: "pc", nome: "Livro pronto", plus: "plus_livro", desc: "Revisão, capa, diagramação, publicação e divulgação." },
     { id: "produto_digital", marca: "pc", nome: "Produto digital e curso online", desc: "Roteiro, gravação e edição das aulas, capa e materiais do curso ou do produto. A plataforma (Hotmart ou outra) e as vendas ficam no nome do autor; a área de cursos pode ser montada pela Zethic, em parceria." },
     { id: "protecao", marca: "ze", nome: "Proteção das contas da equipe inteira", plus: "plus_protecao", desc: "Mais de 3 contas ou a equipe toda. Feita pela Zethic, em parceria. Sem senha." },
-    { id: "mentoria", marca: "jg", nome: "Mentoria e consultoria em IA", plus: "plus_mentoria", desc: "Você aprende a fazer com IA, no seu projeto, como montar o seu fluxo de edição de vídeo. Com Jéssica Gessoli." },
+    { id: "mentoria", marca: "jg", nome: "Mentoria e consultoria em IA", plus: "plus_mentoria", desc: "Para mais de uma sessão ou para a equipe: você aprende a fazer com IA, no seu projeto. Com Jéssica Gessoli." },
     { id: "tech", marca: "ze", nome: "Site, app, automação e bot de WhatsApp", plus: "plus_site", desc: "Feitos pela Zethic, em parceria. Atendimento e dados das redes num lugar só." },
     { id: "blog", marca: "ze", nome: "Blog que publica sozinho", desc: "Feito pela Zethic, em parceria: área de blog no site do seu Negócio, com textos programados que entram no ar sozinhos na data. Implantação a partir de R$ 1.500 (preço de fundador); a proposta confirma se o seu site é compatível." },
     { id: "licenca", marca: "pc", nome: "Licença do método de produção", desc: "Para produtoras e agências: o fluxo de produção da Pode Curtir, com treino de 8 horas da equipe, modelos e listas de conferência. A partir de R$ 2.400 por ano (preço de fundador); renovação anual de R$ 1.200." }
   ];
   /* Plus do fechamento do pedido: escopo fechado e preço próprio. Só entram com um serviço pago no pedido,
      menos os marcados "avulso", que também se compram sozinhos: proteção e recuperação de conta (06/11/2026, seção "contas")
-     e, desde 07/11/2026, capa e diagramação do e-book e mentoria em IA de 1 hora (seção "conteudo"). */
+     e, desde 07/11/2026, capa e diagramação do e-book (seção "conteudo"). Desde 10/11/2026, a mentoria de IA de 1 hora se chama
+     "Monte o seu fluxo com IA" e fica na seção própria "Aprenda a fazer com IA" (secao: "ia"), depois dos especialistas. */
   var PLUS = [
     { id: "plus_gravacao", marca: "pc", nome: "Sessão de fotos de 1 hora", preco: 500, prazo: "Edição pronta em até 14 dias depois da sessão",
       desc: "10 fotos editadas, em Campinas/SP. Fora de Campinas, o deslocamento é combinado antes e cobrado à parte." },
@@ -112,8 +113,8 @@
       desc: "1 hora a distância, até 3 contas do Negócio: verificação em duas etapas, e-mail e telefone de recuperação, revisão de acessos e acesso de parceiro, sem senha. Conta já invadida ou bloqueada: Recuperação de conta." },
     { id: "plus_recuperacao", marca: "ze", nome: "Recuperação de conta", preco: 400, avulso: true, secao: "contas", prazo: "Data combinada depois do pagamento",
       desc: "1 hora a distância, para conta invadida ou bloqueada, pelos canais oficiais da plataforma. A decisão de devolver a conta é da plataforma; por isso, não há garantia de recuperação." },
-    { id: "plus_mentoria", marca: "jg", nome: "Mentoria em IA · 1 hora", preco: 300, avulso: true, secao: "conteudo", prazo: "Data combinada depois do pagamento",
-      desc: "Por videochamada, nas ferramentas de IA que você já tem. Você aprende fazendo, no seu projeto. Exemplo: montar o seu fluxo de edição de vídeo com IA." },
+    { id: "plus_mentoria", marca: "jg", nome: "Monte o seu fluxo com IA · 1 hora", preco: 300, avulso: true, secao: "ia", prazo: "Data combinada depois do pagamento",
+      desc: "Por videochamada, no seu projeto e nas ferramentas de IA que você já usa: você sai com um fluxo que passa a repetir sem ajuda. Exemplo: editar os seus vídeos de conversa." },
     { id: "plus_site", marca: "ze", nome: "Site Essencial", preco: 3000, parcelas: 3, em: "no", fundador: true, prazo: "Prazo combinado por escrito depois do briefing",
       desc: "Site de uma página com apresentação e serviços, botão de WhatsApp, formulário, mapa e cadastro no Google. Domínio e hospedagem ficam no nome do seu Negócio, à parte. Preço de fundador para os 3 primeiros clientes." }
   ];
@@ -141,7 +142,7 @@
     catalogo: "Para o cliente ver o que você vende no celular e pedir pelo WhatsApp, sem taxa por pedido.",
     catalogo_mensal: "Para preço novo e produto novo entrarem no ar sem você mexer no catálogo.",
     plus_livro: "Para o seu texto virar um e-book pronto para vender ou presentear.",
-    plus_mentoria: "Para você fazer com IA, no seu projeto, com alguém do lado.",
+    plus_mentoria: "Para fazer sozinho, com IA, o que hoje depende de alguém.",
     plus_protecao: "Para as contas do Negócio ficarem mais difíceis de invadir.",
     plus_recuperacao: "Para tentar reaver a conta pelos canais oficiais, com quem conhece o caminho."
   };
@@ -156,7 +157,7 @@
     { id: "consultorio", nome: "Consultório de saúde", proj: ["arrumado"], plano: null, plus: [], prop: ["gravacao"],
       txt: "O <strong>Perfil Arrumado</strong> organiza o seu perfil com discrição, e o <strong>ensaio de fotos</strong> sai por proposta. Antes do primeiro post, você confirma a regra de publicidade do seu conselho profissional. Nada de foto, relato ou dado de paciente.", foco: ["t-perfil", "t-planos", "t-contas", "t-propostas"] },
     { id: "especialista", nome: "Especialista, consultor ou palestrante", proj: ["diag_esp"], plano: null, plus: [], prop: [],
-      txt: "Comece pelo <strong>Diagnóstico de marca de especialista</strong>: o que você já tem, quem já trabalha com você e o plano de 30 dias. Se você já paga produtora e mentora e não quer mais coordenar todo mundo, a <strong>Gestão de marca de especialista</strong> cuida de tudo.", foco: ["t-esp", "t-perfil", "t-conteudo", "t-propostas"] },
+      txt: "Comece pelo <strong>Diagnóstico de marca de especialista</strong>: o que você já tem, quem já trabalha com você e o plano de 30 dias. Se você já paga produtora e mentora e não quer mais coordenar todo mundo, a <strong>Gestão de marca de especialista</strong> cuida de tudo.", foco: ["t-esp", "t-perfil", "t-ia", "t-conteudo", "t-propostas"] },
     { id: "restaurante", nome: "Restaurante, lanchonete ou bar", proj: ["cardapio"], plano: null, plus: ["plus_gravacao"], prop: [],
       txt: "Comece pelo <strong>Cardápio Pronto</strong>: cardápio no celular, QR code nas mesas e pedido pelo WhatsApp, sem taxa por pedido. Se as fotos dos pratos não mostram o capricho da cozinha, some a <strong>sessão de fotos de 1 hora</strong> no fechamento do pedido. Depois, o <strong>Cuidado do Cardápio</strong> mantém preços e pratos em dia.", foco: ["t-rest", "t-perfil", "t-contas", "t-propostas"] },
     { id: "cozinha_delivery", nome: "Cozinha de delivery (em casa)", proj: ["cardapio"], plano: null, plus: ["plus_gravacao"], prop: [],
@@ -256,13 +257,14 @@
     function avulsos(secao) {
       return PLUS.filter(function (p) { return p.avulso && p.secao === secao; }).map(function (p) {
         var on = tem(cart.plus, p.id);
-        return '<article class="item"><h3>' + ((secao === "conteudo" || secao === "contas") && p.marca !== "pc" ? '<span class="selo ' + p.marca + '">' + MARCA[p.marca] + "</span>" : "") + p.nome + '</h3><p class="preco num">' + brl(p.preco) + "</p>" + beneficio(p) + "<p>" + p.desc + "</p>" +
+        return '<article class="item"><h3>' + ((secao === "conteudo" || secao === "contas" || secao === "ia") && p.marca !== "pc" ? '<span class="selo ' + p.marca + '">' + MARCA[p.marca] + "</span>" : "") + p.nome + '</h3><p class="preco num">' + brl(p.preco) + "</p>" + beneficio(p) + "<p>" + p.desc + "</p>" +
           '<dl class="meta"><div><dt>Quando</dt><dd>' + p.prazo + '</dd></div><div><dt>Pagamento</dt><dd>Integral: ' + formas(p) + "</dd></div></dl>" +
           '<button class="por" type="button" data-plus="' + p.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr no meu pedido") + "</button></article>";
       }).join("");
     }
     $("grade-contas").innerHTML = avulsos("contas");
     $("grade-conteudo").innerHTML = avulsos("conteudo");
+    $("grade-ia").innerHTML = avulsos("ia");
     $("grade-planos").innerHTML = daSecao(PLANOS, "").map(cardPlano).join("");
     $("grade-rest").innerHTML = daSecao(PROJ, "rest").map(cardProj).join("") + daSecao(PLANOS, "rest").map(cardPlano).join("");
     $("grade-esp").innerHTML = daSecao(PROJ, "esp").map(cardProj).join("") + daSecao(PLANOS, "esp").map(cardPlano).join("");
@@ -316,7 +318,7 @@
     });
     PLUS.forEach(function (p) {
       if (!tem(cart.plus, p.id) || !(temPrincipal() || p.avulso) || (p.id === "plus_protecao" && bonusValido())) return;
-      out.push('<li><span><span class="selo ' + p.marca + '">' + MARCA[p.marca] + "</span>" + p.nome + '</span><span class="num">' + brl(p.preco) + "</span><small>" + (p.avulso && !temPrincipal() ? (p.secao === "contas" ? "Leve junto · Zethic" : "Livro e IA") : "Plus") + " · pagamento integral · " + formas(p) + "</small>" +
+      out.push('<li><span><span class="selo ' + p.marca + '">' + MARCA[p.marca] + "</span>" + p.nome + '</span><span class="num">' + brl(p.preco) + "</span><small>" + (p.avulso && !temPrincipal() ? (p.secao === "contas" ? "Leve junto · Zethic" : p.secao === "ia" ? "Aprenda com IA" : "E-book") : "Plus") + " · pagamento integral · " + formas(p) + "</small>" +
         (comTirar ? '<button class="tirar" type="button" data-plus="' + p.id + '">Tirar</button>' : "") + "</li>");
     });
     PROPOSTAS.forEach(function (a) {
@@ -503,7 +505,7 @@
   function mensagem(t, d) {
     var l = ["Olá! Quero contratar pela loja da Pode Curtir:"];
     t.pagos.forEach(function (p) {
-      l.push("- " + (p.marca ? (temPrincipal() ? "Plus: " : (p.secao === "contas" ? "Leve junto (Zethic): " : "Livro e IA: ")) : "") + p.nome + (p.marca && p.marca !== "pc" ? ", " + COM[p.marca] : "") +
+      l.push("- " + (p.marca ? (temPrincipal() ? "Plus: " : (p.secao === "contas" ? "Leve junto (Zethic): " : p.secao === "ia" ? "Aprenda com IA: " : "E-book: ")) : "") + p.nome + (p.marca && p.marca !== "pc" ? ", " + COM[p.marca] : "") +
         " (" + brl(p.valor) + " hoje" + (p.parcelas ? ", " + comoPaga(p) : "") + ")");
     });
     PROPOSTAS.forEach(function (a) { if (tem(cart.prop, a.id)) l.push("- Proposta: " + a.nome + " (" + MARCA_NOME[a.marca] + ")"); });
