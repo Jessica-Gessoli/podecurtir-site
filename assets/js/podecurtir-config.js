@@ -62,6 +62,10 @@ window.PODECURTIR = {
     traducao: "https://www.asaas.com/000/c/3ekakcujuy6c6i5z",
     catalogo: "https://www.asaas.com/000/c/fe4h3vg1sbr7v9z7",
     catalogo_mensal: "https://www.asaas.com/000/c/4ewi5pnx43l09jko",
+    /* 11/11/2026: em configuração até a Jéssica criar os links (campanha R$ 900, anuncio R$ 450, relatorio R$ 390/mês). */
+    campanha: "",
+    anuncio: "",
+    relatorio: "",
     conversa: "https://www.asaas.com/000/c/wf7ewn1yu7e49okd"
   },
   PRECO_AJUSTE: 500,
