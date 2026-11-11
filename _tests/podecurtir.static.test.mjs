@@ -17,7 +17,9 @@ test("título direto, sem vídeos de demonstração", () => {
 test("visor da Pode Curtir, sem endosso da Zethic", () => {
   assert.match(ler("assets/img/podecurtir-icone.svg"), /fill="#FFD23F"/);
   assert.doesNotMatch(h, /marca da|parentOrganization|href="https:\/\/zethic\.net\/"/);
-  assert.doesNotMatch(h, /zethic-marca\.svg/);
+  // 11/11/2026 (pedido da Jéssica): a marca da Zethic aparece só como parceira, na seção de proteção e recuperação de conta, nunca como endosso da Pode Curtir.
+  const semSecaoZethic = h.replace(/<section class="secao leve-junto" aria-labelledby="t-contas">[\s\S]*?<\/section>/, "");
+  assert.doesNotMatch(semSecaoZethic, /zethic-marca\.svg/);
 });
 
 test("categoria clara, frente de redes sociais e preço da loja", () => {

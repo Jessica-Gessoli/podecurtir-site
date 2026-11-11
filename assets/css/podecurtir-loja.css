@@ -216,3 +216,5 @@ legend{font-size:1.25rem;font-weight:700;padding:0;margin-bottom:.75rem}
 .leve-junto .secao-cab.com-foto{display:grid;grid-template-columns:7rem 1fr;gap:1.2rem;align-items:center}
 .pc-autora img{width:7rem;height:7rem;border-radius:50%;object-fit:cover;display:block;border:2px solid rgba(255,255,255,.25)}
 @media (max-width:36rem){.leve-junto .secao-cab.com-foto{grid-template-columns:4.5rem 1fr;gap:.9rem;align-items:start}.pc-autora img{width:4.5rem;height:4.5rem}}
+/* Marca da Zethic na seção em parceria, no mesmo formato da foto da Jéssica (11/11/2026). */
+.pc-ze img{border:0;object-fit:contain}
