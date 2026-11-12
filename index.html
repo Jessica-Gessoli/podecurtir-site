@@ -22,11 +22,12 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/img/podecurtir-icone.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/public-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/podecurtir.css?v=30fa308d93">
+<link rel="stylesheet" href="/assets/css/podecurtir.css?v=2897f03ef5">
 <link rel="stylesheet" href="/assets/css/podecurtir-loja.css?v=635a33abc5">
 <script src="/assets/js/podecurtir-config.js?v=8bc2574400" defer></script>
 <script src="/assets/js/podecurtir-comum.js?v=d07676857f" defer></script>
-<script src="/assets/js/podecurtir-loja.js?v=066727241e" defer></script>
+<script src="/assets/js/podecurtir-loja.js?v=d24dcdefb8" defer></script>
+<script src="/assets/js/podecurtir-vitrine.js?v=5cfd9cdeed" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -67,30 +68,65 @@
   <noscript><p class="sem-js"><span class="wrap">A loja precisa de JavaScript ligado. Se preferir, peça pelo WhatsApp (19) 98331-0769 ou pelo e-mail podecurtir@zethic.net.</span></p></noscript>
 
   <div id="vista-loja">
-  <div class="hero">
-    <div class="wrap hero-com-foto">
-      <div class="visor">
-        <p class="rec">Gravando</p>
-        <h1>Seu perfil pronto para vender, com preço fechado.</h1>
-        <p class="lede">Para docerias, salões, consultórios, restaurantes e especialistas em todo o Brasil. Diga qual é o seu Negócio e veja só o que serve para ele. Você escolhe, paga online e responde o briefing; nada vai ao ar sem o seu ok. Foto e vídeo sob proposta.</p>
-        <div class="actions">
+  <!-- 12/11/2026 (Jéssica): topo no mesmo modelo dos banners da Zethic: foto de fundo que passa, texto próprio em cada destaque,
+       nomes e barrinha de tempo embaixo e botão Pausar. Só o destaque 1 carrega com prioridade.
+       Sem JavaScript ou com "reduzir movimento", fica o destaque 1 parado. -->
+  <div class="hero pc-vitrine" aria-roledescription="carrossel" aria-label="Destaques da Pode Curtir">
+    <div class="slides">
+      <article class="slide ativo" role="group" aria-roledescription="destaque" aria-label="1 de 3: Pode Curtir">
+        <picture class="slide-fundo" aria-hidden="true"><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-com-a-cesta-400.webp 400w, /assets/img/agua-na-boca_virginia-com-a-cesta-800.webp 800w" sizes="100vw"><img src="/assets/img/agua-na-boca_virginia-com-a-cesta-800.jpg" width="800" height="1066" loading="lazy" decoding="async" alt=""></picture>
+        <picture class="slide-img slide-foto foco-rosto"><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-com-a-cesta-400.webp 400w, /assets/img/agua-na-boca_virginia-com-a-cesta-800.webp 800w" sizes="100vw"><img src="/assets/img/agua-na-boca_virginia-com-a-cesta-800.jpg" width="800" height="1066" fetchpriority="high" decoding="async" alt="Dona Virgínia sorrindo, de touca e avental, ao lado da cesta de pão trançado pronta"></picture>
+        <div class="wrap slide-txt">
+          <p class="rec">Gravando</p>
+          <h1>Seu perfil pronto para vender, com preço fechado.</h1>
+          <p class="lede">Para docerias, salões, consultórios, restaurantes e especialistas em todo o Brasil. Diga qual é o seu Negócio e veja só o que serve para ele. Você escolhe, paga online e responde o briefing; nada vai ao ar sem o seu ok. Foto e vídeo sob proposta.</p>
+          <div class="actions">
           <a class="btn cheio" href="#loja" data-evento="ver_precos">Escolher pelo meu Negócio</a>
           <a class="btn contorno" href="https://zethic.net/fale?utm_source=podecurtir" data-evento="whatsapp">Conversar no WhatsApp</a>
         </div>
-        <ul class="selos" aria-label="Garantias">
+          <ul class="selos" aria-label="Garantias">
           <li>Pix, boleto ou cartão</li>
           <li>7 dias para desistir, com devolução integral</li>
           <li>Nada vai ao ar sem o seu ok</li>
         </ul>
+          <p class="slide-cred">Na foto: Dona Virgínia, da Água na Boca, cliente da Pode Curtir</p>
+        </div>
+      </article>
+      <article class="slide" role="group" aria-roledescription="destaque" aria-label="2 de 3: Foto de produto">
+        <picture class="slide-fundo" aria-hidden="true"><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-cesta-pronta-960.webp 960w, /assets/img/agua-na-boca_virginia-cesta-pronta-1440.webp 1440w" sizes="100vw"><img src="/assets/img/agua-na-boca_virginia-cesta-pronta-960.jpg" width="960" height="720" loading="lazy" decoding="async" alt=""></picture>
+        <picture class="slide-img slide-foto"><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-cesta-pronta-960.webp 960w, /assets/img/agua-na-boca_virginia-cesta-pronta-1440.webp 1440w" sizes="100vw"><img src="/assets/img/agua-na-boca_virginia-cesta-pronta-960.jpg" width="960" height="720" loading="lazy" decoding="async" alt="Cesta de pão trançado com alça, baguetes e uvas, sobre toalha xadrez, com bananas, abacaxi, laranjas e um pão de forma ao redor"></picture>
+        <div class="wrap slide-txt">
+          <p class="rec">Foto de produto</p>
+          <p class="slide-t">O produto aparece do jeito que ele é.</p>
+          <p class="lede">Um dia de gravação na cozinha da Água na Boca, em Cabreúva/SP: fotos dos produtos, vídeo para o Reel e o perfil do Instagram arrumado.</p>
+          <div class="actions">
+            <a class="btn cheio" href="#caso-agua-na-boca" data-evento="ver_caso">Ver o caso</a>
+            <a class="btn contorno" href="#loja" data-evento="ver_precos">Ver preços</a>
+          </div>
+        </div>
+      </article>
+      <article class="slide" role="group" aria-roledescription="destaque" aria-label="3 de 3: Retrato profissional">
+        <picture class="slide-fundo" aria-hidden="true"><source type="image/webp" srcset="/assets/img/lucia-vidotto_01-400.webp 400w, /assets/img/lucia-vidotto_01-800.webp 800w" sizes="100vw"><img src="/assets/img/lucia-vidotto_01-800.jpg" width="800" height="1200" loading="lazy" decoding="async" alt=""></picture>
+        <picture class="slide-img slide-foto foco-retrato"><source type="image/webp" srcset="/assets/img/lucia-vidotto_01-400.webp 400w, /assets/img/lucia-vidotto_01-800.webp 800w" sizes="100vw"><img src="/assets/img/lucia-vidotto_01-800.jpg" width="800" height="1200" loading="lazy" decoding="async" alt="Lucia Vidotto sorrindo, de blazer laranja e braços cruzados, diante de uma mandala na parede"></picture>
+        <div class="wrap slide-txt">
+          <p class="rec">Retrato profissional</p>
+          <p class="slide-t">Quem é a marca aparece com o melhor rosto.</p>
+          <p class="lede">Ensaio da Lucia Vidotto, feito pela Alpha, parceira de foto da Pode Curtir. Foto e vídeo entram como pedido de proposta, no mesmo pedido da loja.</p>
+          <div class="actions">
+            <a class="btn cheio" href="#caso-lucia-vidotto">Ver o retrato</a>
+            <a class="btn contorno" href="#loja" data-evento="ver_precos">Ver preços</a>
+          </div>
+          <p class="slide-cred">Foto: Alpha</p>
+        </div>
+      </article>
+    </div>
+    <div class="wrap vitrine-ctrl" hidden>
+      <div class="pontos">
+        <button type="button" class="ponto ativo" aria-label="Mostrar o destaque da Pode Curtir"><span class="ponto-nome">Pode Curtir</span><span class="barra" aria-hidden="true"></span></button>
+        <button type="button" class="ponto" aria-label="Mostrar o destaque de Foto de produto"><span class="ponto-nome">Foto de produto</span><span class="barra" aria-hidden="true"></span></button>
+        <button type="button" class="ponto" aria-label="Mostrar o destaque de Retrato profissional"><span class="ponto-nome">Retrato profissional</span><span class="barra" aria-hidden="true"></span></button>
       </div>
-      <!-- 11/11/2026 (Jéssica, mapa de mídias): 1 foto fixa de produto do caso de cliente, sem carrossel. Única imagem com prioridade alta. -->
-      <figure class="hero-foto">
-        <picture>
-          <source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-cesta-pronta-640.webp 640w, /assets/img/agua-na-boca_virginia-cesta-pronta-960.webp 960w, /assets/img/agua-na-boca_virginia-cesta-pronta-1440.webp 1440w" sizes="(min-width: 60rem) 30rem, calc(100vw - 2.5rem)">
-          <img src="/assets/img/agua-na-boca_virginia-cesta-pronta-960.jpg" width="960" height="720" fetchpriority="high" decoding="async" alt="Cesta de pão trançado com alça, baguetes e uvas, sobre toalha xadrez, com bananas, abacaxi, laranjas e um pão de forma ao redor">
-        </picture>
-        <figcaption>Água na Boca, cliente da Pode Curtir</figcaption>
-      </figure>
+      <button type="button" class="pausa">Pausar</button>
     </div>
   </div>
 
@@ -103,10 +139,10 @@
         <a class="prova-link" href="#caso-agua-na-boca" data-evento="ver_caso">Ver o caso</a>
       </div>
       <ul class="prova-fotos">
-        <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-cesta-com-baguetes-240.webp 240w, /assets/img/agua-na-boca_virginia-cesta-com-baguetes-480.webp 480w" sizes="(min-width: 60rem) 9rem, 42vw"><img src="/assets/img/agua-na-boca_virginia-cesta-com-baguetes-480.jpg" width="480" height="640" loading="lazy" decoding="async" alt="Cesta de pão trançado com baguetes dentro, sobre toalha xadrez"></picture><figcaption>Cesta com baguetes</figcaption></figure></li>
-        <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-doces-embalados-240.webp 240w, /assets/img/agua-na-boca_virginia-doces-embalados-480.webp 480w" sizes="(min-width: 60rem) 9rem, 42vw"><img src="/assets/img/agua-na-boca_virginia-doces-embalados-480.jpg" width="480" height="640" loading="lazy" decoding="async" alt="Doces caseiros em potes plásticos fechados, sobre a mesa"></picture><figcaption>Doces embalados para a entrega</figcaption></figure></li>
-        <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-sovando-a-massa-240.webp 240w, /assets/img/agua-na-boca_virginia-sovando-a-massa-480.webp 480w" sizes="(min-width: 60rem) 9rem, 42vw"><img src="/assets/img/agua-na-boca_virginia-sovando-a-massa-480.jpg" width="480" height="640" loading="lazy" decoding="async" alt="Dona Virgínia, de touca e avental, sovando a massa na bancada da cozinha"></picture><figcaption>Dona Virgínia no preparo</figcaption></figure></li>
-        <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-capa-do-trigo-a-cesta-240.webp 240w, /assets/img/agua-na-boca_virginia-capa-do-trigo-a-cesta-480.webp 480w" sizes="(min-width: 60rem) 9rem, 42vw"><img src="/assets/img/agua-na-boca_virginia-capa-do-trigo-a-cesta-480.jpg" width="480" height="640" loading="lazy" decoding="async" alt="Capa de Reel com o título Do trigo à cesta sobre uma foto de pães e frutas"></picture><figcaption>Capa de Reel</figcaption></figure></li>
+        <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-forma-de-paes-400.webp 400w, /assets/img/agua-na-boca_virginia-forma-de-paes-800.webp 800w" sizes="(min-width: 60rem) 9rem, 42vw"><img src="/assets/img/agua-na-boca_virginia-forma-de-paes-800.jpg" width="800" height="1066" loading="lazy" decoding="async" alt="Dona Virgínia na cozinha segurando uma forma com pães compridos"></picture><figcaption>Dona Virgínia com as baguetes</figcaption></figure></li>
+        <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-modelando-a-massa-400.webp 400w, /assets/img/agua-na-boca_virginia-modelando-a-massa-800.webp 800w" sizes="(min-width: 60rem) 9rem, 42vw"><img src="/assets/img/agua-na-boca_virginia-modelando-a-massa-800.jpg" width="800" height="1066" loading="lazy" decoding="async" alt="Mãos modelando bolinhas de massa sobre a bancada de granito"></picture><figcaption>Massa modelada à mão</figcaption></figure></li>
+        <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-paes-na-forma-400.webp 400w, /assets/img/agua-na-boca_virginia-paes-na-forma-800.webp 800w" sizes="(min-width: 60rem) 9rem, 42vw"><img src="/assets/img/agua-na-boca_virginia-paes-na-forma-800.jpg" width="800" height="1066" loading="lazy" decoding="async" alt="Pães caseiros dourados lado a lado numa forma de alumínio"></picture><figcaption>Pães saindo do forno</figcaption></figure></li>
+        <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-cesta-pronta-640.webp 640w, /assets/img/agua-na-boca_virginia-cesta-pronta-960.webp 960w" sizes="(min-width: 60rem) 9rem, 42vw"><img src="/assets/img/agua-na-boca_virginia-cesta-pronta-960.jpg" width="960" height="720" loading="lazy" decoding="async" alt="Cesta de pão trançado com alça, baguetes e uvas, sobre toalha xadrez, com bananas, abacaxi, laranjas e um pão de forma ao redor"></picture><figcaption>A cesta pronta</figcaption></figure></li>
       </ul>
     </div>
   </section>

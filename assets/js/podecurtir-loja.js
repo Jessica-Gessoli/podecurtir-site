@@ -178,7 +178,7 @@
   var EXEMPLO = {
     ajuste: { img: "agua-na-boca_virginia-perfil-depois", webp: 540, jpg: 1080, w: 1080, h: 438, cliente: "Água na Boca", alt: "Perfil da Água na Boca depois do trabalho" },
     arrumado: { img: "agua-na-boca_virginia-perfil-depois", webp: 540, jpg: 1080, w: 1080, h: 438, cliente: "Água na Boca", alt: "Perfil da Água na Boca depois do trabalho" },
-    gravacao: { img: "agua-na-boca_virginia-cesta-com-baguetes", webp: 240, jpg: 480, w: 480, h: 640, cliente: "Água na Boca", alt: "Foto de produto da Água na Boca: cesta de pão trançado com baguetes" }
+    gravacao: { img: "agua-na-boca_virginia-mesa-com-frutas", webp: 400, jpg: 800, w: 800, h: 1066, cliente: "Água na Boca", alt: "Foto de produto da Água na Boca: cesta de pão trançado com frutas sobre toalha xadrez" }
   };
   function exemplo(id) {
     var e = EXEMPLO[id];
