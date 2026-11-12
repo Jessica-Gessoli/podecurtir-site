@@ -84,11 +84,10 @@ test("regras das marcas nas páginas de compra", () => {
     assert.doesNotMatch(h, /golpe/i, p + ": a Pode Curtir não fala de golpe");
     assert.doesNotMatch(h, /\bPME\b|pequena e média empresa/i, p);
     assert.doesNotMatch(h, /\bMEI\b/, p + ": sem o rótulo MEI");
-    // 11/11/2026 (Jéssica, decisão de 10/11/2026): o caso Água na Boca entra na página inicial e na miniatura
-    // "Exemplo real" dos cards. Fora dele, nome de cliente continua proibido.
+    // 11/11/2026 (Jéssica, decisão de 10/11/2026): a Água na Boca aparece no topo e na miniatura "Exemplo real" dos
+    // cards (12/11/2026: a seção do caso saiu). Fora disso, nome de cliente continua proibido.
     const semCaso = p === "_fontes/podecurtir.html"
       ? h.replace(/<div class="hero pc-vitrine"[\s\S]*?<button type="button" class="pausa">/, "")
-          .replace(/<section class="caso alt" id="caso-agua-na-boca"[\s\S]*?<\/section>/, "")
       : p === "assets/js/podecurtir-loja.js" ? h.replace(/var EXEMPLO = \{[\s\S]*?\n  \}/, "") : h;
     assert.doesNotMatch(semCaso, /Virgínia|Água na Boca|Lucinha|Excellent/i, p + ": sem nome de cliente fora do caso aprovado");
     assert.doesNotMatch(h, /Lucinha|Excellent/i, p);

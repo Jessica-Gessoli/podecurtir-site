@@ -215,8 +215,8 @@
      de pagar continua igual. */
   function detalhes(html) { return '<details class="detalhes"><summary>Ver o que está incluído</summary>' + html + "</details>"; }
   function beneficio(p) { return PARA[p.id] ? '<p class="beneficio">' + PARA[p.id] + "</p>" : ""; }
-  /* 11/11/2026 (Jéssica, mapa de mídias): miniatura "Exemplo real" nos serviços já entregues a um cliente real,
-     levando ao caso. As imagens são as mesmas da página (o gerador das marcas copia só o que o HTML usa). */
+  /* 11/11/2026 (Jéssica, mapa de mídias): miniatura "Exemplo real" nos serviços já entregues a um cliente real.
+     12/11/2026 (Jéssica): a seção do caso saiu; a miniatura fica, sem link. As imagens são as mesmas da página (o gerador das marcas copia só o que o HTML usa). */
   var EXEMPLO = {
     ajuste: { img: "agua-na-boca_virginia-perfil-depois", webp: 540, jpg: 1080, w: 1080, h: 438, cliente: "Água na Boca", alt: "Perfil da Água na Boca depois do trabalho" },
     arrumado: { img: "agua-na-boca_virginia-perfil-depois", webp: 540, jpg: 1080, w: 1080, h: 438, cliente: "Água na Boca", alt: "Perfil da Água na Boca depois do trabalho" },
@@ -226,7 +226,7 @@
     var e = EXEMPLO[id];
     if (!e) return "";
     var base = "/assets/img/" + e.img;
-    return '<a class="exemplo" href="#caso-agua-na-boca" data-evento="ver_caso"><picture><source type="image/webp" srcset="' + base + "-" + e.webp + '.webp"><img src="' + base + "-" + e.jpg + '.jpg" width="' + e.w + '" height="' + e.h + '" loading="lazy" decoding="async" alt="' + e.alt + '"></picture><span>Exemplo real · ' + e.cliente + "</span></a>";
+    return '<div class="exemplo"><picture><source type="image/webp" srcset="' + base + "-" + e.webp + '.webp"><img src="' + base + "-" + e.jpg + '.jpg" width="' + e.w + '" height="' + e.h + '" loading="lazy" decoding="async" alt="' + e.alt + '"></picture><span>Exemplo real · ' + e.cliente + "</span></div>";
   }
   function plusDe(id) { return PLUS.filter(function (p) { return p.id === id; })[0]; }
   /* Tipo de Negócio (06/11/2026): sugestão de por onde começar, a partir das personas de clientes (hipótese até as entrevistas). */

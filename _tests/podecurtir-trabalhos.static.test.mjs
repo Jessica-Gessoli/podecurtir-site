@@ -12,10 +12,8 @@ const ler = (p) => readFileSync(new URL("../" + caminho(p), import.meta.url), "u
 test("Pode Curtir: sem vídeos de demonstração e com título direto", () => {
   const h = ler("_fontes/podecurtir.html");
   assert.doesNotMatch(h, /class="reel"|class="trabalhos"/);
-  // 11/11/2026 (Jéssica, decisão de 10/11/2026): o único vídeo da página é o do caso Água na Boca, dentro da seção do caso.
-  assert.equal((h.match(/<video/g) || []).length, 1, "só o vídeo do caso");
-  const caso = h.match(/<section class="caso alt" id="caso-agua-na-boca"[\s\S]*?<\/section>/)[0];
-  assert.match(caso, /<video /);
+  // 12/11/2026 (Jéssica): saiu a seção do caso Água na Boca, e com ela o único vídeo da página.
+  assert.equal((h.match(/<video/g) || []).length, 0);
   // 07/11/2026 (benchmark de publicidade, aprovado pela Jéssica): o título diz o resultado e o preço fechado.
   assert.match(h, /<h1>Seu perfil pronto para vender, com preço fechado\.<\/h1>/);
   assert.doesNotMatch(h + ler("index.html"), /Você curte, a gente registra/);
