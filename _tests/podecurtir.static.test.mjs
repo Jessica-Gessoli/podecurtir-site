@@ -7,7 +7,12 @@ const h = ler("index.html");
 
 // Trazidos do zethic-site (_tests/podecurtir-trabalhos.static.test.mjs) quando a página ganhou endereço próprio (21/10/2026).
 test("título direto, sem vídeos de demonstração", () => {
-  assert.doesNotMatch(h, /class="reel"|class="trabalhos"|<video/);
+  assert.doesNotMatch(h, /class="reel"|class="trabalhos"/);
+  // 11/11/2026 (Jéssica, decisão de 10/11/2026): o único vídeo é o do caso Água na Boca, sem som automático.
+  assert.equal((h.match(/<video/g) || []).length, 1);
+  const v = h.match(/<section class="caso alt" id="caso-agua-na-boca"[\s\S]*?<\/section>/)[0].match(/<video [^>]*>/)[0];
+  assert.match(v, /preload="none"/);
+  assert.doesNotMatch(v, /autoplay/);
   // 07/11/2026: a página inicial é a loja; o título passou a ser a promessa do Perfil Pronto (igual ao zethic-site).
   assert.match(h, /<h1>Seu perfil pronto para vender, com preço fechado\.<\/h1>/);
   assert.doesNotMatch(h, /Você curte, a gente registra/);

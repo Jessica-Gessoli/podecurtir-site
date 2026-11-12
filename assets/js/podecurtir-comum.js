@@ -161,6 +161,14 @@
     var a = e.target.closest && e.target.closest("[data-evento]");
     if (a) window.podecurtirEvento(a.getAttribute("data-evento"), { pagina: location.pathname });
   });
+  /* 11/11/2026 (Jéssica): play no vídeo do caso conta uma vez por visita. O evento play não sobe na árvore,
+     por isso a escuta fica na fase de captura. Sem aceite de cookies, podecurtirEvento não envia nada. */
+  document.addEventListener("play", function (e) {
+    var v = e.target;
+    if (!v || !v.getAttribute || !v.getAttribute("data-evento-play") || v.getAttribute("data-medido")) return;
+    v.setAttribute("data-medido", "1");
+    window.podecurtirEvento(v.getAttribute("data-evento-play"), { pagina: location.pathname });
+  }, true);
 
   function linkPrivacidade() {
     var a = document.querySelector("[data-link-privacidade]");
