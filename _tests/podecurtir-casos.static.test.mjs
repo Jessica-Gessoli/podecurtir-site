@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import { readFileSync, existsSync, statSync } from "node:fs";
 
 // 11/11/2026 (Jéssica, mapa de mídias e decisão de 10/11/2026): fotos e vídeo de clientes na página inicial da Pode Curtir.
-// Topo com fotos que passam (12/11/2026; antes, 1 foto fixa), faixa de prova, "Exemplo real" nos cards, caso Água na Boca, retrato da Lucia Vidotto e "Quem faz".
+// Topo com fotos que passam (12/11/2026; antes, 1 foto fixa), "Exemplo real" nos cards, caso Água na Boca e "Quem faz".
+// 12/11/2026 (Jéssica): saíram a faixa "Trabalho real, de cliente real" e o bloco dos retratos da Lucia Vidotto.
 
 // Trazido do zethic-site em 12/11/2026, quando a Pode Curtir passou a ter a fonte aqui (decisão da Jéssica:
 // "tudo que é da Pode Curtir somente na Pode Curtir"). Os caminhos antigos da fonte são lidos nos arquivos publicados.
@@ -13,15 +14,12 @@ const existe = (p) => existsSync(new URL("../" + caminho(p), import.meta.url));
 const h = ler("_fontes/podecurtir.html");
 const secao = (re) => { const m = h.match(re); assert.ok(m, "seção ausente: " + re); return m[0]; };
 const caso = secao(/<section class="caso alt" id="caso-agua-na-boca"[\s\S]*?<\/section>/);
-const prova = secao(/<section class="prova"[\s\S]*?<\/section>/);
 const quemFaz = secao(/<section class="quem-faz"[\s\S]*?<\/section>/);
-const lucia = secao(/<section class="caso-curto" id="caso-lucia-vidotto"[\s\S]*?<\/section>/);
 const imgs = h.match(/<img [^>]*>/g) || [];
 
 test("casos: ordem das seções segue o mapa de mídias", () => {
   const pos = (s) => { const i = h.indexOf(s); assert.ok(i >= 0, s); return i; };
-  assert.ok(pos('class="hero pc-vitrine"') < pos('<section class="prova"'), "foto no topo, antes da faixa");
-  assert.ok(pos('<section class="prova"') < pos('<section id="loja"'), "faixa de prova antes da loja");
+  assert.ok(pos('class="hero pc-vitrine"') < pos('<section id="loja"'), "fotos no topo, antes da loja");
   assert.ok(pos('<section id="loja"') < pos('id="caso-agua-na-boca"'), "caso depois da loja");
   assert.ok(pos('id="caso-agua-na-boca"') < pos('id="como"'), "caso antes de Como funciona a compra");
   assert.ok(pos('id="t-garantias"') < pos('<section class="quem-faz"') && pos('<section class="quem-faz"') < pos('id="t-faz"'),
@@ -75,7 +73,7 @@ test("topo: script troca a cada 7 s, pausa sozinho e respeita reduzir movimento"
 
 test("casos: toda imagem nova tem largura, altura, alt descritivo e versões WebP em tamanhos", () => {
   const novas = imgs.filter((i) => /agua-na-boca_virginia-|lucia-vidotto_|jessica-gessoli_quem-faz/.test(i));
-  assert.ok(novas.length >= 17, "imagens novas: " + novas.length);
+  assert.ok(novas.length >= 16, "imagens novas: " + novas.length); // 12/11/2026: saíram a faixa de prova e o bloco da Lucia
   for (const i of novas) {
     assert.match(i, / width="\d+" height="\d+"/, i);
     const alt = (i.match(/alt="([^"]*)"/) || [])[1] || "";
@@ -101,14 +99,13 @@ test("casos: nomes de arquivo seguem o padrão por cliente", () => {
   const usados = [...h.matchAll(/\/assets\/(?:img|video)\/([^"\s,]+)/g)].map((m) => m[1])
     .filter((n) => /agua|lucia|quem-faz/.test(n));
   assert.ok(usados.length > 0);
-  for (const n of usados) assert.match(n, /^(agua-na-boca_virginia-|lucia-vidotto_0[13]-|jessica-gessoli_quem-faz-)/, n);
+  for (const n of usados) assert.match(n, /^(agua-na-boca_virginia-|lucia-vidotto_01-|jessica-gessoli_quem-faz-)/, n);
 });
 
-test("casos: faixa de prova com 4 miniaturas, legenda aprovada e link Ver o caso", () => {
-  assert.equal((prova.match(/<img /g) || []).length, 4);
-  assert.match(prova, /<figcaption>Dona Virgínia com as baguetes<\/figcaption>/);
-  assert.match(prova, /agua-na-boca_virginia-cesta-pronta-960\.jpg/);
-  assert.match(prova, /<a class="prova-link" href="#caso-agua-na-boca" data-evento="ver_caso">Ver o caso<\/a>/);
+test("casos: sem a faixa Trabalho real nem o bloco dos retratos da Lucia Vidotto", () => {
+  assert.doesNotMatch(h, /class="prova"|Trabalho real, de cliente real/);
+  assert.doesNotMatch(h, /caso-lucia-vidotto|Ver os retratos da Lucia Vidotto|Ver o retrato</);
+  assert.match(h, /<a class="btn cheio" href="#t-perfil">Ver o Perfil Pronto<\/a>/);
 });
 
 test("casos: Água na Boca diz que ela é cliente, mostra antes e depois e não inventa números nem depoimento", () => {
@@ -174,15 +171,6 @@ test("casos: miniatura Exemplo real no Ajuste de Perfil, no Perfil Arrumado e na
   }
 });
 
-test("casos: Lucia Vidotto com 1 foto de cada figurino, sem texto de apresentação nem crédito", () => {
-  assert.match(lucia, /lucia-vidotto_01-800\.jpg/);
-  assert.match(lucia, /lucia-vidotto_03-800\.jpg/);
-  assert.equal((lucia.match(/<img /g) || []).length, 2);
-  // 12/11/2026 (Jéssica): saíram o texto de apresentação e a linha de crédito do bloco dos retratos.
-  assert.doesNotMatch(lucia, /class="intro"|class="credito"/);
-  assert.match(h, /<a href="#caso-lucia-vidotto">Ver os retratos da Lucia Vidotto<\/a>/);
-});
-
 test("casos: Quem faz apresenta a Pode Curtir, com crédito da Alpha, sem cargo nem link da marca Jéssica Gessoli", () => {
   assert.match(quemFaz, /jessica-gessoli_quem-faz-1024\.jpg/);
   assert.match(quemFaz, /<figcaption>Foto: Alpha<\/figcaption>/);
@@ -210,11 +198,8 @@ test("loja em abas: grupos cobrem todas as seções, tipo abre o grupo e âncora
 
 // 12/11/2026 (Jéssica): a foto da Lucia Vidotto é da Alpha. O bloco leva para o que a Pode Curtir faz com a foto
 // (livro, e-book, perfil) e não para ensaio, para não esbarrar no trabalho da Alpha.
-test("retratos da Lucia Vidotto levam para livro, e-book e perfil, não para ensaio", () => {
-  assert.doesNotMatch(lucia, /ensaio de retrato feito pela Pode Curtir|Pedir proposta de ensaio/i);
-  assert.match(lucia, /<a href="#proposta-livro">Livro pronto/);
-  assert.match(lucia, /<a href="#t-conteudo">E-book/);
-  assert.match(lucia, /<a href="#t-perfil">Perfil Pronto/);
+test("retratos da Lucia Vidotto não levam para ensaio", () => {
+  assert.doesNotMatch(h, /Pedir proposta de ensaio/i);
   assert.match(ler("assets/js/podecurtir-loja.js"), /'" id="proposta-' \+ a\.id \+ '"/);
   assert.doesNotMatch(h, /retrato feito pela Pode Curtir/);
 });
