@@ -307,3 +307,39 @@ section.prova{padding:2.25rem 0;border-bottom:1px solid var(--linha)}
   .retratos{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 .caso-cta-linha{margin:.6rem 0 0;font-size:.95rem;font-weight:600;color:var(--cinza)}
+
+/* 12/11/2026 (Jéssica): equilíbrio de cores, regra 60-30-10 da publicidade.
+   60% claro (branco e lilás) para ler; 30% tinta escura para os momentos de impacto (topo + prova, Como funciona);
+   10% rosa só para o que é ação (botões, números, o fechamento). Amarelo só para chamar o olho: campanha, selos, gravação.
+   O topo continua na faixa de prova sem corte: as duas são escuras, como na Zethic. */
+section.prova{background:var(--tinta);color:var(--branco);border-bottom:0;padding:1.75rem 0 2.75rem;position:relative}
+.prova h2{color:var(--branco)}
+.prova p{color:#D9D4E6}
+.prova .prova-link{color:var(--flash)}
+.prova figcaption{color:#BDB6CE}
+.prova-fotos img{box-shadow:0 .6rem 1.4rem rgba(0,0,0,.35)}
+.prova::before{content:"";position:absolute;left:50%;top:0;width:min(100% - 2.5rem,75rem);transform:translateX(-50%);height:1px;background:rgba(255,255,255,.12)}
+#como{background:var(--tinta);color:var(--branco)}
+#como h2,#como .passos h3{color:var(--branco)}
+#como .passos p{color:#D9D4E6}
+#como .passos li::before{background:var(--rosa);color:var(--branco)}
+.quem-faz{background:var(--lilas)}
+section.alt[aria-labelledby="t-faz"]{background:var(--branco)}
+#duvidas{background:var(--lilas)}
+.fim{background:var(--rosa)}
+.fim p{color:#FFE3EB}
+.fim p a{color:var(--branco)}
+.fim .btn.cheio{background:var(--branco);color:var(--rosa)}
+.fim .btn.cheio:hover{background:var(--flash);color:var(--tinta)}
+footer.ident{background:var(--tinta);color:#D9D4E6}
+footer.ident a{color:var(--branco)}
+
+/* 12/11/2026 (Jéssica, benchmark): um botão de destaque por tela; o WhatsApp no topo vira link. */
+.link-claro{align-self:center;color:var(--branco);font-weight:700;text-decoration:underline;text-underline-offset:.25em;padding:.6rem .2rem}
+.link-claro:hover{color:var(--flash)}
+.frentes-mais{margin-top:1rem}
+.frentes-mais>summary{cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;font-weight:700;color:var(--rosa-escuro);padding:.6rem 1rem;border:1.5px solid var(--linha);border-radius:999px;list-style:none}
+.frentes-mais>summary::-webkit-details-marker{display:none}
+.frentes-mais>summary::after{content:"+";font-size:1.15rem;line-height:1}
+.frentes-mais[open]>summary::after{content:"−"}
+.frentes-mais[open]>summary{margin-bottom:1.25rem}
