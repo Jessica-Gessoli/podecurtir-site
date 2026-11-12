@@ -152,7 +152,7 @@
   /* Eventos: nomes da Meta nos padrões dela; no GA4, os equivalentes recomendados ou o próprio nome. */
   var META_PADRAO = { InitiateCheckout: 1, Lead: 1, Purchase: 1, ViewContent: 1, Contact: 1, AddToCart: 1 };
   var GA_NOMES = { InitiateCheckout: "begin_checkout", Lead: "generate_lead", Purchase: "purchase", ViewContent: "view_item", Contact: "contact",
-    AddToCart: "add_to_cart", EscolheuTipo: "escolheu_tipo" };
+    AddToCart: "add_to_cart", EscolheuTipo: "escolheu_tipo", AbriuGrupo: "abriu_grupo", VerTudo: "ver_tudo" };
   window.podecurtirEvento = function (nome, params) {
     if (pixelAtivo && typeof window.fbq === "function") window.fbq(META_PADRAO[nome] ? "track" : "trackCustom", nome, params || {});
     if (gaAtivo && typeof window.gtag === "function") window.gtag("event", GA_NOMES[nome] || nome, params || {});

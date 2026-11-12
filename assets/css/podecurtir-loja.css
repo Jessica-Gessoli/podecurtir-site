@@ -218,3 +218,34 @@ legend{font-size:1.25rem;font-weight:700;padding:0;margin-bottom:.75rem}
 @media (max-width:36rem){.leve-junto .secao-cab.com-foto{grid-template-columns:4.5rem 1fr;gap:.9rem;align-items:start}.pc-autora img{width:4.5rem;height:4.5rem}}
 /* Marca da Zethic na seção em parceria, no mesmo formato da foto da Jéssica (11/11/2026). */
 .pc-ze img{border:0;object-fit:contain}
+
+/* 12/11/2026 (Jéssica, remodelação, etapa B): loja enxuta. Cartão com nome, preço, para quem é, preço de fundador,
+   exemplo real e botão; o resto abre em "Ver o que está incluído". Tipos de Negócio em cartões com "comece por". */
+.item{background:var(--branco);border:1px solid var(--linha);box-shadow:0 1px 2px rgba(27,21,48,.04);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.item:hover{transform:translateY(-3px);box-shadow:0 .9rem 2rem rgba(27,21,48,.1);border-color:transparent}
+.item .por{margin-top:auto}
+.detalhes{border-top:1px solid var(--linha);padding-top:.5rem}
+.detalhes summary{cursor:pointer;font-weight:700;font-size:.9rem;color:var(--rosa-escuro);list-style:none;display:flex;align-items:center;gap:.4rem;padding:.25rem 0;min-height:2.25rem}
+.detalhes summary::-webkit-details-marker{display:none}
+.detalhes summary::after{content:"+";font-size:1.1rem;line-height:1;transition:transform .2s ease}
+.detalhes[open] summary::after{transform:rotate(45deg)}
+.detalhes[open]>*:not(summary){margin-top:.5rem}
+.detalhes .meta{border-top:0;padding-top:0}
+.tipos-opcoes{display:grid;grid-template-columns:repeat(auto-fill,minmax(13.5rem,1fr));gap:.7rem}
+.tipos-opcoes .tipo{white-space:normal;display:flex;flex-direction:column;align-items:flex-start;gap:.3rem;text-align:left;padding:1rem 1.1rem;border-radius:.9rem;min-height:5.2rem;background:var(--branco);border:1.5px solid var(--linha);transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
+.tipos-opcoes .tipo:hover{border-color:var(--rosa);transform:translateY(-2px);box-shadow:0 .6rem 1.4rem rgba(27,21,48,.08)}
+.tipos-opcoes .tipo[aria-pressed="true"]{border-color:var(--rosa);background:var(--rosa);color:var(--sobre-rosa)}
+.tipo-nome{font-weight:700;font-size:1rem;line-height:1.25}
+.tipo-comeco{font-size:.85rem;font-weight:600;opacity:.75}
+.leve-junto .item{box-shadow:none}
+.leve-junto .item:hover{transform:none;box-shadow:none}
+.leve-junto .detalhes{border-top-color:rgba(167,178,209,.22)}
+.leve-junto .detalhes summary{color:#FFFFFF}
+@media (prefers-reduced-motion:reduce){.item,.item:hover,.tipos-opcoes .tipo,.tipos-opcoes .tipo:hover{transition:none;transform:none}}
+
+/* 12/11/2026 (Jéssica, benchmark): loja em abas, um grupo de serviços por vez. */
+.abas-loja{display:flex;gap:.5rem;overflow-x:auto;padding:.25rem 0 1rem;margin-bottom:.5rem;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.abas-loja .aba{flex:none;border:1.5px solid var(--linha);background:var(--branco);color:var(--tinta);border-radius:999px;padding:.6rem 1.1rem;font:inherit;font-weight:700;font-size:.95rem;cursor:pointer;white-space:nowrap;min-height:2.75rem}
+.abas-loja .aba:hover{border-color:var(--rosa)}
+.abas-loja .aba[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:var(--branco)}
+.abas-loja .aba:focus-visible{outline:3px solid var(--rosa);outline-offset:2px}
