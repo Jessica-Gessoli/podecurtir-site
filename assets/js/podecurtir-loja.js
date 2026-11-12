@@ -19,84 +19,115 @@
    Decisão de 08/11/2026 (Jéssica: "Vamos subir todos no site", com benchmark de mercado e de lucro): seção
    "Para especialistas, produtoras e empresas" (secao: "esp"), com Diagnóstico, Presença em vídeo, Acabamento de vídeo
    e 4 planos mensais (10/11/2026: mais o Vídeo de conversa); Blog que publica sozinho (com a Zethic) e Licença do método entram como pedido de proposta,
-   com o valor de referência na descrição. A Gestão de marca de especialista tem 1 vaga de fundador. */
+   com o valor de referência na descrição. A Gestão de marca de especialista tem 1 vaga de fundador.
+   Decisão de 12/11/2026 (Jéssica: "não vai pelo meu tempo, vai por qual serviço vende e quanto custa no mercado";
+   documento "Pode Curtir — preços da loja pelo mercado (12/11/2026)"): preços pela concorrência, com finais em 7
+   (técnica de preço psicológico do Sebrae), pacotes e porta de entrada barata. Itens novos: Diagnóstico do perfil, Teste de
+   3 Reels, Presença e Presença+ e o Kit de Vendas (catálogo de serviços, apresentação comercial e estruturação de oferta).
+   Pedidos de proposta ganham um valor "a partir de". O Site Essencial (R$ 3.000) é preço da Zethic e não muda aqui.
+   Quem já comprou ou recebeu proposta mantém o valor combinado. */
 (function () {
   var C = window.PODECURTIR || {};
   var LINKS = C.ASAAS_LINKS || {};
   var brl = function (v) { return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 0, maximumFractionDigits: 2 }); };
   var $ = function (id) { return document.getElementById(id); };
-  var PRECO_AJUSTE = Number(C.PRECO_AJUSTE) || 500;
+  var PRECO_AJUSTE = Number(C.PRECO_AJUSTE) || 497;
 
   var PROJ = [
-    { id: "ajuste", nome: "Ajuste de Perfil", preco: PRECO_AJUSTE, prazo: "5 dias úteis", fundador: PRECO_AJUSTE === 500,
+    /* 12/11/2026: porta de entrada barata (Sebrae: escada de valor). Vira crédito no Ajuste de Perfil em até 30 dias. */
+    { id: "diag_perfil", nome: "Diagnóstico do perfil", preco: 97, prazo: "3 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 147. Se você contratar o Ajuste de Perfil em até 30 dias, o valor vira crédito.",
+      desc: "Leitura do seu perfil do Instagram em PDF: nome, bio, foto, link, destaques, posts fixados e o que trava quem chega para comprar, com a lista do que ajustar primeiro. Você ajusta sozinho ou contrata o Ajuste de Perfil." },
+    { id: "ajuste", nome: "Ajuste de Perfil", preco: PRECO_AJUSTE, prazo: "5 dias úteis", fundador: PRECO_AJUSTE === 497,
       desc: "Bio, nome, foto, link e botão de WhatsApp, destaques com capa, 3 posts fixados e revisão básica dos acessos da conta." },
-    { id: "arrumado", nome: "Perfil Arrumado", preco: 2000, parcelas: 3, em: "no", prazo: "15 dias úteis", fundador: true,
-      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 3.200.",
+    { id: "arrumado", nome: "Perfil Arrumado", preco: 997, parcelas: 3, em: "no", prazo: "15 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 1.297.",
       desc: "Tudo do Ajuste de Perfil, mais análise de quem você segue, curadoria da grade, revisão das legendas e dos acessos e plano de 30 dias." },
-    { id: "marca", nome: "Marca Completa", preco: 7500, parcelas: 6, em: "na", prazo: "30 dias úteis", fundador: true,
-      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 12.000.",
+    { id: "marca", nome: "Marca Completa", preco: 3997, parcelas: 6, em: "na", prazo: "30 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 4.997.",
       desc: "Tudo do Perfil Arrumado, mais paleta, tipografia, símbolo e assinatura, modelos de capa, post e story e manual curto de uso." },
     /* 09/11/2026 (D4 aprovada pela Jéssica): portfólio da empresa, preço de fundador para os 3 primeiros clientes. */
-    { id: "portfolio", nome: "Portfólio da empresa", preco: 1200, prazo: "10 dias úteis", fundador: true,
-      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 1.900.",
+    { id: "portfolio", nome: "Portfólio da empresa", preco: 1197, prazo: "10 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 1.497.",
       desc: "Apresentação da empresa em PDF de 10 a 12 páginas, com texto real: quem é, o que faz, para quem, como trabalha e como contratar. Clientes, números e depoimentos entram só se você enviar, com autorização. Fotos novas: some a sessão de fotos de 1 hora no fechamento do pedido." },
     /* 11/11/2026 (Jéssica: "deixe disponível no site todos os serviços que apareceram no Google", categoria Agência de
        marketing). Preços pelo padrão da loja: fundador para os 3 primeiros clientes, depois cerca de 1,6 vez.
        Referências: pacote de agência com relatórios R$ 1.500 a R$ 4.000/mês (Cronoshare); 12 posts + 6 Reels por R$ 850+/mês (Sebrae PR). */
-    { id: "campanha", nome: "Campanha de data comemorativa", preco: 900, prazo: "10 dias úteis", fundador: true,
-      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 1.440.",
+    { id: "campanha", nome: "Campanha de data comemorativa", preco: 897, prazo: "10 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 1.197.",
       desc: "Para 1 data (Natal, Dia das Mães, Black Friday ou outra do seu Negócio): 6 posts, 2 Reels, stories e o texto da oferta para o WhatsApp. Você aprova tudo antes de ir ao ar. Anúncio pago e verba de anúncio ficam à parte." },
-    { id: "anuncio", nome: "Revisão de anúncio pela psicologia do consumidor", preco: 450, prazo: "5 dias úteis", fundador: true,
-      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 720.",
+    { id: "anuncio", nome: "Revisão de anúncio pela psicologia do consumidor", preco: 397, prazo: "5 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 597.",
       desc: "Revisão de 1 anúncio ou 1 página de venda com base em como as pessoas decidem uma compra: título, imagem, prova, preço e chamada. Você recebe 2 versões para testar uma contra a outra (teste A/B) e a explicação de cada mudança. Sem exame de cérebro e sem promessa de resultado." },
-    { id: "diag_esp", secao: "esp", nome: "Diagnóstico de marca de especialista", preco: 1500, prazo: "10 dias úteis", fundador: true,
-      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.400. Se você contratar a Gestão de marca de especialista em até 30 dias, o valor vira crédito na 1ª mensalidade.",
+    { id: "diag_esp", secao: "esp", nome: "Diagnóstico de marca de especialista", preco: 497, prazo: "10 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 697. Se você contratar a Gestão de marca de especialista em até 30 dias, o valor vira crédito na 1ª mensalidade.",
       desc: "Leitura dos seus canais, do que você já publica e de quem já trabalha com você (produtora, mentora, editor), posicionamento em uma frase e plano de 30 dias." },
-    { id: "video_presenca", secao: "esp", nome: "Presença em vídeo · treino individual", preco: 1500, prazo: "2 encontros em até 15 dias", fundador: true,
-      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.400.",
+    { id: "video_presenca", secao: "esp", nome: "Presença em vídeo · treino individual", preco: 1497, prazo: "2 encontros em até 15 dias", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.497.",
       desc: "2 encontros de 2 horas, online ou em Campinas/SP: roteiro falado, teleprompter, postura, voz e ritmo, com gravação de teste e devolutiva por escrito. Para render mais em cada gravação." },
-    { id: "acabamento", secao: "esp", nome: "Acabamento de vídeo · 4 vídeos", preco: 600, prazo: "5 dias úteis", fundador: true,
-      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 960 (R$ 240 por vídeo).",
-      desc: "Para quem já tem o vídeo editado: capa, gancho nos 3 primeiros segundos e legendas para cada rede. R$ 150 por vídeo." },
+    { id: "acabamento", secao: "esp", nome: "Acabamento de vídeo · 4 vídeos", preco: 397, prazo: "5 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 497.",
+      desc: "Para quem já tem o vídeo editado: capa, gancho nos 3 primeiros segundos e legendas para cada rede. Cerca de R$ 99 por vídeo." },
     /* 10/11/2026 (Jéssica aprovou a descoberta "Edição de vídeo com IA"): conversa, entrevista, live ou áudios viram Reel.
        Preço de mercado para edição de material bruto: R$ 300 a R$ 700 por vídeo. Edição com apoio de IA, informada ao
        cliente (Política de Edição, 05/11/2026), sem mudar o que foi dito. Autorização de quem aparece: termos, seção 9. */
-    { id: "conversa", secao: "esp", nome: "Vídeo de conversa · 1 Reel", preco: 450, prazo: "5 dias úteis", fundador: true,
-      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 700.",
+    { id: "conversa", secao: "esp", nome: "Vídeo de conversa · 1 Reel", preco: 197, prazo: "5 dias úteis",
+      depois: "Para experimentar: o Teste de 3 Reels sai por R$ 397.",
       desc: "Para conversa, entrevista, live ou áudios de WhatsApp: escolhemos os trechos, colocamos legendas, capa e a foto de quem fala, limpamos o som e entregamos 2 versões, uma curta para o Instagram e uma completa para o LinkedIn. Até 15 minutos de material bruto. Edição com apoio de IA, sem mudar o que foi dito. Você garante a autorização de todos que aparecem ou falam." },
+    /* 12/11/2026: teste de 3 Reels (referência de mercado: R$ 375) para quem quer experimentar antes de assinar. */
+    { id: "teste3", secao: "esp", nome: "Vídeo de conversa · Teste de 3 Reels", preco: 397, prazo: "10 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Se você assinar a Presença em até 30 dias, o valor vira crédito na 1ª mensalidade.",
+      desc: "O mesmo Vídeo de conversa, em 3 Reels: até 15 minutos de material bruto por Reel, legendas, capa e som limpo, com 2 versões de cada. Para ver o resultado antes de assinar um plano." },
     /* 08/11/2026 (Jéssica aprovou): cardápio de restaurante. A Pode Curtir vende e cuida do conteúdo; a página e o app
        (instalável pelo navegador, sem loja de apps) são feitos pela Zethic, em parceria (regra de 28/10: tecnologia é da Zethic). */
-    { id: "cardapio", secao: "rest", nome: "Cardápio Pronto", preco: 1500, prazo: "10 dias úteis", fundador: true,
-      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.400.",
+    { id: "cardapio", secao: "rest", nome: "Cardápio Pronto", preco: 997, prazo: "10 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 1.197.",
       desc: "Você não monta nada: a Pode Curtir escreve, organiza e publica o cardápio. Até 30 itens: textos dos pratos, categorias, preços e alérgenos que você informar. Cardápio no celular, que abre pelo QR code e pode ser instalado na tela como um app, com QR code para mesas e balcão, cardápio impresso para a entrada (PDF pronto para a gráfica, com os mesmos preços), botão de pedido pelo WhatsApp sem taxa por pedido e link no Instagram e no Perfil da Empresa no Google. 12 meses no ar incluídos. Página e app feitos pela Zethic, em parceria." },
     /* 10/11/2026 (Jéssica): itens com link no Asaas criados em 09/11/2026. Tradução junto do cardápio; catálogo para
        quem vende produto ou serviço (doceria, salão, loja), no mesmo modelo do cardápio, com a Zethic em parceria. */
     /* 10/11/2026 (Jéssica, por benchmark): 30 itens nos dois idiomas dão cerca de 1.500 palavras, menos de um dia de
        tradução no ritmo profissional (2.000 a 3.000 palavras por dia) mais a revisão por outra pessoa: 5 dias úteis. */
-    { id: "traducao", secao: "rest", nome: "Tradução do cardápio · inglês e espanhol", preco: 300, prazo: "5 dias úteis", fundador: true,
-      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 480.",
+    { id: "traducao", secao: "rest", nome: "Tradução do cardápio · inglês e espanhol", preco: 597, prazo: "5 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 897.",
       desc: "Para quem tem ou leva junto o Cardápio Pronto: o cardápio também em inglês e espanhol, com nomes, descrições e categorias dos pratos (até 30 itens), para atender turistas sem traduzir na hora." },
-    { id: "catalogo", secao: "cat", nome: "Catálogo Pronto", preco: 1500, prazo: "10 dias úteis", fundador: true,
-      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.400.",
-      desc: "Até 30 itens com nome, descrição, preço e foto que você enviar. Catálogo no celular, que abre pelo QR code e pelo link na bio, com botão de pedido pelo WhatsApp sem taxa por pedido e link no Instagram e no Perfil da Empresa no Google. 12 meses no ar incluídos. Página e app feitos pela Zethic, em parceria." }
+    { id: "catalogo", secao: "cat", nome: "Catálogo Pronto", preco: 697, prazo: "10 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 897.",
+      desc: "Até 30 itens com nome, descrição, preço e foto que você enviar. Catálogo no celular, que abre pelo QR code e pelo link na bio, com botão de pedido pelo WhatsApp sem taxa por pedido e link no Instagram e no Perfil da Empresa no Google. 12 meses no ar incluídos. Página e app feitos pela Zethic, em parceria." },
+    /* 12/11/2026 (Jéssica: "solucione usando estratégia de mercado + publicidade e propaganda + vendas"): Kit de Vendas,
+       com os nomes de mercado. Referências: apresentação comercial de R$ 449,70 a R$ 995 (Criadora Oceano, M.Design,
+       We Do Logos); só o design, R$ 70 a R$ 100 (Vintepila). A Pode Curtir escreve o conteúdo e organiza a oferta. */
+    { id: "kit_catalogo", secao: "kit", nome: "Catálogo de Serviços", preco: 297, prazo: "5 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 397. Em até 30 dias, o valor vira crédito no nível acima.",
+      desc: "Os seus serviços em 1 ou 2 páginas: o que cada um inclui, o prazo e o preço. Textos escritos pela gente, a partir das suas respostas. PDF para mandar no WhatsApp e fixar no Instagram." },
+    { id: "kit_apresentacao", secao: "kit", nome: "Apresentação Comercial", preco: 797, prazo: "10 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 997.",
+      desc: "Tudo do Catálogo de Serviços, em até 12 telas: para quem é, como funciona, planos e valores, jornada do cliente, pagamento e contato, nas cores e na marca do seu Negócio. PDF e link para mandar antes ou depois da conversa." },
+    { id: "kit_oferta", secao: "kit", nome: "Estruturação de Oferta", preco: 1997, prazo: "20 dias úteis", fundador: true,
+      depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.497.",
+      desc: "Tudo da Apresentação Comercial, em até 20 telas, mais a organização dos seus serviços em pacotes e níveis, o preço comparado com o mercado, o que fica de fora de cada um e uma porta de entrada para o cliente começar." }
   ];
   var PLANOS = [
-    { id: "essencial", nome: "Gestão Essencial", mensal: 1500, depois: "Preço de fundador. A partir do 4º cliente, R$ 2.400 por mês.", desc: "1 rede, 12 posts por mês e relatório mensal." },
-    { id: "padrao", nome: "Gestão Padrão", mensal: 2800, depois: "Preço de fundador. A partir do 4º cliente, R$ 4.480 por mês.", desc: "2 redes, 16 posts e 4 Reels por mês, com relatório." },
-    { id: "completa", nome: "Gestão Completa", mensal: 4500, depois: "Preço de fundador. A partir do 4º cliente, R$ 7.200 por mês.", desc: "3 redes, 20 posts e 8 Reels por mês." },
-    { id: "relatorio", nome: "Relatório de marketing mensal", mensal: 390, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 620 por mês.",
+    { id: "essencial", nome: "Gestão Essencial", mensal: 997, depois: "Preço de fundador. A partir do 4º cliente, R$ 1.297 por mês.", desc: "1 rede, 12 posts por mês e relatório mensal." },
+    { id: "padrao", nome: "Gestão Padrão", mensal: 1797, depois: "Preço de fundador. A partir do 4º cliente, R$ 2.197 por mês.", desc: "2 redes, 16 posts e 4 Reels por mês, com relatório." },
+    { id: "completa", nome: "Gestão Completa", mensal: 2997, depois: "Preço de fundador. A partir do 4º cliente, R$ 3.997 por mês.", desc: "3 redes, 20 posts e 8 Reels por mês." },
+    { id: "relatorio", nome: "Relatório de marketing mensal", mensal: 197, depois: "Preço de fundador para os 3 primeiros clientes.",
       desc: "Para quem já publica sozinho: redes, site e anúncios num painel só e 1 página por mês dizendo o que manter e o que mudar no mês seguinte. Os planos de Gestão já trazem relatório." },
-    { id: "esp_marca", secao: "esp", nome: "Gestão de marca de especialista", mensal: 7650, depois: "Preço de fundador para 1 cliente. Depois, R$ 12.240 por mês.",
+    { id: "esp_marca", secao: "esp", nome: "Gestão de marca de especialista", mensal: 4997, depois: "Preço de fundador para 1 cliente. Depois, R$ 6.997 por mês.",
       desc: "A sua marca de ponta a ponta: estratégia, roteiros, coordenação da produtora e da mentora que você já tem, acabamento, publicação, newsletter e relatório. Você grava, confere os fatos e aprova." },
-    { id: "esp_produtora", secao: "esp", nome: "Coordenação da sua produtora", mensal: 3150, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 5.040 por mês.",
+    { id: "esp_produtora", secao: "esp", nome: "Coordenação da sua produtora", mensal: 1997, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 2.497 por mês.",
       desc: "Para quem já tem produtora ou editor e não quer coordenar: padrão de edição, calendário de gravação, prazos, revisões e aceite das entregas. Até 21 horas por mês." },
-    { id: "esp_news", secao: "esp", nome: "Newsletter pronta · 2 edições por mês", mensal: 1200, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 1.920 por mês.",
+    { id: "esp_news", secao: "esp", nome: "Newsletter pronta · 2 edições por mês", mensal: 1197, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 1.497 por mês.",
       desc: "Pauta, texto com fontes, capa e texto pronto para publicar no LinkedIn. Com blog no site, a edição também entra lá." },
-    { id: "esp_portavozes", secao: "esp", nome: "Programa de porta-vozes · 2 porta-vozes", mensal: 5800, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 9.200 por mês.",
+    { id: "esp_portavozes", secao: "esp", nome: "Programa de porta-vozes · 2 porta-vozes", mensal: 3997, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 4.997 por mês.",
       desc: "Para empresas: posts e roteiros de vídeo para 2 líderes, com calendário e aprovação numa rotina só. Mais porta-vozes por proposta: 10% de desconto a partir do 3º e 15% a partir do 5º." },
-    { id: "cardapio_mensal", secao: "rest", nome: "Cuidado do Cardápio", mensal: 290, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 460 por mês.",
+    /* 12/11/2026: Vídeo de conversa em plano mensal, abaixo do preço do Reel avulso (pacotes do mercado: R$ 85 a R$ 125 por Reel). */
+    { id: "presenca4", secao: "esp", nome: "Vídeo de conversa · Presença, 4 Reels por mês", mensal: 597, depois: "Preço de fundador para os 3 primeiros clientes.",
+      desc: "Uma conversa, entrevista ou live por semana vira Reel: até 15 minutos de material bruto por Reel, legendas, capa, som limpo e 2 versões de cada. Edição com apoio de IA, sem mudar o que foi dito." },
+    { id: "presenca8", secao: "esp", nome: "Vídeo de conversa · Presença+, 8 Reels por mês", mensal: 997, depois: "Preço de fundador para os 3 primeiros clientes.",
+      desc: "O mesmo da Presença, com 8 Reels por mês: dois por semana, para quem grava muito e quer aparecer sempre." },
+    { id: "cardapio_mensal", secao: "rest", nome: "Cuidado do Cardápio", mensal: 197, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 297 por mês.",
       desc: "Para quem já tem o Cardápio Pronto: até 10 trocas por mês (1 troca = mudar um item: preço, nome, descrição, foto ou disponibilidade), 1 post do prato da semana e relatório dos pratos mais vistos. O cardápio fica no ar sem custo de hospedagem. Nada entra no ar sem a sua aprovação." },
-    { id: "catalogo_mensal", secao: "cat", nome: "Cuidado do Catálogo", mensal: 290, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 460 por mês.",
+    { id: "catalogo_mensal", secao: "cat", nome: "Cuidado do Catálogo", mensal: 197, depois: "Preço de fundador para os 3 primeiros clientes. Depois, R$ 297 por mês.",
       desc: "Para quem já tem o Catálogo Pronto: até 10 trocas por mês (1 troca = mudar um item: preço, nome, descrição, foto ou disponibilidade), 1 post do produto da semana e relatório dos produtos mais vistos. O catálogo fica no ar sem custo de hospedagem. Nada entra no ar sem a sua aprovação." }
   ];
   /* Planos de Gestão que entram na campanha de Black Friday (a Proteção das contas de bônus vale só para eles). */
@@ -104,23 +135,23 @@
   /* Pedir proposta (10/11/2026, Jéssica): agrupado por marca, na mesma ordem das faixas acima —
      primeiro a Pode Curtir, depois o que é com a Jéssica Gessoli, por fim o que é com a Zethic. */
   var PROPOSTAS = [
-    { id: "gravacao", marca: "pc", nome: "Sessão de fotos, ensaio e gravação de vídeo", plus: "plus_gravacao", desc: "Produto, ambiente ou retrato profissional; diária, evento ou sessão maior. O deslocamento entra na proposta." },
-    { id: "livro", marca: "pc", nome: "Livro pronto", plus: "plus_livro", desc: "Revisão, capa, diagramação, publicação e divulgação." },
-    { id: "produto_digital", marca: "pc", nome: "Produto digital e curso online", desc: "Roteiro, gravação e edição das aulas, capa e materiais do curso ou do produto. A plataforma (Hotmart ou outra) e as vendas ficam no nome do autor; a área de cursos pode ser montada pela Zethic, em parceria." },
+    { id: "gravacao", marca: "pc", nome: "Sessão de fotos, ensaio e gravação de vídeo", plus: "plus_gravacao", desc: "Produto, ambiente ou retrato profissional; diária, evento ou sessão maior. Meia diária a partir de R$ 897; diária com edição básica a partir de R$ 1.497. O deslocamento entra na proposta." },
+    { id: "livro", marca: "pc", nome: "Livro pronto", plus: "plus_livro", desc: "Revisão, capa, diagramação, publicação e divulgação. Digital a partir de R$ 1.497; digital e impresso a partir de R$ 2.997 (a impressão é paga à parte)." },
+    { id: "produto_digital", marca: "pc", nome: "Produto digital e curso online", desc: "Roteiro, gravação e edição das aulas, capa e materiais do curso ou do produto. A plataforma (Hotmart ou outra) e as vendas ficam no nome do autor; a área de cursos pode ser montada pela Zethic, em parceria. A partir de R$ 4.997." },
     { id: "licenca", marca: "pc", nome: "Licença do método de produção", desc: "Para produtoras e agências: o fluxo de produção da Pode Curtir, com treino de 8 horas da equipe, modelos e listas de conferência. A partir de R$ 2.400 por ano (preço de fundador); renovação anual de R$ 1.200." },
     /* 11/11/2026 (Jéssica): serviços da categoria Agência de marketing no Google, por proposta (escopo depende do cliente;
        execução pela rede de parceiros da Pode Curtir quando for o caso). */
-    { id: "email", marca: "pc", nome: "E-mail marketing", desc: "Newsletter e campanhas por e-mail para quem já é cliente ou se cadastrou: textos, modelo, agenda de envios e relatório. A ferramenta e a lista ficam no nome do seu Negócio." },
-    { id: "seo", marca: "pc", nome: "SEO: textos do site e Perfil da Empresa no Google", desc: "Textos das páginas com as palavras que o seu cliente procura, Perfil da Empresa no Google completo e com fotos, e revisão mensal das buscas. Mexer no código do site é com a Zethic, em parceria." },
-    { id: "consultoria", marca: "pc", nome: "Análise e consultoria de marketing", desc: "Leitura do que o seu Negócio já faz nas redes, no Google e nos anúncios, com números, e um plano de 90 dias com prioridades e custo de cada ação." },
-    { id: "esporte", marca: "pc", nome: "Redes de atleta, time ou evento esportivo", desc: "Os planos de Gestão aplicados ao esporte: calendário de jogos e treinos, bastidores, resultados e entregas para patrocinadores. A partir de R$ 1.500 por mês (preço de fundador)." },
-    { id: "loja_online", marca: "pc", nome: "Loja online organizada", desc: "Cadastro e atualização de produtos, fotos, descrições e promoções na sua loja virtual ou no marketplace (Mercado Livre, Shopee e outros). A loja e as vendas ficam no nome do seu Negócio. A partir de R$ 1.500 por mês (preço de fundador)." },
+    { id: "email", marca: "pc", nome: "E-mail marketing", desc: "Newsletter e campanhas por e-mail para quem já é cliente ou se cadastrou: textos, modelo, agenda de envios e relatório. A ferramenta e a lista ficam no nome do seu Negócio. Implantação a partir de R$ 497 e mensal a partir de R$ 397 (2 envios por mês)." },
+    { id: "seo", marca: "pc", nome: "SEO: textos do site e Perfil da Empresa no Google", desc: "Textos das páginas com as palavras que o seu cliente procura, Perfil da Empresa no Google completo e com fotos, e revisão mensal das buscas. Mexer no código do site é com a Zethic, em parceria. Implantação a partir de R$ 497 e mensal a partir de R$ 197." },
+    { id: "consultoria", marca: "pc", nome: "Análise e consultoria de marketing", desc: "Leitura do que o seu Negócio já faz nas redes, no Google e nos anúncios, com números, e um plano de 90 dias com prioridades e custo de cada ação. A partir de R$ 497; o valor vira crédito se você contratar a execução em até 30 dias." },
+    { id: "esporte", marca: "pc", nome: "Redes de atleta, time ou evento esportivo", desc: "Os planos de Gestão aplicados ao esporte: calendário de jogos e treinos, bastidores, resultados e entregas para patrocinadores. A partir de R$ 997 por mês (preço de fundador)." },
+    { id: "loja_online", marca: "pc", nome: "Loja online organizada", desc: "Cadastro e atualização de produtos, fotos, descrições e promoções na sua loja virtual ou no marketplace (Mercado Livre, Shopee e outros). A loja e as vendas ficam no nome do seu Negócio. A partir de R$ 997 por mês (preço de fundador)." },
     { id: "afiliados", marca: "pc", nome: "Programa de indicação e afiliados", desc: "Regras, comissões, links e materiais prontos para quem indica o seu Negócio, na plataforma que você escolher. Implantação a partir de R$ 1.200 (preço de fundador)." },
-    { id: "prospeccao", marca: "pc", nome: "Prospecção de clientes para empresas", desc: "Lista de empresas com o perfil do seu cliente, mensagens de primeiro contato e acompanhamento das conversas até a reunião. Só contatos profissionais, com opção de sair em toda mensagem." },
-    { id: "ligacoes", marca: "pc", nome: "Ligações e mensagens para a sua base de clientes", desc: "Para reativar quem já comprou: roteiro, ligações e mensagens de WhatsApp só para quem já é cliente e autorizou o contato, respeitando o Não Me Ligue do Procon-SP e a LGPD. Sem ligação para lista comprada." },
-    { id: "mentoria", marca: "jg", nome: "Mentoria e consultoria em IA", plus: "plus_mentoria", desc: "Para mais de uma sessão ou para a equipe: você aprende a fazer com IA, no seu projeto. Com Jéssica Gessoli." },
-    { id: "protecao", marca: "ze", nome: "Proteção das contas da equipe inteira", plus: "plus_protecao", desc: "Mais de 3 contas ou a equipe toda. Feita pela Zethic, em parceria. Sem senha." },
-    { id: "tech", marca: "ze", nome: "Site, app, automação e bot de WhatsApp", plus: "plus_site", desc: "Feitos pela Zethic, em parceria. Atendimento e dados das redes num lugar só." },
+    { id: "prospeccao", marca: "pc", nome: "Prospecção de clientes para empresas", desc: "Lista de empresas com o perfil do seu cliente, mensagens de primeiro contato e acompanhamento das conversas até a reunião. Só contatos profissionais, com opção de sair em toda mensagem. Piloto de 30 dias a partir de R$ 1.497." },
+    { id: "ligacoes", marca: "pc", nome: "Ligações e mensagens para a sua base de clientes", desc: "Para reativar quem já comprou: roteiro, ligações e mensagens de WhatsApp só para quem já é cliente e autorizou o contato, respeitando o Não Me Ligue do Procon-SP e a LGPD. Sem ligação para lista comprada. Campanha a partir de R$ 697." },
+    { id: "mentoria", marca: "jg", nome: "Mentoria e consultoria em IA", plus: "plus_mentoria", desc: "Para mais de uma sessão ou para a equipe: você aprende a fazer com IA, no seu projeto. Com Jéssica Gessoli. Workshop de 4 horas para a equipe a partir de R$ 1.997." },
+    { id: "protecao", marca: "ze", nome: "Proteção das contas da equipe inteira", plus: "plus_protecao", desc: "Mais de 3 contas ou a equipe toda. Feita pela Zethic, em parceria. Sem senha. A partir de R$ 497 até 5 pessoas." },
+    { id: "tech", marca: "ze", nome: "Site, app, automação e bot de WhatsApp", plus: "plus_site", desc: "Feitos pela Zethic, em parceria. Atendimento e dados das redes num lugar só. Bot de WhatsApp: diagnóstico de R$ 297, abatido na implantação; app a partir de R$ 9.997." },
     { id: "blog", marca: "ze", nome: "Blog que publica sozinho", desc: "Feito pela Zethic, em parceria: área de blog no site do seu Negócio, com textos programados que entram no ar sozinhos na data. Implantação a partir de R$ 1.500 (preço de fundador); a proposta confirma se o seu site é compatível." }
   ];
   /* Plus do fechamento do pedido: escopo fechado e preço próprio. Só entram com um serviço pago no pedido,
@@ -128,15 +159,15 @@
      e, desde 07/11/2026, capa e diagramação do e-book (seção "conteudo"). Desde 10/11/2026, a mentoria de IA de 1 hora se chama
      "Monte o seu fluxo com IA" e fica na seção própria "Aprenda a fazer com IA" (secao: "ia"), depois dos especialistas. */
   var PLUS = [
-    { id: "plus_gravacao", marca: "pc", nome: "Sessão de fotos de 1 hora", preco: 500, prazo: "Edição pronta em até 14 dias depois da sessão",
+    { id: "plus_gravacao", marca: "pc", nome: "Sessão de fotos de 1 hora", preco: 497, prazo: "Edição pronta em até 14 dias depois da sessão",
       desc: "10 fotos editadas, em Campinas/SP. Fora de Campinas, o deslocamento é combinado antes e cobrado à parte." },
-    { id: "plus_livro", marca: "pc", nome: "Capa e diagramação do e-book", preco: 1500, avulso: true, secao: "conteudo", prazo: "Prazo combinado por escrito depois do briefing",
+    { id: "plus_livro", marca: "pc", nome: "Capa e diagramação do e-book", preco: 997, avulso: true, secao: "conteudo", prazo: "Prazo combinado por escrito depois do briefing",
       desc: "Com o texto pronto, até 100 páginas: capa simples e diagramação do e-book. ISBN, ficha catalográfica e gráfica ficam com o autor." },
-    { id: "plus_protecao", marca: "ze", nome: "Proteção das contas", preco: 400, avulso: true, secao: "contas", prazo: "Data combinada depois do pagamento",
+    { id: "plus_protecao", marca: "ze", nome: "Proteção das contas", preco: 397, avulso: true, secao: "contas", prazo: "Data combinada depois do pagamento",
       desc: "1 hora a distância, até 3 contas do Negócio: verificação em duas etapas, e-mail e telefone de recuperação, revisão de acessos e acesso de parceiro, sem senha. Conta já invadida ou bloqueada: Recuperação de conta." },
-    { id: "plus_recuperacao", marca: "ze", nome: "Recuperação de conta", preco: 400, avulso: true, secao: "contas", prazo: "Data combinada depois do pagamento",
+    { id: "plus_recuperacao", marca: "ze", nome: "Recuperação de conta", preco: 397, avulso: true, secao: "contas", prazo: "Data combinada depois do pagamento",
       desc: "1 hora a distância, para conta invadida ou bloqueada, pelos canais oficiais da plataforma. A decisão de devolver a conta é da plataforma; por isso, não há garantia de recuperação." },
-    { id: "plus_mentoria", marca: "jg", nome: "Monte o seu fluxo com IA · 1 hora", preco: 300, avulso: true, secao: "ia", prazo: "Data combinada depois do pagamento",
+    { id: "plus_mentoria", marca: "jg", nome: "Monte o seu fluxo com IA · 1 hora", preco: 297, avulso: true, secao: "ia", prazo: "Data combinada depois do pagamento",
       desc: "Por videochamada, no seu projeto e nas ferramentas de IA que você já usa: você sai com um fluxo que passa a repetir sem ajuda. Exemplo: editar os seus vídeos de conversa." },
     { id: "plus_site", marca: "ze", nome: "Site Essencial", preco: 3000, parcelas: 3, em: "no", fundador: true, prazo: "Prazo combinado por escrito depois do briefing",
       desc: "Site de uma página com apresentação e serviços, botão de WhatsApp, formulário, mapa e cadastro no Google. Domínio e hospedagem ficam no nome do seu Negócio, à parte. Preço de fundador para os 3 primeiros clientes." }
@@ -170,7 +201,14 @@
     plus_livro: "Para o seu texto virar um e-book pronto para vender ou presentear.",
     plus_mentoria: "Para fazer sozinho, com IA, o que hoje depende de alguém.",
     plus_protecao: "Para as contas do Negócio ficarem mais difíceis de invadir.",
-    plus_recuperacao: "Para tentar reaver a conta pelos canais oficiais, com quem conhece o caminho."
+    plus_recuperacao: "Para tentar reaver a conta pelos canais oficiais, com quem conhece o caminho.",
+    diag_perfil: "Para saber o que trava quem chega ao seu perfil, antes de investir.",
+    teste3: "Para ver o resultado em 3 vídeos antes de assinar um plano.",
+    presenca4: "Para aparecer em vídeo toda semana, sem editar nada.",
+    presenca8: "Para aparecer em vídeo duas vezes por semana, sem editar nada.",
+    kit_catalogo: "Para o cliente saber o que você faz e quanto custa sem precisar perguntar.",
+    kit_apresentacao: "Para o cliente entender o que você vende, quanto custa e como comprar.",
+    kit_oferta: "Para os seus serviços virarem pacotes fáceis de escolher e de comprar."
   };
   function beneficio(p) { return PARA[p.id] ? '<p class="beneficio">' + PARA[p.id] + "</p>" : ""; }
   /* 11/11/2026 (Jéssica, mapa de mídias): miniatura "Exemplo real" nos serviços já entregues a um cliente real,
@@ -269,9 +307,9 @@
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
 
   function textoVagas() {
-    var v = C.VAGAS_500_RESTANTES;
-    var escada = "Preço de fundador: R$ 500 do 1º ao 3º cliente, R$ 750 do 4º ao 6º e R$ 1.200 a partir do 7º.";
-    if (PRECO_AJUSTE === 500 && typeof v === "number" && v >= 0 && v <= 3) return "Restam " + v + " de 3 vagas a R$ 500. " + escada.replace("Preço de fundador: ", "Depois: ").replace("R$ 500 do 1º ao 3º cliente, ", "");
+    var v = C.VAGAS_FUNDADOR_RESTANTES;
+    var escada = "Preço de fundador: R$ 497 para os 3 primeiros clientes. Depois, R$ 597.";
+    if (PRECO_AJUSTE === 497 && typeof v === "number" && v >= 0 && v <= 3) return "Restam " + v + " de 3 vagas a R$ 497. Depois, R$ 597.";
     return escada;
   }
 
@@ -309,6 +347,7 @@
     $("grade-rest").innerHTML = daSecao(PROJ, "rest").map(cardProj).join("") + daSecao(PLANOS, "rest").map(cardPlano).join("");
     $("grade-esp").innerHTML = daSecao(PROJ, "esp").map(cardProj).join("") + daSecao(PLANOS, "esp").map(cardPlano).join("");
     $("grade-cat").innerHTML = daSecao(PROJ, "cat").map(cardProj).join("") + daSecao(PLANOS, "cat").map(cardPlano).join("");
+    $("grade-kit").innerHTML = daSecao(PROJ, "kit").map(cardProj).join("");
     /* 10/11/2026 (Jéssica): as propostas da Jéssica Gessoli e da Zethic saem do "Pedir proposta" e ficam dentro da faixa
        de cada marca; no "Pedir proposta" ficam só as da Pode Curtir. */
     $("lista-propostas").innerHTML = propostasDa("pc");
@@ -331,7 +370,7 @@
   function totais() {
     var hoje = 0, plano = null, pagos = [], fundador = false;
     /* Preço de fundador (termos, item 2): só nos itens vendidos pelo preço dos 3 primeiros clientes.
-       No Ajuste de Perfil, só a R$ 500; a R$ 750 ou R$ 1.200 não se pede depoimento nem autorização. */
+       No Ajuste de Perfil, só a R$ 497; a R$ 597 não se pede depoimento nem autorização. */
     PROJ.forEach(function (p) { if (tem(cart.proj, p.id)) { hoje += p.preco; pagos.push({ id: p.id, nome: p.nome, valor: p.preco, parcelas: p.parcelas || 0, em: p.em || "" }); if (p.fundador) fundador = true; } });
     PLANOS.forEach(function (p) { if (cart.plano === p.id) { plano = p; hoje += p.mensal; pagos.push({ id: p.id, nome: p.nome, valor: p.mensal }); fundador = true; } });
     /* Plus só com um serviço pago no pedido; os "avulso" (contas, e-book e mentoria em IA) também sozinhos. */

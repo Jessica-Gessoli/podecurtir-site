@@ -21,7 +21,7 @@
       texto: "Ajuste de Perfil com preço fechado: bio, destaques e posts fixados em 5 dias úteis depois do briefing. Compre até 20/11 e fique pronto antes do mês mais cheio do ano.",
       botao: "Ver o Ajuste de Perfil" },
     { id: "onda2", de: "2026-11-23", ate: "2026-11-30", bonus: true,
-      faixa: "Black Friday sem desconto falso: até 30/11, Perfil Arrumado, Marca Completa ou qualquer Gestão mensal ganham a Proteção das contas (R$ 400).",
+      faixa: "Black Friday sem desconto falso: até 30/11, Perfil Arrumado, Marca Completa ou qualquer Gestão mensal ganham a Proteção das contas (R$ 397).",
       link: "#t-perfil", linkTexto: "Ver o que ganha o bônus",
       titulo: "Black Friday sem preço inflado.",
       texto: "Aqui o preço é o mesmo do ano todo. Até 30/11, quem compra Perfil Arrumado, Marca Completa ou qualquer Gestão mensal ganha a Proteção das contas, feita pela Zethic.",
