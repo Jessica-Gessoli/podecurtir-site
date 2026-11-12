@@ -182,13 +182,75 @@ footer.ident p{margin:.3rem 0}
    caso Água na Boca, retrato da Lucia Vidotto, "Quem faz" e miniatura "Exemplo real" nos cards. */
 figure{margin:0}
 figure img,figure video,.exemplo img{display:block;width:100%;height:auto}
-.hero-foto{margin-top:2rem}
-.hero-foto img{border-radius:1rem;aspect-ratio:4/3;object-fit:cover;box-shadow:0 .6rem 1.8rem rgba(27,21,48,.28)}
-.hero-foto figcaption{margin-top:.55rem;font-size:.9rem;font-weight:600;color:var(--branco)}
-@media (min-width:60rem){
-  .hero-com-foto{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:2.5rem;align-items:center}
-  .hero-com-foto h1{font-size:clamp(2.6rem,4.8vw,4.4rem)}
-  .hero-foto{margin-top:0}
+
+/* Topo no modelo dos banners da Zethic (12/11/2026, Jéssica): foto ocupando a faixa inteira, texto próprio em cada destaque,
+   nomes com barrinha de tempo e Pausar. O topo cabe na primeira tela: altura = tela menos cabeçalho e faixa da campanha
+   (--alto-topo, medido pelo podecurtir-vitrine.js), para os botões já aparecerem ao abrir o site. */
+.pc-vitrine{position:relative;padding:0;overflow:hidden;background:var(--tinta);color:var(--branco)}
+.pc-vitrine .slides{display:grid}
+.pc-vitrine .slide{grid-area:1/1;position:relative;display:flex;align-items:center;min-height:max(34rem,calc(100svh - var(--alto-topo,8rem)));opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s linear .9s}
+.pc-vitrine .slide.ativo{opacity:1;visibility:visible;transition:opacity .9s ease}
+.pc-vitrine:not(.js-vitrine) .slide:first-child{opacity:1;visibility:visible}
+.pc-vitrine:not(.js-vitrine) .slide:not(:first-child){display:none}
+/* Fundo: a mesma foto, desfocada, na faixa inteira. Por cima, a foto nítida à direita, que se dissolve no fundo.
+   As fotos dos clientes são em pé; assim o rosto e o produto aparecem inteiros sem esticar a imagem. */
+.slide-fundo{position:absolute;inset:0;overflow:hidden}
+.slide-fundo img{width:100%;height:100%;object-fit:cover;display:block;filter:blur(32px) saturate(1.2) brightness(.55);transform:scale(1.25)}
+.slide-fundo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(27,21,48,.92) 0%,rgba(27,21,48,.6) 45%,rgba(27,21,48,.15) 100%)}
+.slide-img{position:absolute;top:0;bottom:0;right:0;width:min(56%,58rem);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 28%);mask-image:linear-gradient(90deg,transparent 0%,#000 28%)}
+.slide-img img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block}
+.slide-img.foco-rosto img{object-position:50% 30%}
+.slide-img.foco-retrato img{object-position:50% 18%}
+.slide-txt{position:relative;z-index:1;width:100%;padding-top:2.5rem;padding-bottom:6.5rem}
+.pc-vitrine .rec{margin-bottom:1rem;color:var(--flash);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem}
+.pc-vitrine h1,.slide-t{margin:0 0 1.1rem;max-width:15ch;font-weight:700;font-size:clamp(2.2rem,4.4vw,3.9rem);line-height:1.02;letter-spacing:-.03em;color:var(--branco)}
+.pc-vitrine .lede{max-width:46ch;margin:0 0 1.6rem;font-size:clamp(1.02rem,1.5vw,1.18rem);color:#ECE8F4}
+.pc-vitrine .selos{margin-top:1.25rem;font-size:.92rem}
+.slide-cred{margin:1.1rem 0 0;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.75)}
+.pc-vitrine .vitrine-ctrl{position:absolute;left:0;right:0;bottom:1.4rem;z-index:2;display:flex;align-items:flex-end;gap:1.5rem}
+.pc-vitrine .vitrine-ctrl[hidden]{display:none}
+.pontos{display:flex;gap:1.4rem;flex:1;min-width:0}
+.ponto{flex:0 1 11rem;min-width:0;background:none;border:0;padding:.35rem 0;color:rgba(255,255,255,.7);font:inherit;font-size:.85rem;font-weight:600;text-align:left;cursor:pointer}
+.ponto:hover,.ponto.ativo{color:var(--branco)}
+.ponto-nome{display:block;margin-bottom:.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ponto .barra{display:block;height:3px;border-radius:2px;background:linear-gradient(var(--flash),var(--flash)) no-repeat left/0% 100%,rgba(255,255,255,.3)}
+.ponto.ativo .barra{background-size:100% 100%,auto}
+.pausa{flex:none;background:rgba(27,21,48,.45);border:1px solid rgba(255,255,255,.6);color:var(--branco);border-radius:999px;padding:.4rem .95rem;font:inherit;font-size:.82rem;font-weight:600;cursor:pointer;min-height:2.25rem}
+.pausa:hover{border-color:var(--branco)}
+.pc-vitrine :focus-visible{outline-color:var(--flash)}
+@media (prefers-reduced-motion:no-preference){
+  .js-vitrine .slide.ativo .slide-img img{animation:pc-aproxima 9s ease-out both}
+  .js-vitrine .slide.ativo .slide-fundo img{animation:pc-deriva 9s ease-out both}
+  .js-vitrine .slide.ativo .slide-txt>*{animation:pc-sobe .8s ease both}
+  .js-vitrine .slide.ativo .slide-txt>:nth-child(2){animation-delay:.08s}
+  .js-vitrine .slide.ativo .slide-txt>:nth-child(3){animation-delay:.16s}
+  .js-vitrine .slide.ativo .slide-txt>:nth-child(4){animation-delay:.24s}
+  .js-vitrine .ponto.ativo .barra{background-size:0% 100%,auto;animation:pc-progresso 7s linear forwards}
+  .js-vitrine.pausado .ponto.ativo .barra,.js-vitrine.pausado .slide.ativo .slide-img img{animation-play-state:paused}
+}
+@keyframes pc-aproxima{from{transform:scale(1.1)}to{transform:scale(1)}}
+@keyframes pc-deriva{from{transform:scale(1.35)}to{transform:scale(1.25)}}
+@keyframes pc-sobe{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes pc-progresso{to{background-size:100% 100%,auto}}
+@media (max-width:52rem){
+  /* Celular: foto na tela inteira, rosto em cima e texto embaixo, com o primeiro botão dentro da primeira tela. */
+  .pc-vitrine .slide{align-items:flex-end}
+  .slide-fundo{display:none}
+  .slide-img{width:auto;left:0;-webkit-mask-image:none;mask-image:none}
+  .slide-img img,.slide-img.foco-rosto img{object-position:30% 18%}
+  .slide-img.foco-retrato img{object-position:50% 8%}
+  .slide-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,21,48,.05) 0%,rgba(27,21,48,.25) 28%,rgba(27,21,48,.88) 52%,rgba(27,21,48,.97) 100%)}
+  .slide-txt{padding-top:12rem;padding-bottom:5.5rem}
+  .pc-vitrine h1,.slide-t{font-size:clamp(2rem,9vw,2.6rem)}
+  .pc-vitrine .lede{font-size:1rem;margin-bottom:1.25rem}
+  .pc-vitrine .actions .btn{padding:.8rem 1.2rem}
+  .pc-vitrine .selos{gap:.35rem 1rem;font-size:.85rem}
+  .pontos{gap:.9rem}
+  .ponto{flex:1 1 0;min-height:2.75rem;display:flex;flex-direction:column;justify-content:flex-end}
+  .ponto-nome{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  body .campanha .wrap{padding-top:.5rem;padding-bottom:.5rem;gap:.15rem .75rem}
+  body .campanha p{font-size:.88rem}
+  body .campanha a{font-size:.88rem}
 }
 
 section.prova{padding:2.25rem 0;border-bottom:1px solid var(--linha)}

@@ -22,9 +22,13 @@
      (Cuidado do Catálogo, R$ 290/mês) entram na loja com os links criados pela Jéssica em 09/11/2026.
      10/11/2026: conversa (Vídeo de conversa · 1 Reel, R$ 450, avulsa, limite de 3 vendas: vagas de fundador).
        Link criado pela Jéssica em 10/11/2026 ("Pode Curtir · Vídeo de conversa · 1 Reel"; Pix ou boleto, à vista).
-   PRECO_AJUSTE: preço atual do Ajuste de Perfil (500 do 1º ao 3º cliente, 750 do 4º ao 6º, 1200 a partir do 7º).
+   12/11/2026 (preços pelo mercado): todos os valores mudaram. Os links abaixo continuam os mesmos endereços: antes de publicar,
+     o valor de cada um precisa ser trocado no Asaas para o preço novo (ou o link trocado por um novo). Itens novos, em
+     configuração até a Jéssica criar os links: diag_perfil (R$ 97), teste3 (R$ 397), presenca4 (R$ 597/mês),
+     presenca8 (R$ 997/mês), kit_catalogo (R$ 297), kit_apresentacao (R$ 797) e kit_oferta (R$ 1.997).
+   PRECO_AJUSTE: preço atual do Ajuste de Perfil (497 para os 3 primeiros clientes, 597 depois; até 11/11/2026: 500, 750 e 1200).
      Ao trocar o preço, troque também ASAAS_LINKS.ajuste pelo link do novo valor.
-   VAGAS_500_RESTANTES: número de vagas que ainda restam a R$ 500 (0 a 3). null = não mostra contador.
+   VAGAS_FUNDADOR_RESTANTES: número de vagas que ainda restam a R$ 497 (0 a 3). null = não mostra contador.
    CHECKOUT_ENDPOINT: webhook do n8n que cria o checkout do Asaas com vários itens e devolve {"url": "..."}.
    FORM_ENDPOINT: webhook do n8n que recebe pedidos de proposta, registros de aceite e pedidos de desistência.
      Os dois endereços precisam estar em connect-src da Content-Security-Policy de cada página.
@@ -66,10 +70,18 @@ window.PODECURTIR = {
     campanha: "",
     anuncio: "",
     relatorio: "",
-    conversa: "https://www.asaas.com/000/c/wf7ewn1yu7e49okd"
+    conversa: "https://www.asaas.com/000/c/wf7ewn1yu7e49okd",
+    /* 12/11/2026: itens novos, em configuração até a Jéssica criar os links. */
+    diag_perfil: "",
+    teste3: "",
+    presenca4: "",
+    presenca8: "",
+    kit_catalogo: "",
+    kit_apresentacao: "",
+    kit_oferta: ""
   },
-  PRECO_AJUSTE: 500,
-  VAGAS_500_RESTANTES: null,
+  PRECO_AJUSTE: 497,
+  VAGAS_FUNDADOR_RESTANTES: null,
   CHECKOUT_ENDPOINT: "",
   FORM_ENDPOINT: "",
   PIXEL_ID: "1671150877849822",
