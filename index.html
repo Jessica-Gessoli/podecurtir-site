@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pode Curtir | Perfil, redes, foto e vídeo com preço fechado</title>
 <meta name="description" content="Perfil pronto e gestão das redes com preço fechado, cardápio e catálogo no celular: escolha, pague online e responda o briefing. Foto e vídeo sob proposta.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://connect.facebook.net https://www.googletagmanager.com; img-src 'self' https://www.facebook.com https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; style-src 'self'; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://www.facebook.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://connect.facebook.net https://www.googletagmanager.com; img-src 'self' https://www.facebook.com https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; media-src 'self'; style-src 'self'; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://www.facebook.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'">
 <meta name="color-scheme" content="light">
 <link rel="canonical" href="https://podecurtir.zethic.net/">
 <meta name="robots" content="index, follow">
@@ -22,11 +22,11 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/img/podecurtir-icone.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/public-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/podecurtir.css?v=da3555bc11">
+<link rel="stylesheet" href="/assets/css/podecurtir.css?v=30fa308d93">
 <link rel="stylesheet" href="/assets/css/podecurtir-loja.css?v=635a33abc5">
 <script src="/assets/js/podecurtir-config.js?v=8bc2574400" defer></script>
-<script src="/assets/js/podecurtir-comum.js?v=36c333112f" defer></script>
-<script src="/assets/js/podecurtir-loja.js?v=f5aa19e9dd" defer></script>
+<script src="/assets/js/podecurtir-comum.js?v=d07676857f" defer></script>
+<script src="/assets/js/podecurtir-loja.js?v=066727241e" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -68,7 +68,7 @@
 
   <div id="vista-loja">
   <div class="hero">
-    <div class="wrap">
+    <div class="wrap hero-com-foto">
       <div class="visor">
         <p class="rec">Gravando</p>
         <h1>Seu perfil pronto para vender, com preço fechado.</h1>
@@ -83,8 +83,33 @@
           <li>Nada vai ao ar sem o seu ok</li>
         </ul>
       </div>
+      <!-- 11/11/2026 (Jéssica, mapa de mídias): 1 foto fixa de produto do caso de cliente, sem carrossel. Única imagem com prioridade alta. -->
+      <figure class="hero-foto">
+        <picture>
+          <source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-cesta-pronta-640.webp 640w, /assets/img/agua-na-boca_virginia-cesta-pronta-960.webp 960w, /assets/img/agua-na-boca_virginia-cesta-pronta-1440.webp 1440w" sizes="(min-width: 60rem) 30rem, calc(100vw - 2.5rem)">
+          <img src="/assets/img/agua-na-boca_virginia-cesta-pronta-960.jpg" width="960" height="720" fetchpriority="high" decoding="async" alt="Cesta de pão trançado com alça, baguetes e uvas, sobre toalha xadrez, com bananas, abacaxi, laranjas e um pão de forma ao redor">
+        </picture>
+        <figcaption>Água na Boca, cliente da Pode Curtir</figcaption>
+      </figure>
     </div>
   </div>
+
+  <!-- 11/11/2026 (Jéssica, mapa de mídias): faixa de prova logo abaixo do topo. -->
+  <section class="prova" aria-labelledby="t-prova">
+    <div class="wrap">
+      <div class="prova-texto">
+        <h2 id="t-prova">Trabalho real, de cliente real</h2>
+        <p>A Água na Boca, de Cabreúva/SP, é cliente da Pode Curtir: um dia de gravação na cozinha, fotos dos produtos e o perfil do Instagram arrumado.</p>
+        <a class="prova-link" href="#caso-agua-na-boca" data-evento="ver_caso">Ver o caso</a>
+      </div>
+      <ul class="prova-fotos">
+        <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-cesta-com-baguetes-240.webp 240w, /assets/img/agua-na-boca_virginia-cesta-com-baguetes-480.webp 480w" sizes="(min-width: 60rem) 9rem, 42vw"><img src="/assets/img/agua-na-boca_virginia-cesta-com-baguetes-480.jpg" width="480" height="640" loading="lazy" decoding="async" alt="Cesta de pão trançado com baguetes dentro, sobre toalha xadrez"></picture><figcaption>Cesta com baguetes</figcaption></figure></li>
+        <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-doces-embalados-240.webp 240w, /assets/img/agua-na-boca_virginia-doces-embalados-480.webp 480w" sizes="(min-width: 60rem) 9rem, 42vw"><img src="/assets/img/agua-na-boca_virginia-doces-embalados-480.jpg" width="480" height="640" loading="lazy" decoding="async" alt="Doces caseiros em potes plásticos fechados, sobre a mesa"></picture><figcaption>Doces embalados para a entrega</figcaption></figure></li>
+        <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-sovando-a-massa-240.webp 240w, /assets/img/agua-na-boca_virginia-sovando-a-massa-480.webp 480w" sizes="(min-width: 60rem) 9rem, 42vw"><img src="/assets/img/agua-na-boca_virginia-sovando-a-massa-480.jpg" width="480" height="640" loading="lazy" decoding="async" alt="Dona Virgínia, de touca e avental, sovando a massa na bancada da cozinha"></picture><figcaption>Dona Virgínia no preparo</figcaption></figure></li>
+        <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-capa-do-trigo-a-cesta-240.webp 240w, /assets/img/agua-na-boca_virginia-capa-do-trigo-a-cesta-480.webp 480w" sizes="(min-width: 60rem) 9rem, 42vw"><img src="/assets/img/agua-na-boca_virginia-capa-do-trigo-a-cesta-480.jpg" width="480" height="640" loading="lazy" decoding="async" alt="Capa de Reel com o título Do trigo à cesta sobre uma foto de pães e frutas"></picture><figcaption>Capa de Reel</figcaption></figure></li>
+      </ul>
+    </div>
+  </section>
 
   <section id="loja" class="loja" aria-labelledby="t-loja">
 
@@ -172,6 +197,75 @@
     </div>
   </div>
 
+  <!-- 11/11/2026 (Jéssica, decisão de 10/11/2026): caso de cliente com foco no resultado da cliente.
+       Números só se forem medidos; frase dela só com as palavras dela. Por enquanto, sem números e sem frase. -->
+  <section class="caso alt" id="caso-agua-na-boca" aria-labelledby="t-caso">
+    <div class="wrap">
+      <span class="eyebrow">CASO DE CLIENTE</span>
+      <h2 id="t-caso">Água na Boca</h2>
+      <p class="intro">A Dona Virgínia Barboza faz doces e pães caseiros para eventos em Cabreúva/SP e recebe as encomendas pelo Instagram <strong>@aguanaboca.oficial1</strong>. Ela é cliente da Pode Curtir.</p>
+
+      <div class="caso-bloco caso-quem">
+        <figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-com-a-cesta-400.webp 400w, /assets/img/agua-na-boca_virginia-com-a-cesta-800.webp 800w" sizes="(min-width: 60rem) 20rem, calc(100vw - 2.5rem)"><img src="/assets/img/agua-na-boca_virginia-com-a-cesta-800.jpg" width="800" height="1066" loading="lazy" decoding="async" alt="Dona Virgínia sorrindo, de touca e avental, ao lado da cesta de pão trançado pronta"></picture></figure>
+        <div>
+          <h3>Quem é</h3>
+          <p>Padeira e doceira, faz tudo em casa: pães, doces, salgados e cestas de pão trançado para festas. O trabalho já era caprichado; faltava o perfil mostrar isso.</p>
+        </div>
+      </div>
+
+      <div class="caso-bloco">
+        <h3>Antes</h3>
+        <figure class="caso-print"><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-perfil-antes-540.webp 540w, /assets/img/agua-na-boca_virginia-perfil-antes-1080.webp 1080w" sizes="(min-width: 60rem) 30rem, calc(100vw - 2.5rem)"><img src="/assets/img/agua-na-boca_virginia-perfil-antes-1080.jpg" width="1080" height="1100" loading="lazy" decoding="async" alt="Perfil @aguanaboca.oficial1 antes: logo de confeitaria como foto, bio em lista com Acima do Sabor, Bolos, Tortas e Pão de mel, e grade de fotos sem padrão"></picture><figcaption>O perfil antes do trabalho: logo no lugar da foto, bio em lista e fotos sem padrão.</figcaption></figure>
+      </div>
+
+      <div class="caso-bloco">
+        <h3>O que foi feito</h3>
+        <p>Ela contratou a sessão de fotos e a reformulação do Instagram. Foi um dia de gravação na cozinha dela, com fotos dos produtos, do preparo e da mesa, e um Reel. O perfil ganhou foto nova, bio que diz o que ela vende e para quem, link de encomenda pelo WhatsApp e destaques novos.</p>
+        <ul class="caso-fotos">
+          <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-cesta-no-forno-400.webp 400w, /assets/img/agua-na-boca_virginia-cesta-no-forno-800.webp 800w" sizes="(min-width: 60rem) 12rem, 45vw"><img src="/assets/img/agua-na-boca_virginia-cesta-no-forno-800.jpg" width="800" height="1066" loading="lazy" decoding="async" alt="Cesta de pão trançado assando dentro do forno"></picture><figcaption>Produto: a cesta no forno</figcaption></figure></li>
+          <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-paes-na-forma-400.webp 400w, /assets/img/agua-na-boca_virginia-paes-na-forma-800.webp 800w" sizes="(min-width: 60rem) 12rem, 45vw"><img src="/assets/img/agua-na-boca_virginia-paes-na-forma-800.jpg" width="800" height="1066" loading="lazy" decoding="async" alt="Pães caseiros dourados lado a lado numa forma de alumínio"></picture><figcaption>Produto: pães na forma</figcaption></figure></li>
+          <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-mesa-com-frutas-400.webp 400w, /assets/img/agua-na-boca_virginia-mesa-com-frutas-800.webp 800w" sizes="(min-width: 60rem) 12rem, 45vw"><img src="/assets/img/agua-na-boca_virginia-mesa-com-frutas-800.jpg" width="800" height="1066" loading="lazy" decoding="async" alt="Mesa posta com a cesta de pão trançado, bananas, abacaxi e laranjas sobre toalha xadrez"></picture><figcaption>Mesa posta</figcaption></figure></li>
+          <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-forma-de-paes-400.webp 400w, /assets/img/agua-na-boca_virginia-forma-de-paes-800.webp 800w" sizes="(min-width: 60rem) 12rem, 45vw"><img src="/assets/img/agua-na-boca_virginia-forma-de-paes-800.jpg" width="800" height="1066" loading="lazy" decoding="async" alt="Dona Virgínia na cozinha segurando uma forma com pães compridos"></picture><figcaption>Preparo</figcaption></figure></li>
+          <li><figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-modelando-a-massa-400.webp 400w, /assets/img/agua-na-boca_virginia-modelando-a-massa-800.webp 800w" sizes="(min-width: 60rem) 12rem, 45vw"><img src="/assets/img/agua-na-boca_virginia-modelando-a-massa-800.jpg" width="800" height="1066" loading="lazy" decoding="async" alt="Mãos modelando bolinhas de massa sobre a bancada de granito"></picture><figcaption>Mãos na massa</figcaption></figure></li>
+        </ul>
+      </div>
+
+      <div class="caso-bloco">
+        <h3>Resultado</h3>
+        <div class="antes-depois">
+          <figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-perfil-antes-540.webp 540w, /assets/img/agua-na-boca_virginia-perfil-antes-1080.webp 1080w" sizes="(min-width: 60rem) 24rem, calc(100vw - 2.5rem)"><img src="/assets/img/agua-na-boca_virginia-perfil-antes-1080.jpg" width="1080" height="1100" loading="lazy" decoding="async" alt="Perfil antes: logo de confeitaria como foto e bio em lista"></picture><figcaption><strong>Antes</strong></figcaption></figure>
+          <figure><picture><source type="image/webp" srcset="/assets/img/agua-na-boca_virginia-perfil-depois-540.webp 540w, /assets/img/agua-na-boca_virginia-perfil-depois-1080.webp 1080w" sizes="(min-width: 60rem) 24rem, calc(100vw - 2.5rem)"><img src="/assets/img/agua-na-boca_virginia-perfil-depois-1080.jpg" width="1080" height="438" loading="lazy" decoding="async" alt="Perfil depois: foto da Dona Virgínia de touca e avental e bio Água na Boca, doces e salgados, Cabreúva, com encomendas pelo WhatsApp"></picture><figcaption><strong>Depois</strong></figcaption></figure>
+        </div>
+        <div class="caso-video">
+          <video controls preload="none" playsinline width="720" height="1280" poster="/assets/img/agua-na-boca_virginia-reel-poster-720.jpg" data-evento-play="play_video_caso" aria-describedby="caso-video-txt">
+            <source src="/assets/video/agua-na-boca_virginia-reel.mp4" type="video/mp4">
+          </video>
+          <p id="caso-video-txt">Reel do caso, 32 segundos, sem áudio: o texto na tela conta o trabalho do começo ao fim.</p>
+        </div>
+      </div>
+
+      <div class="actions caso-cta">
+        <a class="btn rosa" href="#t-perfil" data-evento="quero_o_mesmo">Quero o mesmo para o meu Negócio</a>
+      </div>
+      <p class="caso-cta-linha">Perfil Pronto com Sessão de fotos</p>
+    </div>
+  </section>
+
+  <!-- 11/11/2026 (Jéssica): caso curto de retrato profissional, 1 foto de cada figurino. -->
+  <section class="caso-curto" id="caso-lucia-vidotto" aria-labelledby="t-lucia">
+    <div class="wrap">
+      <span class="eyebrow">RETRATO PROFISSIONAL</span>
+      <h2 id="t-lucia">Lucia Vidotto</h2>
+      <p class="intro">Ensaio de retrato feito pela Pode Curtir, com dois figurinos, para usar no perfil e no trabalho.</p>
+      <ul class="retratos">
+        <li><figure><picture><source type="image/webp" srcset="/assets/img/lucia-vidotto_01-400.webp 400w, /assets/img/lucia-vidotto_01-800.webp 800w" sizes="(min-width: 60rem) 16rem, 45vw"><img src="/assets/img/lucia-vidotto_01-800.jpg" width="800" height="1200" loading="lazy" decoding="async" alt="Lucia Vidotto sorrindo, de blazer laranja e braços cruzados, diante de uma mandala na parede"></picture></figure></li>
+        <li><figure><picture><source type="image/webp" srcset="/assets/img/lucia-vidotto_03-400.webp 400w, /assets/img/lucia-vidotto_03-800.webp 800w" sizes="(min-width: 60rem) 16rem, 45vw"><img src="/assets/img/lucia-vidotto_03-800.jpg" width="800" height="1200" loading="lazy" decoding="async" alt="Lucia Vidotto sorrindo, de blazer roxo e braços cruzados, diante de uma janela com plantas ao fundo"></picture></figure></li>
+      </ul>
+      <p class="credito">Foto: Alpha, parceira da Pode Curtir</p>
+      <p><a href="#t-propostas">Pedir proposta de ensaio</a></p>
+    </div>
+  </section>
+
   <section class="alt" id="como" aria-labelledby="t-como">
     <div class="wrap">
       <h2 id="t-como">Como funciona a compra</h2>
@@ -208,6 +302,21 @@
         <li><strong>Seu ok antes de publicar</strong><span>Cada peça tem até 2 rodadas de ajuste, e nada é publicado nos seus perfis sem a sua aprovação.</span></li>
         <li><strong>Resposta em até 1 dia útil</strong><span>Pelo WhatsApp (19) 98331-0769 ou pelo e-mail podecurtir@zethic.net.</span></li>
       </ul>
+    </div>
+  </section>
+
+  <!-- 11/11/2026 (Jéssica, mapa de mídias): quem faz, perto do "Combinado por escrito". A foto apresenta a Pode Curtir:
+       sem cargo ou título da marca Jéssica Gessoli e sem link para o perfil dela. -->
+  <section class="quem-faz" aria-labelledby="t-quem-faz">
+    <div class="wrap">
+      <figure>
+        <picture><source type="image/webp" srcset="/assets/img/jessica-gessoli_quem-faz-640.webp 640w, /assets/img/jessica-gessoli_quem-faz-1024.webp 1024w" sizes="(min-width: 60rem) 32rem, calc(100vw - 2.5rem)"><img src="/assets/img/jessica-gessoli_quem-faz-1024.jpg" width="1024" height="682" loading="lazy" decoding="async" alt="Jéssica Gessoli de óculos e blazer escuro, olhando o celular ao lado de uma câmera no tripé, num estúdio"></picture>
+        <figcaption>Foto: Alpha</figcaption>
+      </figure>
+      <div>
+        <h2 id="t-quem-faz">Quem faz</h2>
+        <p>A Pode Curtir é da Jéssica Gessoli. Ela recebe o seu pedido, cuida do briefing e trabalha com uma rede de parceiros de foto, vídeo e design.</p>
+      </div>
     </div>
   </section>
 
@@ -252,6 +361,7 @@
           <ul>
             <li><strong>Fotografia profissional</strong><span>Fotos selecionadas e arquivos finais.</span></li>
           </ul>
+          <p class="para"><a href="#caso-lucia-vidotto">Ver um retrato feito pela Pode Curtir</a></p>
           <p class="para"><a href="#t-propostas">Pedir proposta de foto, vídeo ou evento</a></p>
         </li>
       </ul>

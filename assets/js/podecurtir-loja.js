@@ -173,6 +173,19 @@
     plus_recuperacao: "Para tentar reaver a conta pelos canais oficiais, com quem conhece o caminho."
   };
   function beneficio(p) { return PARA[p.id] ? '<p class="beneficio">' + PARA[p.id] + "</p>" : ""; }
+  /* 11/11/2026 (Jéssica, mapa de mídias): miniatura "Exemplo real" nos serviços já entregues a um cliente real,
+     levando ao caso. As imagens são as mesmas da página (o gerador das marcas copia só o que o HTML usa). */
+  var EXEMPLO = {
+    ajuste: { img: "agua-na-boca_virginia-perfil-depois", webp: 540, jpg: 1080, w: 1080, h: 438, cliente: "Água na Boca", alt: "Perfil da Água na Boca depois do trabalho" },
+    arrumado: { img: "agua-na-boca_virginia-perfil-depois", webp: 540, jpg: 1080, w: 1080, h: 438, cliente: "Água na Boca", alt: "Perfil da Água na Boca depois do trabalho" },
+    gravacao: { img: "agua-na-boca_virginia-cesta-com-baguetes", webp: 240, jpg: 480, w: 480, h: 640, cliente: "Água na Boca", alt: "Foto de produto da Água na Boca: cesta de pão trançado com baguetes" }
+  };
+  function exemplo(id) {
+    var e = EXEMPLO[id];
+    if (!e) return "";
+    var base = "/assets/img/" + e.img;
+    return '<a class="exemplo" href="#caso-agua-na-boca" data-evento="ver_caso"><picture><source type="image/webp" srcset="' + base + "-" + e.webp + '.webp"><img src="' + base + "-" + e.jpg + '.jpg" width="' + e.w + '" height="' + e.h + '" loading="lazy" decoding="async" alt="' + e.alt + '"></picture><span>Exemplo real · ' + e.cliente + "</span></a>";
+  }
   function plusDe(id) { return PLUS.filter(function (p) { return p.id === id; })[0]; }
   /* Tipo de Negócio (06/11/2026): sugestão de por onde começar, a partir das personas de clientes (hipótese até as entrevistas). */
   var TIPOS = [
@@ -269,6 +282,7 @@
       return '<article class="item' + (sug ? " sugerido" : "") + '">' + (sug ? marcaSug : "") + "<h3>" + p.nome + '</h3><p class="preco num">' + brl(p.preco) + "</p>" + beneficio(p) + "<p>" + p.desc + "</p>" +
         (p.id === "ajuste" ? '<p class="vagas">' + textoVagas() + "</p>" : (p.depois ? '<p class="vagas">' + p.depois + "</p>" : "")) +
         '<dl class="meta"><div><dt>Prazo</dt><dd>' + p.prazo + ', a partir do briefing completo</dd></div><div><dt>Pagamento</dt><dd>Integral: ' + formas(p) + "</dd></div></dl>" +
+        exemplo(p.id) +
         '<button class="por" type="button" data-proj="' + p.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr no meu pedido") + "</button></article>";
     }
     function cardPlano(p) {
@@ -309,7 +323,7 @@
       /* Dentro da faixa da marca, o plus avulso já aparece logo acima, à venda: a dica não se repete. */
       if (x && x.avulso && marca !== "pc") x = null;
       return '<div class="proposta' + (sugerido("prop", a.id) ? " sugerido" : "") + '"><div><span class="selo ' + a.marca + '">' + MARCA[a.marca] + "</span><strong>" + a.nome + "</strong><p>" + a.desc + "</p>" +
-        (x ? '<p class="plus-dica">Ou como plus, no fechamento de um pedido: ' + x.nome + " por " + brl(x.preco) + ".</p>" : "") + "</div>" +
+        (x ? '<p class="plus-dica">Ou como plus, no fechamento de um pedido: ' + x.nome + " por " + brl(x.preco) + ".</p>" : "") + exemplo(a.id) + "</div>" +
         '<button class="pedir" type="button" data-prop="' + a.id + '" aria-pressed="' + on + '">' + (on ? "Pedido · tirar" : "Quero uma proposta") + "</button></div>";
     }).join("");
   }
