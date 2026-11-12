@@ -1,0 +1,18 @@
+{
+  "nome": "Cozinha Caseira Exemplo",
+  "aviso": "Cardápio de exemplo, com cozinha, pratos e preços fictícios. Os pedidos de teste chegam no WhatsApp da Pode Curtir.",
+  "descricao": "Marmitas, congelados e doces feitos em casa, só por entrega ou retirada combinada.",
+  "endereco": "Atende bairros fictícios · Cidade/UF",
+  "horario": "Encomendas de segunda a sábado, das 9h às 18h",
+  "whatsapp": "5519983310769",
+  "mensagem_inicio": "Olá! Pedido de teste pelo cardápio de exemplo de delivery da Pode Curtir:",
+  "url": "https://podecurtir.zethic.net/cardapio/exemplo-delivery/",
+  "cor": "#2F6B4F",
+  "cor_fundo": "#F6FAF4",
+  "atualizado_em": "08/11/2026",
+  "impresso": false,
+  "opcoes_pedido": ["Entrega", "Retirada combinada"],
+  "informado_por": "pela cozinha",
+  "quem_confirma": "a cozinha",
+  "rodape": "Cardápio de exemplo feito pela Pode Curtir. Página e app pela Zethic, em parceria."
+}

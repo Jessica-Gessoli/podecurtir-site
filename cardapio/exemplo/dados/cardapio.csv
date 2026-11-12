@@ -1,0 +1,16 @@
+categoria,nome,descricao,preco,alergenos,disponivel,destaque
+Entradas,Pão de alho da casa,"Pão de fermentação natural, manteiga de ervas e alho assado.",18.00,"glúten, leite",sim,
+Entradas,Bolinho de mandioca,"6 unidades, recheio de carne seca e molho de pimenta da casa.",26.00,,sim,sim
+Entradas,Salada da horta,"Folhas, tomate, pepino, cenoura e molho de mostarda e mel.",22.00,mostarda,sim,
+Pratos,Prato do dia,"Arroz, feijão, salada, farofa e a proteína do dia. Pergunte qual é.",32.00,,sim,sim
+Pratos,Frango grelhado com legumes,"Peito de frango grelhado, legumes salteados e arroz de ervas.",38.00,,sim,
+Pratos,Escondidinho de carne seca,"Purê de mandioca, carne seca desfiada e queijo gratinado.",42.00,leite,sim,
+Pratos,Moqueca de peixe,"Peixe branco, leite de coco, pimentões e arroz. Serve 2 pessoas.",98.00,"peixe",sim,
+Pratos,Risoto de cogumelos,"Arroz arbóreo, cogumelos frescos e parmesão.",46.00,leite,não,
+Lanches,Hambúrguer da casa,"Pão brioche, blend de 160 g, queijo, alface, tomate e maionese da casa.",36.00,"glúten, leite, ovo",sim,sim
+Lanches,Sanduíche de pernil,"Pão francês, pernil desfiado, vinagrete e mostarda.",30.00,"glúten, mostarda",sim,
+Bebidas,Suco natural,"Laranja, limão ou abacaxi com hortelã. 400 ml.",12.00,,sim,
+Bebidas,Refrigerante lata,350 ml.,7.00,,sim,
+Bebidas,Água com ou sem gás,500 ml.,5.00,,sim,
+Sobremesas,Pudim de leite,"Fatia generosa, com calda de caramelo.",14.00,"leite, ovo",sim,sim
+Sobremesas,Brownie com sorvete,"Brownie de chocolate meio amargo e bola de sorvete de creme.",19.00,"glúten, leite, ovo",sim,
