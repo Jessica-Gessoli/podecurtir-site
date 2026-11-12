@@ -174,11 +174,12 @@ test("casos: miniatura Exemplo real no Ajuste de Perfil, no Perfil Arrumado e na
   }
 });
 
-test("casos: Lucia Vidotto com 1 foto de cada figurino e crédito da Alpha", () => {
+test("casos: Lucia Vidotto com 1 foto de cada figurino, sem texto de apresentação nem crédito", () => {
   assert.match(lucia, /lucia-vidotto_01-800\.jpg/);
   assert.match(lucia, /lucia-vidotto_03-800\.jpg/);
   assert.equal((lucia.match(/<img /g) || []).length, 2);
-  assert.match(lucia, /<p class="credito">Foto: Alpha, parceira da Pode Curtir<\/p>/);
+  // 12/11/2026 (Jéssica): saíram o texto de apresentação e a linha de crédito do bloco dos retratos.
+  assert.doesNotMatch(lucia, /class="intro"|class="credito"/);
   assert.match(h, /<a href="#caso-lucia-vidotto">Ver os retratos da Lucia Vidotto<\/a>/);
 });
 
@@ -211,7 +212,6 @@ test("loja em abas: grupos cobrem todas as seções, tipo abre o grupo e âncora
 // (livro, e-book, perfil) e não para ensaio, para não esbarrar no trabalho da Alpha.
 test("retratos da Lucia Vidotto levam para livro, e-book e perfil, não para ensaio", () => {
   assert.doesNotMatch(lucia, /ensaio de retrato feito pela Pode Curtir|Pedir proposta de ensaio/i);
-  assert.match(lucia, /Foto: Alpha, parceira da Pode Curtir/);
   assert.match(lucia, /<a href="#proposta-livro">Livro pronto/);
   assert.match(lucia, /<a href="#t-conteudo">E-book/);
   assert.match(lucia, /<a href="#t-perfil">Perfil Pronto/);
