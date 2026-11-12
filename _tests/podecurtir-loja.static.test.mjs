@@ -87,7 +87,7 @@ test("regras das marcas nas páginas de compra", () => {
     // 11/11/2026 (Jéssica, decisão de 10/11/2026): o caso Água na Boca entra na página inicial e na miniatura
     // "Exemplo real" dos cards. Fora dele, nome de cliente continua proibido.
     const semCaso = p === "_fontes/podecurtir.html"
-      ? h.replace(/<div class="hero pc-vitrine"[\s\S]*?<button type="button" class="pausa">/, "").replace(/<section class="prova"[\s\S]*?<\/section>/, "")
+      ? h.replace(/<div class="hero pc-vitrine"[\s\S]*?<button type="button" class="pausa">/, "")
           .replace(/<section class="caso alt" id="caso-agua-na-boca"[\s\S]*?<\/section>/, "")
       : p === "assets/js/podecurtir-loja.js" ? h.replace(/var EXEMPLO = \{[\s\S]*?\n  \}/, "") : h;
     assert.doesNotMatch(semCaso, /Virgínia|Água na Boca|Lucinha|Excellent/i, p + ": sem nome de cliente fora do caso aprovado");
