@@ -343,3 +343,5 @@ footer.ident a{color:var(--branco)}
 .frentes-mais>summary::after{content:"+";font-size:1.15rem;line-height:1}
 .frentes-mais[open]>summary::after{content:"−"}
 .frentes-mais[open]>summary{margin-bottom:1.25rem}
+.com-a-foto{margin:1.25rem 0 .4rem;font-weight:700}
+.com-a-foto-lista{margin:0;padding-left:1.1rem;display:grid;gap:.35rem}

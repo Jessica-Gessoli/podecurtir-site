@@ -389,7 +389,7 @@
       var x = a.plus ? plusDe(a.plus) : null;
       /* Dentro da faixa da marca, o plus avulso já aparece logo acima, à venda: a dica não se repete. */
       if (x && x.avulso && marca !== "pc") x = null;
-      return '<div class="proposta' + (sugerido("prop", a.id) ? " sugerido" : "") + '"><div><span class="selo ' + a.marca + '">' + MARCA[a.marca] + "</span><strong>" + a.nome + "</strong><p>" + a.desc + "</p>" +
+      return '<div class="proposta' + (sugerido("prop", a.id) ? " sugerido" : "") + '" id="proposta-' + a.id + '"><div><span class="selo ' + a.marca + '">' + MARCA[a.marca] + "</span><strong>" + a.nome + "</strong><p>" + a.desc + "</p>" +
         (x ? '<p class="plus-dica">Ou como plus, no fechamento de um pedido: ' + x.nome + " por " + brl(x.preco) + ".</p>" : "") + exemplo(a.id) + "</div>" +
         '<button class="pedir" type="button" data-prop="' + a.id + '" aria-pressed="' + on + '">' + (on ? "Pedido · tirar" : "Quero uma proposta") + "</button></div>";
     }).join("");
