@@ -1,0 +1,14 @@
+{
+  "nome": "Cozinha Exemplo",
+  "aviso": "Cardápio de exemplo, com restaurante, pratos e preços fictícios. Os pedidos de teste chegam no WhatsApp da Pode Curtir.",
+  "descricao": "Comida caseira, almoço e jantar.",
+  "endereco": "Endereço fictício · Cidade/UF",
+  "horario": "Terça a domingo, das 11h30 às 22h",
+  "whatsapp": "5519983310769",
+  "mensagem_inicio": "Olá! Pedido de teste pelo cardápio de exemplo da Pode Curtir:",
+  "url": "https://podecurtir.zethic.net/cardapio/exemplo/",
+  "cor": "#B23A1E",
+  "cor_fundo": "#FFF8F1",
+  "atualizado_em": "08/11/2026",
+  "rodape": "Cardápio de exemplo feito pela Pode Curtir. Página e app pela Zethic, em parceria."
+}

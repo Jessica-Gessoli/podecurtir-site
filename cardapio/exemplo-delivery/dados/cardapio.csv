@@ -1,0 +1,10 @@
+categoria,nome,descricao,preco,alergenos,disponivel,destaque
+Marmitas do dia,Frango grelhado com legumes,"Arroz integral, feijão, frango grelhado e legumes no vapor. 450 g.",24.00,,sim,sim
+Marmitas do dia,Escondidinho de carne,"Purê de mandioca com carne moída refogada e queijo gratinado. 400 g.",26.00,leite,sim,
+Marmitas do dia,Strogonoff de cogumelos,"Arroz branco, strogonoff de cogumelos e batata palha. 400 g.",25.00,"leite, glúten",sim,
+Congelados,Kit 5 marmitas da semana,"5 marmitas variadas de 400 g, congeladas. Duram até 30 dias no freezer.",110.00,"leite, glúten",sim,sim
+Congelados,Lasanha à bolonhesa,"Lasanha de 1 kg, serve 3 pessoas. Vai direto ao forno.",58.00,"glúten, leite, ovo",sim,
+Congelados,Caldo de legumes,"Pote de 500 ml, sem conservantes.",18.00,,não,
+Doces,Bolo de pote de chocolate,"Massa de chocolate, brigadeiro cremoso e granulado. 250 ml.",14.00,"glúten, leite, ovo",sim,
+Doces,Pudim de leite,"Fatia generosa, calda de caramelo.",12.00,"leite, ovo",sim,
+Doces,Caixa com 12 brigadeiros,"Brigadeiro tradicional e de leite ninho. Encomenda com 1 dia de antecedência.",36.00,leite,sim,
