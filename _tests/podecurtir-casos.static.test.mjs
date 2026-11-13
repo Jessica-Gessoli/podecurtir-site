@@ -51,7 +51,11 @@ test("topo: 3 destaques no modelo da Zethic, destaque 1 visível sem JavaScript,
   assert.equal((hero.match(/<button type="button" class="ponto[^"]*"/g) || []).length, 3);
   assert.match(hero, /<div class="wrap vitrine-ctrl" hidden>/, "controles só aparecem com JavaScript");
   assert.match(hero, /lucia-vidotto_01-800\.jpg/, "ensaio da Lucia Vidotto no topo");
-  assert.match(hero, /Foto: Alpha/);
+  // 12/11/2026 (Jéssica): fotos de parceiros entram como banco de mídias, sem citar o parceiro; a venda é da Pode Curtir.
+  assert.doesNotMatch(h, /Alpha/);
+  assert.match(hero, /<p class="rec">Marca pessoal<\/p>/);
+  assert.match(hero, /Um bom retrato vira perfil que vende, livro e e-book com a sua cara\./);
+  assert.match(hero, /<p class="slide-cred">Na foto: Lucia Vidotto<\/p>/);
   assert.match(hero, /<a class="btn cheio" href="#proposta-gravacao" data-evento="ver_sessao">Ver a sessão de fotos<\/a>/);
   assert.match(h, /<script src="\/assets\/js\/podecurtir-vitrine\.js(\?v=[0-9a-f]{10})?" defer><\/script>/);
 });
@@ -134,9 +138,9 @@ test("casos: miniatura Exemplo real no Ajuste de Perfil, no Perfil Arrumado e na
   }
 });
 
-test("casos: Quem faz apresenta a Pode Curtir, com crédito da Alpha, sem cargo nem link da marca Jéssica Gessoli", () => {
+test("casos: Quem faz apresenta a Pode Curtir, sem crédito de parceiro, sem cargo nem link da marca Jéssica Gessoli", () => {
   assert.match(quemFaz, /jessica-gessoli_quem-faz-1024\.jpg/);
-  assert.match(quemFaz, /<figcaption>Foto: Alpha<\/figcaption>/);
+  assert.doesNotMatch(quemFaz, /<figcaption>/);
   assert.doesNotMatch(quemFaz, /jessicagessoli|@jessicagessoli|instagram\.com|fundadora|diretora|executiva|CEO|especialista|Zethic/i);
 });
 
@@ -159,8 +163,8 @@ test("loja em abas: grupos cobrem todas as seções, tipo abre o grupo e âncora
   assert.match(h, /<details class="frentes-mais">\s*<summary>Ver a lista completa do que a gente faz<\/summary>/);
 });
 
-// 12/11/2026 (Jéssica): a foto da Lucia Vidotto é da Alpha. O bloco leva para o que a Pode Curtir faz com a foto
-// (livro, e-book, perfil) e não para ensaio, para não esbarrar no trabalho da Alpha.
+// 12/11/2026 (Jéssica): o retrato da Lucia Vidotto leva para o que a Pode Curtir faz com a foto (livro, e-book,
+// perfil) e não para ensaio.
 test("retratos da Lucia Vidotto não levam para ensaio", () => {
   assert.doesNotMatch(h, /Pedir proposta de ensaio/i);
   assert.match(ler("assets/js/podecurtir-loja.js"), /'" id="proposta-' \+ a\.id \+ '"/);
