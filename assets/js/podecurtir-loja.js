@@ -132,6 +132,22 @@
   ];
   /* Planos de Gestão que entram na campanha de Black Friday (a Proteção das contas de bônus vale só para eles). */
   var GESTAO = ["essencial", "padrao", "completa"];
+  /* 16/11/2026 (Jéssica: "Aprovo as orientações da Carolina" e "Solucione tudo"): pacotes de Natal para pequenos
+     empreendedores e lojas. O pacote é um atalho que põe dois itens da loja no pedido: o preço é a soma, sem desconto
+     (Black Friday sem desconto falso), e cada item é pago pelo seu próprio link. De 23 a 30/11 os dois ganham a
+     Proteção das contas de bônus (bonusValido). A seção some depois de 05/12/2026, para a campanha ir ao ar antes do Natal. */
+  var PACOTES = [
+    { id: "natal_pronto", nome: "Natal pronto", itens: ["ajuste", "campanha"],
+      desc: "Ajuste de Perfil (bio, destaques e posts fixados) e Campanha de Natal (6 posts, 2 Reels, stories e o texto da oferta para o WhatsApp). Para quem vende pelo Instagram e quer chegar a dezembro pronto." },
+    { id: "loja_natal", nome: "Loja de Natal", itens: ["catalogo", "campanha"],
+      desc: "Catálogo Pronto (o que você vende no celular, com QR code e pedido pelo WhatsApp) e Campanha de Natal. Para lojas, docerias e salões venderem no fim do ano." }
+  ];
+  var FIM_PACOTES = "2026-12-05";
+  function hojeLoja() {
+    try { return new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); }
+    catch (e) { return new Date().toISOString().slice(0, 10); }
+  }
+  function pacoteNoPedido(pk) { return pk.itens.every(function (i) { return tem(cart.proj, i); }); }
   /* Pedir proposta (10/11/2026, Jéssica): agrupado por marca, na mesma ordem das faixas acima —
      primeiro a Pode Curtir, depois o que é com a Jéssica Gessoli, por fim o que é com a Zethic. */
   var PROPOSTAS = [
@@ -260,9 +276,9 @@
      Escolher o tipo de Negócio abre o grupo por onde ele começa; "Ver tudo" mostra a loja inteira.
      Antes (10/11/2026): o tipo de Negócio escondia as seções que não serviam, com um botão para ver tudo. */
   var GRUPOS = [
-    { id: "perfil", nome: "Perfil e redes", secoes: ["t-perfil", "t-planos"] },
+    { id: "perfil", nome: "Perfil e redes", secoes: ["t-natal", "t-perfil", "t-planos"] },
     { id: "rest", nome: "Restaurantes", secoes: ["t-rest"] },
-    { id: "cat", nome: "Lojas, docerias e salões", secoes: ["t-cat"] },
+    { id: "cat", nome: "Lojas, docerias e salões", secoes: ["t-natal", "t-cat"] },
     { id: "esp", nome: "Especialistas e empresas", secoes: ["t-esp"] },
     { id: "vendas", nome: "Kit de Vendas e e-book", secoes: ["t-kit", "t-conteudo"] },
     { id: "parceiros", nome: "Com parceiros", secoes: ["t-ia", "t-contas"] },
@@ -359,6 +375,16 @@
         '<button class="por" type="button" data-plano="' + p.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr no meu pedido") + "</button></article>";
     }
     function daSecao(lista, secao) { return lista.filter(function (p) { return (p.secao || "") === secao; }); }
+    var secNatal = $("pacotes-natal");
+    if (secNatal && hojeLoja() > FIM_PACOTES) secNatal.parentNode.removeChild(secNatal);
+    if ($("grade-natal")) $("grade-natal").innerHTML = PACOTES.map(function (pk) {
+      var itens = pk.itens.map(function (i) { return PROJ.filter(function (p) { return p.id === i; })[0]; });
+      var soma = itens.reduce(function (t, p) { return t + p.preco; }, 0), on = pacoteNoPedido(pk);
+      return '<article class="item"><h3>' + pk.nome + '</h3><p class="preco num">' + brl(soma) + "</p>" +
+        '<p class="vagas">' + itens.map(function (p) { return p.nome + " " + brl(p.preco); }).join(" + ") + ". Soma dos itens, sem desconto.</p>" +
+        detalhes("<p>" + pk.desc + '</p><dl class="meta"><div><dt>Bônus</dt><dd>De 23 a 30/11: Proteção das contas, feita pela Zethic</dd></div><div><dt>Prazo</dt><dd>Compre até 05/12 para a campanha ir ao ar antes do Natal</dd></div></dl>') +
+        '<button class="por" type="button" data-pacote="' + pk.id + '" aria-pressed="' + on + '">' + (on ? "No pedido · tirar" : "Pôr o pacote no pedido") + "</button></article>";
+    }).join("");
     $("grade-perfil").innerHTML = daSecao(PROJ, "").map(cardProj).join("");
     function avulsos(secao) {
       return PLUS.filter(function (p) { return p.avulso && p.secao === secao; }).map(function (p) {
@@ -419,7 +445,8 @@
      Gestão mensal no pedido ganham a Proteção das contas. Aparece no pedido e na mensagem, para o bônus ser cumprido. */
   function bonusValido() {
     var c = window.podecurtirCampanha && window.podecurtirCampanha();
-    return !!(c && c.bonus && (tem(cart.proj, "arrumado") || tem(cart.proj, "marca") || tem(GESTAO, cart.plano)));
+    return !!(c && c.bonus && (tem(cart.proj, "arrumado") || tem(cart.proj, "marca") || tem(GESTAO, cart.plano) ||
+      PACOTES.some(pacoteNoPedido)));
   }
   function linhas(comTirar) {
     var out = [];
@@ -500,9 +527,18 @@
   });
 
   document.addEventListener("click", function (e) {
-    var b = e.target.closest && e.target.closest("[data-proj],[data-plano],[data-prop],button[data-plus]");
+    var b = e.target.closest && e.target.closest("[data-proj],[data-plano],[data-prop],button[data-plus],button[data-pacote]");
     if (!b || $("vista-loja").hidden) return;
     aviso = "";
+    if (b.dataset.pacote) {
+      var pk = PACOTES.filter(function (x) { return x.id === b.dataset.pacote; })[0];
+      if (pk) {
+        if (pacoteNoPedido(pk)) pk.itens.forEach(function (i) { alterna(cart.proj, i); });
+        else { medir("AddToCart", { content_name: pk.id }); pk.itens.forEach(function (i) { if (!tem(cart.proj, i)) cart.proj.push(i); }); }
+      }
+      tudo();
+      return;
+    }
     var item = b.dataset.plus || b.dataset.proj || b.dataset.plano || b.dataset.prop;
     var lista = b.dataset.plus ? cart.plus : b.dataset.proj ? cart.proj : b.dataset.prop ? cart.prop : null;
     if (lista ? !tem(lista, item) : cart.plano !== item) medir("AddToCart", { content_name: item });

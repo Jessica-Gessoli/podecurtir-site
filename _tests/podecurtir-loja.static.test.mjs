@@ -364,7 +364,7 @@ test("campanhas mudam sozinhas pela data e somem depois de 25/01/2027", () => {
   assert.match(js, /function iniciar\(\) \{ aplicarCampanha\(\);/);
   const loja = ler("assets/js/podecurtir-loja.js");
   // 08/11/2026: o bônus continua só nos 3 planos de Gestão da campanha, não nos planos novos para especialistas
-  assert.match(loja, /c\.bonus && \(tem\(cart\.proj, "arrumado"\) \|\| tem\(cart\.proj, "marca"\) \|\| tem\(GESTAO, cart\.plano\)\)/);
+  assert.match(loja, /c\.bonus && \(tem\(cart\.proj, "arrumado"\) \|\| tem\(cart\.proj, "marca"\) \|\| tem\(GESTAO, cart\.plano\) \|\|\n\s+PACOTES\.some\(pacoteNoPedido\)\)\)/);
   assert.match(loja, /var GESTAO = \["essencial", "padrao", "completa"\];/);
   assert.match(loja, /Bônus Black Friday: Proteção das contas incluída, sem custo \(campanha até 30\/11\)\./);
   assert.match(ler("assets/css/podecurtir-loja.css"), /\.campanha\{background:var\(--flash\)/);
@@ -619,4 +619,24 @@ test("preço de fundador: depoimento é do site e avaliação no Google é opcio
   assert.match(loja, /avaliação no Google não faz parte da troca e é sempre opcional/);
   assert.match(loja, /Avaliar no Google é opcional\./);
   assert.match(termos, /nunca é pedida em troca de desconto/);
+});
+
+// 16/11/2026 (Jéssica: "Aprovo as orientações da Carolina" e "Solucione tudo"): pacotes de Natal para pequenos
+// empreendedores e lojas. Soma dos itens, sem desconto; bônus da Black Friday de 23 a 30/11; somem depois de 05/12.
+test("pacotes de Natal: soma dos itens, sem desconto, com bônus e prazo", () => {
+  const loja = ler("assets/js/podecurtir-loja.js");
+  const html = ler("index.html");
+  assert.match(html, /<section class="secao" aria-labelledby="t-natal" id="pacotes-natal">/);
+  assert.match(html, /<div class="grade" id="grade-natal"><\/div>/);
+  assert.match(html, /O preço é a soma dos itens, sem desconto\./);
+  assert.match(loja, /\{ id: "natal_pronto", nome: "Natal pronto", itens: \["ajuste", "campanha"\],/);
+  assert.match(loja, /\{ id: "loja_natal", nome: "Loja de Natal", itens: \["catalogo", "campanha"\],/);
+  assert.match(loja, /var FIM_PACOTES = "2026-12-05";/);
+  assert.match(loja, /hojeLoja\(\) > FIM_PACOTES/);
+  // o pacote não tem preço próprio: a soma vem dos itens da loja, e cada item usa o seu link de pagamento
+  assert.doesNotMatch(loja.split("var PACOTES = ")[1].split("];")[0], /preco:/);
+  assert.match(loja, /\{ id: "perfil", nome: "Perfil e redes", secoes: \["t-natal", "t-perfil", "t-planos"\] \},/);
+  assert.match(loja, /\{ id: "cat", nome: "Lojas, docerias e salões", secoes: \["t-natal", "t-cat"\] \},/);
+  const comum = ler("assets/js/podecurtir-comum.js");
+  assert.match(comum, /até 30\/11, os Pacotes de Natal, Perfil Arrumado, Marca Completa ou qualquer Gestão mensal ganham a Proteção das contas/);
 });
