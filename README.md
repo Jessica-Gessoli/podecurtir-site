@@ -17,6 +17,12 @@ copiadas para cá; isso acabou.
 | Estilo e scripts | `assets/css/`, `assets/js/` |
 | Fotos e vídeo | `assets/img/`, `assets/video/` |
 | Testes | `_tests/` |
+| Registro de decisões | `_docs/decisoes.md` |
+
+## Decisões
+
+O que a Jéssica decidiu sobre o site, com data e PR, fica em `_docs/decisoes.md`. Atualize esse arquivo no
+mesmo PR de cada mudança de conteúdo.
 
 ## Antes de abrir um PR
 
